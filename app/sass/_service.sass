@@ -1,0 +1,274 @@
+.service
+	padding-bottom: 0
+	background-color: #fff
+	top: -1px
+	&__content
+		.row
+			display: flex
+			min-height: 425px
+			@media #{$_lg}
+				min-height: 320px
+			@media #{$_md}
+				min-height: 1px
+				flex-wrap: wrap
+			@media #{$_s}
+				display: block
+			&:after
+				clear: both
+				display: table
+				content: ""
+		&__item
+			width: 50%
+			float: left
+			padding: 40px 40px 30px 50px
+			border: 1px solid #cfcfcf
+			border-left: 0
+			position: relative
+			@media (max-width: 1400px)
+				padding: 20px
+			@media #{$_s}
+				width: 100%
+				border: 0
+				//border-bottom: 1px solid #cfcfcf
+				padding: 20px
+				&:after
+					height: 1px
+					background-color: #cfcfcf
+					content: ""
+					left: 20px
+					right: 20px
+					position: absolute
+					bottom: 0
+				.wrap_btn
+					display: none
+					.main_btn
+						margin: 25px auto 0
+						display: block
+			.service_hover
+				position: absolute
+				background-color: $blue
+				z-index: 2
+				width: 100%
+				height: 100%
+				top: 0
+				left: 0
+				opacity: 0
+				transition: opacity .3s
+				display: flex
+				justify-content: center
+				align-items: center
+				@media #{$_s}
+					z-index: -1
+					opacity: 1
+				.sub
+					@media #{$_md}
+						position: relative
+						top: -20px
+						font-size: 14px
+			&:last-of-type
+				border-right: 0
+			&.agency
+				width: 50%
+				top: -1px
+				@media #{$_s}
+					width: 100%
+			&.divided
+				.service_hover
+					background-color: #d7d7d7
+					display: block
+					&:after
+						display: table
+						clear: both
+						content: ""
+					@media #{$_s}
+						//background-color: transparent
+						z-index: 2
+						position: static
+					.service_hover_item
+						text-align: center
+						width: 50%
+						float: left
+						height: 100%
+						transition: all .3s
+						display: flex
+						align-items: center
+						justify-content: center
+						cursor: pointer
+						position: relative
+						@media #{$_md}
+							font-size: 20px
+						@media #{$_s}
+							// width: calc(50% + 20px)
+							// &.service_hover_person
+							// 	margin-left: -20px
+							display: block
+						i
+							font-size: 80px
+							display: block
+							&:before
+								margin-bottom: 15px
+						&:hover
+							background-color: $blue
+							color: #fff
+						.close_service
+							width: 40px
+							height: 40px
+							border-radius: 50%
+							border: 1px solid #fff
+							position: absolute
+							left: 0
+							right: 0
+							margin: auto
+							bottom: -20px
+							display: none
+							&:after
+								width: 96px
+								height: 1px
+								background-color: #37394e
+								position: absolute
+								content: ""
+								top: 0
+								bottom: 0
+								margin: auto
+								left: 55px
+							&:before
+								@extend :after
+								left: auto
+								right: 55px
+							img
+								position: absolute
+								top: 0
+								left: 0
+								right: 0
+								bottom: 0
+								margin: auto
+			&:hover .service_hover
+				opacity: 1
+				@media #{$_s}
+					//background-color: transparent
+			h4
+				font-size: 2.6rem
+				font-weight: 600
+				line-height: 3.2rem
+				padding-bottom: 6.6rem
+				height: 160px
+				position: relative
+				@media #{$_lg}
+					height: 120px
+				@media #{$_md}
+					height: 80px
+				@media #{$_sm}
+					font-size: 2.2rem
+				@media #{$_s}
+					height: auto
+					padding: 0
+					margin-bottom: 0
+					padding-right: 25%
+					&:before
+						display: none
+				&:before
+					position: absolute
+					content: ""
+					width: 23px
+					height: 2px
+					background-color: $blue
+					bottom: 15px
+					left: 0
+				.arrow
+					position: absolute
+					z-index: 2
+					width: 30px
+					height: 30px
+					border-radius: 50%
+					right: 0
+					top: 0
+					bottom: 0
+					margin: auto
+					border: 1px solid #000
+					opacity: .4
+					background-image: url("../img/arrow_down.png")
+					background-repeat: no-repeat
+					background-position: center
+					transition: transform .2s
+					@media #{$s}
+						display: none
+					&.rotated
+						transform: rotate(180deg)
+			@media #{$_s}
+				.wrap_accordion
+					display: none
+					.main_btn
+						margin: 25px auto 0
+						max-width: 240px
+					p
+						width: 75%
+						margin-top: 25px
+	&__addition
+		background-color: $blue
+		position: relative
+		top: -2px
+		color: #d7d7d7
+		padding-top: 40px
+		border-bottom: 1px solid #fff
+		display: none
+		&__content
+			&:after
+				display: table
+				content: ""
+				clear: both
+		hr
+			border-color: #37394e
+			border-top: 0
+		&__item
+			width: 25%
+			float: left
+			margin: 40px 0
+			p
+				width: 50%
+			&:after
+				display: table
+				clear: both
+				content: ""
+		&__footer
+			border-top: 1px solid #37394e
+			padding: 65px 0
+			.main_btn
+				margin: 0 auto
+.service_alternate
+	background-image: url('../img/service_alternate.jpg')
+	top: -3px
+	height: 670px
+	.section_title
+		margin-bottom: 100px
+	&__content
+		margin-bottom: 60px
+		&:last-of-type
+			margin-bottom: 0
+		&:after
+			content: ""
+			display: table
+			clear: both
+	&__item
+		float: left
+		width: 25%
+		text-align: center
+		transition: transform .2s
+		&:hover
+			transform: scale(1.5)
+		p
+			color: $brown
+			font-size: 16px
+			line-height: 16px
+		i
+			font-size: 70px
+			color: $brown
+			background: linear-gradient(39deg, #915f47, #c49b89)
+			-webkit-background-clip: text
+			-moz-background-clip: text
+			-ms-background-clip: text
+			background-clip: text
+			-webkit-text-fill-color: transparent
+			-moz-text-fill-color: transparent
+			-ms-text-fill-color: transparent
+			text-fill-color: transparent
+			transition: font-size .2s

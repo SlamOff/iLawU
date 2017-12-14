@@ -1,0 +1,76 @@
+.advantage
+	background-image: url('../img/advantage_bg.jpg')
+	padding-bottom: 100px
+	top: -1px
+	
+	&__content
+		max-width: 420px
+		margin: 0 auto
+		position: relative
+		.prev_adv
+			width: 40px
+			height: 40px
+			border-radius: 50%
+			border: 1px solid #000
+			position: absolute
+			top: 86px
+			left: -70px
+			cursor: pointer
+			opacity: .3
+			transition: opacity .2s
+			&:hover
+				opacity: 1
+			img
+				position: absolute
+				top: 0
+				right: 0
+				left: 0
+				bottom: 0
+				margin: auto
+		.next_adv
+			@extend .prev_adv
+			right: -70px
+			left: auto
+		.advantage__slider
+			outline: none
+			position: relative
+			&__item
+				text-align: center
+				outline: none
+				h4
+					font-weight: 600
+					font-size: 22px
+					line-height: 24px
+					padding-bottom: 36px
+					position: relative
+					margin: 36px 0
+					&:before
+						content: ""
+						height: 2px
+						width: 35px
+						left: 0
+						right: 0
+						margin: auto
+						bottom: 0
+						position: absolute
+						background-color: $blue
+				.advantage_pict_wrapper
+					border-radius: 50%
+					width: 220px
+					height: 220px
+					margin: 0 auto
+					overflow: hidden
+					position: relative
+					// background-image: url("../img/adv_1.jpg")
+					// background-repeat: no-repeat
+					// background-position: center
+					// transition: background-size .2s
+					// &:hover
+					// 	background-size: 230%
+					img
+						position: absolute
+						left: -110px
+						transition: transform .2s
+						&:hover
+							transform: scale(1.2)
+

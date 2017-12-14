@@ -1,0 +1,141 @@
+.contact
+	background-image: url('../img/contact_bg.jpg')
+	top: -3px
+	//background-position: center -120px
+	background-size: cover
+	padding: 0
+	height: 1px
+	min-height: 600px
+	&__wrapper
+		padding-left: 29%
+	&__item
+		float: left
+		padding: 8rem 0 6rem
+		height: 100%
+		width: 50%
+		&--text
+			background-color: rgba(255,255,255,.3)
+			ul
+				li
+					margin: 7rem 0
+					position: relative
+					&:last-of-type
+						margin: -22px 0
+						&:before
+							display: none
+					span
+						color: $brown
+						position: absolute
+						width: 36px
+						height: 36px
+						border-radius: 50%
+						border: 1px solid $brown
+						top: -5px
+						left: -65px
+						text-align: center
+						&:before
+							position: absolute
+		.section_title
+			margin-bottom: 8rem
+		&--form
+			background-color: rgba(32,35,58,.6)
+			.section_title
+				color: #fff
+	&__phone
+		font-size: 20px
+		font-weight: bold
+		span
+			font-size: 205px
+			&:before
+				top: -130px
+				left: -45px
+	&__mail
+		text-decoration: underline
+		span
+			font-size: 20px
+			&:before
+				top: 1px
+				left: 8px
+	&__address
+		span
+			font-size: 130px
+			&:before
+				top: -78px
+				left: -44px
+		em
+			color: $brown
+			font-size: 14px
+			text-decoration: underline
+			font-style: normal
+	&__social
+		.social_icons
+			display: inline-block
+			position: relative
+			top: 10px
+			margin-left: 20px
+			li
+				width: 34px
+				height: 34px
+				border-radius: 50%
+				background-color: #b8b8b8
+				display: inline-block
+				margin: 0 0 0 20px
+				cursor: pointer
+				transition: all .2s
+				color: $blue
+				&:hover
+					background-color: $blue
+					color: #fff
+				// &:nth-of-type(2)
+				// 	b
+				// 		font-size: 110px
+				// 		&:before
+				// 			text-indent: -24px
+				// 			top: 8px
+				&:last-of-type
+					margin: 0 0 0 20px
+				// 	b
+				// 		font-size: 110px
+				// 		&:before
+				// 			text-indent: -30px
+				// 			top: -6px
+				// &:before
+					//display: none
+				b
+					border: 0
+					font-weight: normal
+					//font-size: 140px
+					//position: absolute
+					// width: 100%
+					// height: 100%
+					// // overflow: hidden
+					// &:before
+					// 	position: absolute
+					// 	line-height: 0
+					// 	text-indent: -23px
+	&__form
+		max-width: 500px
+		margin: 0 auto
+		input
+			float: left
+			width: 49%
+			height: 52px
+			background-color: #fff
+			text-indent: 20px
+			&:first-of-type
+				margin-right: 2%
+		textarea
+			resize: none
+			width: 100%
+			margin-top: 15px
+			margin-bottom: 50px
+			height: 180px
+			padding-top: 20px
+			text-indent: 20px
+		button.main_btn
+			display: block
+			margin: 0 auto
+			width: 300px
+			background-color: transparent
+			color: $blue
+			border-color: $blue

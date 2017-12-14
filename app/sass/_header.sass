@@ -1,0 +1,242 @@
+.main
+	background-image: url('../img/header.jpg')
+	background-position: 50% 0
+	background-repeat: no-repeat
+	&__nav
+		background-image: linear-gradient(to bottom, rgba(15,24,40,1), rgba(47,69,107,0))
+		height: 80px
+		position: fixed
+		width: 100%
+		top: 0
+		left: 0
+		padding: 0 65px
+		display: flex
+		align-items: center
+		justify-content: space-between
+		z-index: 50
+		transition: all .3s
+		.nav_rolled
+			position: absolute
+			left: 0
+			height: 210px
+			top: 0
+			right: 0
+			margin: auto
+			max-width: 66%
+			background-color: rgba(32,35,58,.9)
+			display: none
+			opacity: 0
+			transition: all .2s
+			&.rolled
+				display: block
+				opacity: 1
+			.add_menu
+				display: flex
+				justify-content: space-around
+				height: 100px
+				position: absolute
+				width: 100%
+				left: 0
+				bottom: 0
+				border-top: 1px solid #9d9eae
+				li
+					color: #9d9eae
+					cursor: pointer
+					line-height: 90px
+					border-top: 4px solid transparent
+					transition: color .3s
+					position: relative
+					top: -2px
+					&:hover
+						color: #eae8e7
+					&:before
+						position: absolute
+						content: ""
+						left: 0
+						width: 0
+						top: -2px
+						height: 4px
+						background-color: #bcbdc3
+						transition: width .3s
+					&:hover:before
+						width: 100%
+	&__content
+		display: flex
+		justify-content: space-between
+		align-items: center
+		//height: 100vh
+		height: 630px
+	&__title
+		font-weight: 300
+		font-size: 4rem
+		text-transform: uppercase
+		span
+			font-weight: 600
+	&__menu_btn
+		border-radius: 50%
+		width: 46px
+		height: 46px
+		border: 1px solid #fff
+		z-index: 200
+		position: relative
+		cursor: pointer
+		opacity: .8
+		transition: opacity .2s
+		&:hover
+			opacity: 1
+			.sandwich span
+				opacity: 1
+		.sandwich
+			width: 20px
+			height: 13px
+			position: absolute
+			top: 0
+			bottom: 1px
+			left: 0
+			right: 0
+			margin: auto
+			&.active
+				span.sw-topper
+					top: 6px
+					transform: rotate(-45deg)
+				span.sw-bottom
+					top: 4px
+					transform: rotate(45deg)
+				span.sw-footer
+					opacity: 0
+					top: 0
+					transform: rotate(180deg)
+			span
+				height: 2px
+				width: 20px
+				position: relative
+				left: 0
+				background-color: #fff
+				opacity: .8
+				transition: opacity .2s
+				display: block
+			span.sw-topper
+				top: 0
+				transition: transform 0.3s, top 0.2s
+			span.sw-bottom
+				top: 4px
+				transition: transform 0.3s, top 0.2s
+				transition-delay: 0.1s, 0s
+			span.sw-footer
+				top: 8px
+				transition: all 0.5s
+				transition-delay: 0.1s
+	&__menu
+		position: relative
+		right: 80px
+		@media (max-width: 1500px)
+			right: 0
+		li
+			display: inline-block
+			text-transform: uppercase
+			color: #fff
+			cursor: pointer
+			margin: 0 20px
+			transition: color .2s
+			&:hover
+				color: #9b6e5b
+	&__search
+		position: relative
+		height: 30px
+		width: 180px
+		margin-left: 300px
+		@media #{$_lg}
+			margin-left: 0
+		&.translated
+			right: 80px
+		&:hover
+			input[type='search']
+				border-bottom: 1px solid rgba(255,255,255,1)
+			i
+				opacity: 1
+		input[type='search']
+			border: 0
+			background-color: transparent
+			border-bottom: 1px solid rgba(255,255,255,.5)
+			transition: border-bottom .2s
+			width: 100%
+			height: 100%
+			color: #fff
+		input[type='submit']
+			z-index: 1
+			position: absolute
+			top: 0
+			right: 0
+			height: 100%
+			opacity: 0
+		i
+			top: -10px
+			bottom: 0
+			text-indent: -10px
+			margin: auto
+			right: 0
+			font-size: 100px
+			color: #fff
+			opacity: .5
+			transition: opacity .2s
+			position: absolute
+			cursor: pointer
+			line-height: 1px
+			width: 30px
+			height: 100%
+			z-index: 2
+			overflow: hidden
+			&:before
+				width: 100%
+				height: 100%
+				position: absolute
+	&__lang
+		.login
+			display: inline-block
+			float: left
+			margin-right: 20px
+			cursor: pointer
+			opacity: .7
+			transition: opacity .2s
+			&:hover
+				opacity: 1
+		.change_lang
+			display: inline-block
+			float: left
+			position: relative
+			color: #fff
+			opacity: .7
+			font-size: 12px
+			text-transform: uppercase
+			cursor: pointer
+			line-height: 28px
+			transition: opacity .2s
+			font-weight: 300
+			span
+				position: absolute
+				&:first-child
+					position: static
+				&:nth-child(2)
+					top: 20px
+					display: none
+					&.shown
+						display: inline
+				&:last-child
+					top: 40px
+					display: none
+					&.shown
+						display: inline
+			&:after
+				width: 8px
+				height: 4px
+				position: absolute
+				content: ""
+				background-image: url("../img/lang_arrow.png")
+				top: 0
+				bottom: 0
+				margin: auto
+				right: -18px
+			&.rotated:after
+				transform: rotate(180deg)
+			&:hover
+				opacity: 1
