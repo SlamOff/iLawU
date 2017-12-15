@@ -15,12 +15,18 @@
 		background-color: $blue
 	&__content
 		//display: flex
-		justify-content: space-between
-		align-items: center
+		//justify-content: space-between
+		//align-items: center
+		&:after
+			display: table
+			clear: both
+			content: ""
 	&__item
 		float: left
 		padding: 0 15px
-		
+		@media #{$_md}
+			width: 100%!important
+			text-align: center
 		
 		li
 			line-height: 36px
@@ -40,17 +46,27 @@
 		text-transform: uppercase
 		//color: #d7d7d7
 		padding-left: 40px
+		@media #{$_md}
+			padding-left: 15px
+			margin: 20px 0
 	&__menu2
 		width: 16.66666667%
 		// color: #737586
+		@media #{$_md}
+			display: none
 	&__faq
 		width: 16.66666667%
 		padding-left: 50px
+		@media #{$_md}
+			display: none
 	&__btns
 		width: 25%
 		.main_btn
 			max-width: 100%
 			margin-bottom: 15px
+			@media #{$_md}
+				margin-left: auto
+				margin-right: auto
 	&__social
 		text-align: center
 		display: inline-block

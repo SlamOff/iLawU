@@ -2,6 +2,9 @@
 	background-image: url('../img/header.jpg')
 	background-position: 50% 0
 	background-repeat: no-repeat
+	&__logo
+		z-index: 20
+		@media (max-width:767px)
 	&__nav
 		background-image: linear-gradient(to bottom, rgba(15,24,40,1), rgba(47,69,107,0))
 		height: 80px
@@ -15,6 +18,11 @@
 		justify-content: space-between
 		z-index: 50
 		transition: all .3s
+		opacity: 1
+		&--scrolled
+			height: 0
+			opacity: 0
+			z-index: -1
 		.nav_rolled
 			position: absolute
 			left: 0
@@ -27,6 +35,8 @@
 			display: none
 			opacity: 0
 			transition: all .2s
+			@media (max-width:767px)
+				max-width: 100%
 			&.rolled
 				display: block
 				opacity: 1
@@ -92,6 +102,9 @@
 		cursor: pointer
 		opacity: .8
 		transition: opacity .2s
+		@media (max-width: 767px)
+			position: absolute
+			right: 15px
 		&:hover
 			opacity: 1
 			.sandwich span
@@ -159,6 +172,8 @@
 		margin-left: 300px
 		@media #{$_lg}
 			margin-left: 0
+		@media (max-width: 767px)
+			display: none
 		&.translated
 			right: 80px
 		&:hover
@@ -203,6 +218,8 @@
 				height: 100%
 				position: absolute
 	&__lang
+		@media (max-width: 767px)
+			display: none
 		.login
 			display: inline-block
 			float: left

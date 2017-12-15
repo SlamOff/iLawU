@@ -8,11 +8,46 @@ $(document).ready(function() {
         $(this).attr("placeholder", $(this).data("placeholder"))
     });
 
+    // nav
+    window.onscroll = function(){
+		var	scrolled = window.pageYOffset || document.documentElement.scrollTop,
+			header = document.querySelector('.main__nav');
+		var prevY = 0;
+		var moveTop = false;
+		//console.log(scrolled);
+		if(prevY > scrolled){
+			moveTop = true;
+		}
+		else{
+			moveTop = false;
+		}
+		console.log(prevY + '::' + scrolled);
+
+
+		if (scrolled > 1 && $(window).width() > 768 && moveTop == false){
+			$(header).addClass('main__nav--scrolled');
+		}
+		else if(scrolled <= 1 && $(window).width() > 768 || moveTop == true) {
+			$(header).removeClass('main__nav--scrolled');
+		}
+
+	}
 	// Юридичн послуги
 	$('.divided .service_hover_item').click(function(e){
 		$('.divided .service_hover_item').find('.close_service').hide();
 		if(!e.target.classList.contains('close_service') && !e.target.parentNode.classList.contains('close_service')){
 			$('.service__addition').slideDown();
+			//console.log(this == $('.service_hover_person'));
+			// console.log(this);
+			// console.log($('.service_hover_person'));
+			if($(this).attr('data-content') == 'person_service'){
+				$('.service__addition_legal').hide();
+			}
+			else {
+				$('.service__addition_person').hide();
+			}
+
+			
 			$(this).find('.close_service').show();
 			if($('.service__addition').is(':visible')){
 				$('.divided .service_hover').css('opacity', 1);
@@ -129,6 +164,19 @@ $(document).ready(function() {
 				$(this).parent().siblings('.wrap_accordion').find('.service_hover').toggleClass('service_shown');
 			}
 		});
+	}
+	if($(window).width() < 767){
+		$('.main__menu_btn').click(function(){
+			if($('.nav_rolled').hasClass('rolled')){
+				$('.main__search').show();
+				$('.main__lang').show();
+			}
+			else {
+				$('.main__search').hide();
+				$('.main__lang').hide();
+			}
+		});
+		
 	}
 	// contact form popup
 	$('.contact__popup').click(function(e){
