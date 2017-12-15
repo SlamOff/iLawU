@@ -66,12 +66,22 @@
 		align-items: center
 		//height: 100vh
 		height: 630px
+		@media #{$_s}
+			height: auto
+			display: block
+			padding: 130px 0 40px
+			text-align: center
 	&__title
 		font-weight: 300
 		font-size: 4rem
 		text-transform: uppercase
+		@media #{$_s}
+			margin-bottom: 100px
 		span
 			font-weight: 600
+	.main_btn
+		@media #{$_s}
+			margin: 0 auto
 	&__menu_btn
 		border-radius: 50%
 		width: 46px
@@ -131,6 +141,8 @@
 		right: 80px
 		@media (max-width: 1500px)
 			right: 0
+			@media #{$_md}
+				display: none
 		li
 			display: inline-block
 			text-transform: uppercase

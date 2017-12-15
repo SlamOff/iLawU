@@ -6,19 +6,45 @@
 	padding: 0
 	height: 1px
 	min-height: 600px
+	@media #{$_lg}
+		min-height: 570px
+	@media (max-width:767px)
+		min-height: 530px
+	@media #{$_s}
+		height: auto
+		min-height: 1px
+	&:after
+		clear: both
+		display: table
+		content: ""
 	&__wrapper
 		padding-left: 29%
+		@media #{$_lg}
+			padding-left: 20%
+			font-size: 18px
+		@media (max-width:767px)
+			font-size: 14px
+		@media (max-width:767px)
+			padding-left: 80px
 	&__item
 		float: left
 		padding: 8rem 0 6rem
 		height: 100%
 		width: 50%
+		@media #{$_md}
+			width: 100%
+		&:after
+			clear: both
+			display: table
+			content: ""
 		&--text
 			background-color: rgba(255,255,255,.3)
 			ul
 				li
 					margin: 7rem 0
 					position: relative
+					@media (max-width:767px)
+						margin: 5rem 0
 					&:last-of-type
 						margin: -22px 0
 						&:before
@@ -33,12 +59,42 @@
 						top: -5px
 						left: -65px
 						text-align: center
+						@media (max-width:767px)
+							left: -55px
 						&:before
 							position: absolute
 		.section_title
 			margin-bottom: 8rem
+			@media #{$_md}
+				margin-bottom: 4rem
 		&--form
 			background-color: rgba(32,35,58,.6)
+			position: relative
+			.btn_close
+				right: 15px
+				top: 15px
+				width: 30px
+				height: 30px
+				border-radius: 50%
+				border: 1px solid #fff
+				position: absolute
+				img
+					position: absolute
+					left: 0
+					top: 0
+					right: 0
+					bottom: 0
+					margin: auto
+					filter: invert(1)
+			@media #{$_s}
+				display: none
+				position: fixed
+				top: 0
+				left: 0
+				background-color: rgba(32,35,58,.95)
+				z-index: 100
+				height: 100%
+				width: 100%
 			.section_title
 				color: #fff
 	&__phone
@@ -68,11 +124,24 @@
 			text-decoration: underline
 			font-style: normal
 	&__social
+		b.social_header
+			font-weight: normal
+			@media #{$_s}
+				display: none
 		.social_icons
 			display: inline-block
 			position: relative
 			top: 10px
 			margin-left: 20px
+			@media #{$_lg}
+				top: -5px
+			@media #{$_md}
+				display: block
+				top: 0
+				margin-top: 20px
+				margin-left: 0
+			@media #{$_s}
+				margin-top: 50px
 			li
 				width: 34px
 				height: 34px
@@ -83,6 +152,8 @@
 				cursor: pointer
 				transition: all .2s
 				color: $blue
+				@media #{$_md}
+					margin: 0 20px 0 0
 				&:hover
 					background-color: $blue
 					color: #fff
@@ -94,6 +165,8 @@
 				// 			top: 8px
 				&:last-of-type
 					margin: 0 0 0 20px
+					@media #{$_md}
+						margin: 0
 				// 	b
 				// 		font-size: 110px
 				// 		&:before
@@ -113,17 +186,31 @@
 					// 	position: absolute
 					// 	line-height: 0
 					// 	text-indent: -23px
+	&__popup
+		display: none!important
+		margin: 80px auto 0
+		max-width: 240px
+		@media #{$_s}
+			display: block!important
 	&__form
 		max-width: 500px
 		margin: 0 auto
+		@media #{$_md}
+			max-width: 80%
 		input
 			float: left
 			width: 49%
 			height: 52px
 			background-color: #fff
 			text-indent: 20px
+			border: 0
+			@media #{$_s}
+				width: 100%
+				margin: 0
 			&:first-of-type
 				margin-right: 2%
+				@media #{$_s}
+					margin: 0 0 15px 0
 		textarea
 			resize: none
 			width: 100%
@@ -132,6 +219,8 @@
 			height: 180px
 			padding-top: 20px
 			text-indent: 20px
+			@media #{$_md}
+				margin-bottom: 30px
 		button.main_btn
 			display: block
 			margin: 0 auto
@@ -139,3 +228,4 @@
 			background-color: transparent
 			color: $blue
 			border-color: $blue
+			max-width: 100%

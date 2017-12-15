@@ -6,11 +6,16 @@
 		display: flex
 		justify-content: center
 		flex-wrap: wrap
+		@media #{$_xs}
+			display: block
 		&__item
 			width: 170px
 			height: 162px
 			border: 1px solid #e6e6e6
 			position: relative
+			@media #{$_xs}
+				width: 50%
+				float: left
 			img
 				position: absolute
 				margin: auto

@@ -60,6 +60,8 @@
 				@media #{$_s}
 					z-index: -1
 					opacity: 1
+					margin-top: 20px
+					//display: none
 				.sub
 					@media #{$_md}
 						position: relative
@@ -76,6 +78,10 @@
 				.service_hover
 					background-color: #d7d7d7
 					display: block
+					@media #{$_s}
+						display: none
+						&.service_shown
+							display: block
 					&:after
 						display: table
 						clear: both
@@ -219,12 +225,22 @@
 		hr
 			border-color: #37394e
 			border-top: 0
+			@media #{$_s}
+				display: none
 		&__item
 			width: 25%
 			float: left
 			margin: 40px 0
+			@media #{$_s}
+				border-bottom: 1px solid #37394e
+				width: 50%
+				margin: 0
+				padding: 20px 0 10px
 			p
 				width: 50%
+				@media #{$_s}
+					width: 100%
+					height: 32px
 			&:after
 				display: table
 				clear: both
@@ -232,16 +248,25 @@
 		&__footer
 			border-top: 1px solid #37394e
 			padding: 65px 0
+			@media #{$_s}
+				border: 0
+				padding: 40px 0
 			.main_btn
 				margin: 0 auto
 .service_alternate
 	background-image: url('../img/service_alternate.jpg')
 	top: -3px
 	height: 670px
+	@media #{$_lg}
+		height: auto
 	.section_title
 		margin-bottom: 100px
+		@media (max-width: 767px)
+			margin-bottom: 50px
 	&__content
 		margin-bottom: 60px
+		@media (max-width: 767px)
+			margin: 0
 		&:last-of-type
 			margin-bottom: 0
 		&:after
@@ -253,12 +278,18 @@
 		width: 25%
 		text-align: center
 		transition: transform .2s
+		@media (max-width: 767px)
+			width: 50%
+			margin-bottom: 35px
+			height: 145px
 		&:hover
 			transform: scale(1.5)
 		p
 			color: $brown
 			font-size: 16px
 			line-height: 16px
+			@media (max-width: 767px)
+				font-size: 14px
 		i
 			font-size: 70px
 			color: $brown
