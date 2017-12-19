@@ -2,9 +2,13 @@
 	background-image: url('../img/header.jpg')
 	background-position: 50% 0
 	background-repeat: no-repeat
+	@media #{$_xs}
+		background-image: url("../img/header_m.jpg")
 	&__logo
 		z-index: 20
-		@media (max-width:767px)
+		@media #{$_s}
+			margin-top: 15px
+			position: relative
 	&__nav
 		background-image: linear-gradient(to bottom, rgba(15,24,40,1), rgba(47,69,107,0))
 		height: 80px
@@ -19,6 +23,10 @@
 		z-index: 50
 		transition: all .3s
 		opacity: 1
+		@media #{$_s}
+			display: block
+			height: 160px
+			padding: 0 15px
 		&--scrolled
 			height: 0
 			opacity: 0
@@ -35,8 +43,10 @@
 			display: none
 			opacity: 0
 			transition: all .2s
-			@media (max-width:767px)
+			@media #{$_md}
 				max-width: 100%
+			@media #{$_s}
+				height: 280px
 			&.rolled
 				display: block
 				opacity: 1
@@ -49,6 +59,10 @@
 				left: 0
 				bottom: 0
 				border-top: 1px solid #9d9eae
+				@media #{$_s}
+					display: block
+					height: auto
+					top: 140px
 				li
 					color: #9d9eae
 					cursor: pointer
@@ -57,6 +71,10 @@
 					transition: color .3s
 					position: relative
 					top: -2px
+					@media #{$_s}
+						text-align: center
+						line-height: normal
+						margin: 10px 0
 					&:hover
 						color: #eae8e7
 					&:before
@@ -68,6 +86,8 @@
 						height: 4px
 						background-color: #bcbdc3
 						transition: width .3s
+						@media #{$_s}
+							display: none
 					&:hover:before
 						width: 100%
 	&__content
@@ -105,6 +125,8 @@
 		@media (max-width: 767px)
 			position: absolute
 			right: 15px
+		@media #{$_s}
+			top: 15px
 		&:hover
 			opacity: 1
 			.sandwich span
@@ -174,8 +196,17 @@
 			margin-left: 0
 		@media (max-width: 767px)
 			display: none
+		@media #{$_s}
+			top: 20px
+			position: absolute
+			right: 100px
 		&.translated
 			right: 80px
+			@media #{$_md}
+				right: 0
+			@media #{$_s}
+				right: 15px
+				top: 88px
 		&:hover
 			input[type='search']
 				border-bottom: 1px solid rgba(255,255,255,1)
@@ -197,18 +228,17 @@
 			height: 100%
 			opacity: 0
 		i
-			top: -10px
+			padding-left: 4px
+			padding-top: 5px
 			bottom: 0
-			text-indent: -10px
 			margin: auto
 			right: 0
-			font-size: 100px
+			font-size: 18px
 			color: #fff
 			opacity: .5
 			transition: opacity .2s
 			position: absolute
 			cursor: pointer
-			line-height: 1px
 			width: 30px
 			height: 100%
 			z-index: 2
@@ -220,6 +250,12 @@
 	&__lang
 		@media (max-width: 767px)
 			display: none
+			position: relative
+			right: 30px
+		@media #{$_s}
+			position: absolute
+			top: 90px
+			right: auto
 		.login
 			display: inline-block
 			float: left
@@ -227,6 +263,7 @@
 			cursor: pointer
 			opacity: .7
 			transition: opacity .2s
+			user-select: none
 			&:hover
 				opacity: 1
 		.change_lang
@@ -251,7 +288,6 @@
 					&.shown
 						display: inline
 				&:last-child
-					top: 40px
 					display: none
 					&.shown
 						display: inline

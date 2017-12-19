@@ -27,13 +27,15 @@
 		@media #{$_md}
 			width: 100%!important
 			text-align: center
-		
 		li
 			line-height: 36px
 			color: #737586
 			transition: color .2s
 			&:hover
 				color: #d7d7d7
+		.main_btn
+			@media #{$_s}
+				display: none
 	&__logo
 		width: 16.66666667%
 		p
@@ -41,6 +43,8 @@
 			font-size: 12px
 			line-height: 18px
 			margin-top: 20px
+			@media #{$_s}
+				margin-bottom: 20px
 	&__menu
 		width: 25%
 		text-transform: uppercase
@@ -49,6 +53,8 @@
 		@media #{$_md}
 			padding-left: 15px
 			margin: 20px 0
+		@media #{$_s}
+			display: none
 	&__menu2
 		width: 16.66666667%
 		// color: #737586
@@ -70,6 +76,7 @@
 	&__social
 		text-align: center
 		display: inline-block
+		width: 100%
 		li
 			display: inline-block
 			color: $brown
@@ -78,30 +85,16 @@
 			width: 33%
 			float: left
 			height: 60px
-		
 			a
-				//position: absolute
 				display: inline-block
 				height: 100%
 				width: 100%
 				overflow: hidden
-				//height: 60px
 				i
+					font-size: 70px
 					overflow: hidden
-					//position: absolute
 					left: 0
 					top: 0
 					height: 100%
 					overflow: hidden
 					position: relative
-			&:first-child
-				a
-					font-size: 200px
-			&:nth-child(2)
-				a
-					font-size: 180px
-			&:last-child
-				a
-					font-size: 180px
-			span
-				font-size: 14px

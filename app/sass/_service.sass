@@ -67,6 +67,8 @@
 						position: relative
 						top: -20px
 						font-size: 14px
+					@media #{$_s}
+						margin-bottom: 10px
 			&:last-of-type
 				border-right: 0
 			&.agency
@@ -80,6 +82,7 @@
 					display: block
 					@media #{$_s}
 						display: none
+						margin-bottom: -20px
 						&.service_shown
 							display: block
 					&:after
@@ -104,10 +107,8 @@
 						@media #{$_md}
 							font-size: 20px
 						@media #{$_s}
-							// width: calc(50% + 20px)
-							// &.service_hover_person
-							// 	margin-left: -20px
 							display: block
+							padding: 0 10px
 						i
 							font-size: 80px
 							display: block
@@ -127,6 +128,8 @@
 							margin: auto
 							bottom: -20px
 							display: none
+							@media #{$_s}
+								z-index: 2
 							&:after
 								width: 96px
 								height: 1px
@@ -257,8 +260,9 @@
 				margin: 0 auto
 .service_alternate
 	background-image: url('../img/service_alternate.jpg')
-	top: -3px
+	top: -4px
 	height: 670px
+	z-index: 2
 	@media #{$_lg}
 		height: auto
 	.section_title
@@ -286,6 +290,8 @@
 			height: 145px
 		&:hover
 			transform: scale(1.5)
+			@media #{$_s}
+				transform: none
 		p
 			color: $brown
 			font-size: 16px

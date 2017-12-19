@@ -71,6 +71,16 @@
 	src: url('../fonts/service_font5.woff') format('woff')
 	src: url('../fonts/service_font5.ttf') format('truetype')
 	//src: url('../fonts/service_font5.svg#service_font5') format('svg')
+@font-face
+	font-family: 'new'
+	src: url('../fonts/new.eot?25906864')
+	src: url('../fonts/new.eot?25906864#iefix') format('embedded-opentype')
+	src: url('../fonts/new.woff2?25906864') format('woff2')
+	src: url('../fonts/new.woff?25906864') format('woff')
+	src: url('../fonts/new.ttf?25906864') format('truetype')
+	//src: url('../fonts/new.svg?25906864#new') format('svg')
+	font-weight: normal
+	font-style: normal
 .mf:before 
 	font-family: "icon"
 	-webkit-font-smoothing: antialiased
@@ -237,3 +247,29 @@
 	content: "\E008"
 .sf6-tw:before
 	content: "\E009"
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before
+	font-family: "new"
+	font-style: normal
+	font-weight: normal
+	speak: none
+	display: inline-block
+	text-decoration: inherit
+	width: 1em
+	margin-right: .2em
+	text-align: center
+.icon-google:before
+	content: '\e800'
+.icon-mail:before
+	content: '\e801'
+.icon-map_point:before
+	content: '\e802'
+.icon-phone:before
+	content: '\e803'
+.icon-search:before
+	content: '\e804'
+.icon-tw:before
+	content: '\e805'
+.icon-fb:before
+	content: '\e806'

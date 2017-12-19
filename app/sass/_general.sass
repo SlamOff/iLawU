@@ -206,6 +206,13 @@ html
 		p
 			font-size: 1.6rem
 			line-height: 2.4rem
+			@media (max-width: 767px)
+				max-width: 500px
+				margin-left: auto
+				margin-right: auto
+			@media #{$_s}
+				font-size: 14px
+				line-height: 20px
 		input,input:focus,select,select:focus,textarea
 			outline: none
 		a
@@ -290,7 +297,7 @@ $col: calc( 100% / #{$cols} )
 		clear: both
 	@media #{$xs}
 		width: 100%
-		padding: 0 15px
+		padding: 0 20px
 	@media #{$sm}
 		width: 750px
 		padding: 0

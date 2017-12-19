@@ -1,38 +1,47 @@
 $(document).ready(function() {
+	new WOW().init();
 	//placeholder
 	$("input, textarea").focus(function() {
-        $(this).data("placeholder", $(this).attr("placeholder")),
-        $(this).attr("placeholder", "")
-    }),
-    $("input, textarea").blur(function() {
-        $(this).attr("placeholder", $(this).data("placeholder"))
-    });
+		$(this).data("placeholder", $(this).attr("placeholder")),
+		$(this).attr("placeholder", "")
+	}),
+	$("input, textarea").blur(function() {
+		$(this).attr("placeholder", $(this).data("placeholder"))
+	});
 
-    // nav
-    window.onscroll = function(){
+	// scroll to 
+	$('.scroll_down').click( function(e){
+		e.preventDefault();
+		var scrollEl = $(this).attr('href');
+
+	
+		if ($(scrollEl).length != 0) {
+			$('html, body').animate({ scrollTop: $(scrollEl).offset().top - 100 }, 700);
+		}
+		return false;
+	});
+
+	// nav
+	var prevY = 0;
+	var moveTop = false;
+	window.onscroll = function(){
 		var	scrolled = window.pageYOffset || document.documentElement.scrollTop,
 			header = document.querySelector('.main__nav');
-		var prevY = 0;
-		var moveTop = false;
-		//console.log(scrolled);
 		if(prevY > scrolled){
 			moveTop = true;
 		}
 		else{
 			moveTop = false;
 		}
-		console.log(prevY + '::' + scrolled);
-
-
 		if (scrolled > 1 && $(window).width() > 768 && moveTop == false){
 			$(header).addClass('main__nav--scrolled');
 		}
 		else if(scrolled <= 1 && $(window).width() > 768 || moveTop == true) {
 			$(header).removeClass('main__nav--scrolled');
 		}
-
-	}
-	// Юридичн послуги
+		prevY = scrolled;
+	};
+	// Юридичнi послуги
 	$('.divided .service_hover_item').click(function(e){
 		$('.divided .service_hover_item').find('.close_service').hide();
 		if(!e.target.classList.contains('close_service') && !e.target.parentNode.classList.contains('close_service')){
@@ -77,6 +86,8 @@ $(document).ready(function() {
 		slidesToScroll: 1,
 		prevArrow: '.prev_adv',
 		nextArrow: '.next_adv',
+		speed: 1000,
+		lazyLoad: 'ondemand',
 		swipe: false,
 		responsive: [
 			{
@@ -164,6 +175,7 @@ $(document).ready(function() {
 				$(this).parent().siblings('.wrap_accordion').find('.service_hover').toggleClass('service_shown');
 			}
 		});
+		$('.divided').appendTo($('.service__content .row:last'));
 	}
 	if($(window).width() < 767){
 		$('.main__menu_btn').click(function(){

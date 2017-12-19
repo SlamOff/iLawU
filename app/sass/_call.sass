@@ -1,0 +1,150 @@
+.call_page
+	.main
+		display: block
+		text-align: center
+		background-image: url("../img/call_main.jpg")
+		background-size: cover
+		height: 630px
+		position: relative
+		padding: 0 15px
+		&__title
+			@media #{$_s}
+				font-size: 32px
+				padding-bottom: 25px!important
+				margin-bottom: 25px!important
+				max-width: 70%
+				margin-left: auto
+				margin-right: auto
+		@media #{$_s}
+			background-position: 70% 0
+		.container
+			position: static
+		&__content
+			display: block
+			position: absolute
+			width: 100%
+			text-align: center
+			top: 50%
+			transform: translateY(-50%)
+			left: 0
+			height: auto
+		&__title
+			font-weight: 600
+			padding-bottom: 70px
+			position: relative
+			margin-bottom: 50px
+			&:before
+				height: 2px
+				width: 35px
+				content: ""
+				left: 0
+				right: 0
+				margin: auto
+				position: absolute
+				bottom: 0
+				background-color: $blue
+		&__text
+			max-width: 600px
+			margin: 0 auto
+			@media #{$_s}
+				max-width: 265px
+				font-size: 14px
+				line-height: 20px
+			br
+				@media #{$_s}
+					display: none
+		&__nav
+			text-align: left
+		.scroll_down
+			position: absolute
+			left: 0
+			right: 0
+			margin: auto
+			bottom: 22px
+			border-radius: 50%
+			width: 40px
+			height: 40px
+			border: 1px solid #000
+			opacity: .3
+			cursor: pointer
+			transition: opacity .2s
+			&:hover
+				opacity: 1
+			img
+				position: absolute
+				top: 0
+				bottom: 0
+				left: 0
+				right: 0
+				margin: auto
+	.call_text
+		padding: 110px 0
+		background-color: #fff
+		@media #{$_s}
+			padding: 60px 0
+		p
+			margin-bottom: 22px
+			&:last-of-type
+				margin-bottom: 0
+	.call_phone
+		padding: 80px 0 70px
+		background-image: url("../img/call_phone_bg.jpg")
+		background-size: cover
+		p
+			margin-bottom: 22px
+			color: #9b9b9b
+			&:last-of-type
+				margin-bottom: 100px
+		.call_form
+			display: flex
+			max-width: 100%
+			justify-content: space-between
+			@media (max-width: 767px)
+				display: block
+				max-width: 320px
+				width: 100%
+			input, .main_btn
+				width: 32%
+				display: inline-block
+				margin: 0
+				@media (max-width: 767px)
+					width: 100%
+					margin-bottom: 15px
+	.call_order
+		padding: 80px 0 140px
+		background-color: #fff
+		@media #{$_s}
+			padding: 50px 0
+		.section_title
+			color: $blue
+		.call_order_form
+			max-width: 100%
+			max-width: 320px
+			&:after
+				content: ""
+				clear: both
+				display: table
+			fieldset
+				width: 49%
+				width: 100%
+				margin-right: 2%
+				float: left
+				input
+					background-color: #f2f2f2
+					width: 100%
+					margin-bottom: 15px
+					&:last-of-type
+						margin-bottom: 0
+						@media #{$_s}
+							margin-bottom: 15px
+			textarea
+				width: 49%
+				float: left
+				background-color: #f2f2f2
+				border: 0
+				margin: 0
+				height: 186px
+				margin-bottom: 85px
+				width: 100%
+				@media #{$_s}
+					margin-bottom: 40px
