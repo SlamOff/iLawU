@@ -55,28 +55,6 @@
 					display: none
 		&__nav
 			text-align: left
-		.scroll_down
-			position: absolute
-			left: 0
-			right: 0
-			margin: auto
-			bottom: 22px
-			border-radius: 50%
-			width: 40px
-			height: 40px
-			border: 1px solid #000
-			opacity: .3
-			cursor: pointer
-			transition: opacity .2s
-			&:hover
-				opacity: 1
-			img
-				position: absolute
-				top: 0
-				bottom: 0
-				left: 0
-				right: 0
-				margin: auto
 	.call_text
 		padding: 110px 0
 		background-color: #fff
@@ -103,13 +81,18 @@
 				display: block
 				max-width: 320px
 				width: 100%
-			input, .main_btn
-				width: 32%
+			label.input_wrapper
 				display: inline-block
-				margin: 0
-				@media (max-width: 767px)
+				float: none
+				width: 32%
+				input, .main_btn
 					width: 100%
-					margin-bottom: 15px
+					margin-right: 2%
+					display: inline-block
+					margin: 0
+					@media (max-width: 767px)
+						width: 100%
+						margin-bottom: 15px
 	.call_order
 		padding: 80px 0 140px
 		background-color: #fff
@@ -119,32 +102,41 @@
 			color: $blue
 		.call_order_form
 			max-width: 100%
-			max-width: 320px
+			@media #{$_s}
+				max-width: 320px
 			&:after
 				content: ""
 				clear: both
 				display: table
 			fieldset
 				width: 49%
-				width: 100%
 				margin-right: 2%
 				float: left
-				input
-					background-color: #f2f2f2
+				@media #{$_s}
 					width: 100%
+				label.input_wrapper
+					width: 100%
+					margin-right: 0
 					margin-bottom: 15px
 					&:last-of-type
 						margin-bottom: 0
+					input
+						background-color: #f2f2f2
+						width: 100%
+						border: 2px solid #f2f2f2
 						@media #{$_s}
 							margin-bottom: 15px
-			textarea
-				width: 49%
-				float: left
-				background-color: #f2f2f2
-				border: 0
-				margin: 0
-				height: 186px
-				margin-bottom: 85px
-				width: 100%
-				@media #{$_s}
-					margin-bottom: 40px
+			label.textarea_wrapper
+				margin-right: 0
+				width: 49%		
+				textarea
+					width: 100%
+					float: left
+					background-color: #f2f2f2
+					border: 0
+					margin: 0
+					height: 186px
+					margin-bottom: 85px
+					@media #{$_s}
+						margin-bottom: 40px
+						width: 100%

@@ -212,6 +212,7 @@
 					p
 						width: 75%
 						margin-top: 25px
+						margin-left: 0
 	&__addition
 		background-color: $blue
 		position: relative
@@ -281,6 +282,7 @@
 			clear: both
 	&__item
 		float: left
+		cursor: pointer
 		width: 25%
 		text-align: center
 		transition: transform .2s
@@ -311,3 +313,11 @@
 			-ms-text-fill-color: transparent
 			text-fill-color: transparent
 			transition: font-size .2s
+		img
+			width: 35%
+			height: 112px
+			@media (max-width: 767px)
+				width: 25%
+			@media #{$_s}
+				width: 30%
+				min-width: 70px

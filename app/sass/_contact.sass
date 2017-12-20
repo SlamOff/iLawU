@@ -226,30 +226,36 @@
 		margin: 0 auto
 		@media #{$_md}
 			max-width: 80%
-		input
+		.input_wrapper
+			display: inline-block
 			float: left
 			width: 49%
-			height: 52px
-			background-color: #fff
-			text-indent: 20px
-			border: 0
-			@media #{$_s}
-				width: 100%
-				margin: 0
+			position: relative
 			&:first-of-type
 				margin-right: 2%
 				@media #{$_s}
 					margin: 0 0 15px 0
-		textarea
-			resize: none
-			width: 100%
-			margin-top: 15px
-			margin-bottom: 50px
-			height: 180px
-			padding-top: 20px
-			text-indent: 20px
-			@media #{$_md}
-				margin-bottom: 30px
+			input
+				width: 100%
+				height: 52px
+				background-color: #fff
+				text-indent: 20px
+				border: 2px solid #fff
+				@media #{$_s}
+					width: 100%
+					margin: 0
+			&.textarea_wrapper
+				width: 100%
+				margin-top: 15px
+				margin-bottom: 50px
+				textarea
+					resize: none
+					width: 100%
+					height: 180px
+					padding-top: 20px
+					text-indent: 20px
+					@media #{$_md}
+						margin-bottom: 30px
 		button.main_btn
 			display: block
 			margin: 0 auto

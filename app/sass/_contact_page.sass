@@ -1,0 +1,38 @@
+.contact_page
+	.main
+		background-image: url("../img/contact_page_bg.jpg")
+		background-repeat: no-repeat
+		background-size: cover
+		position: relative
+		&__title
+			font-weight: 600
+			width: 100%
+			text-align: center
+	.contact
+		background-image: url("../img/contact_page_bg2.jpg")
+		background-repeat: no-repeat
+		height: 755px
+		@media #{$_md}
+			height: auto
+		&__item
+			background-color: transparent
+			padding-top: 10rem
+			&--form
+				.border_div
+					border-left: 1px solid #ebebeb
+					textarea
+						border: 0
+						background-color: #f2f2f2
+					.input_wrapper
+						@media #{$_s}
+							width: 100%
+							margin-right: 0
+						input
+							background-color: #f2f2f2
+				@media #{$_s}
+					background-color: #fff
+			&--text
+				ul
+					li
+						&:first-of-type
+							margin-top: 0

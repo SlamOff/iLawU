@@ -5,9 +5,14 @@
 	@media #{$_s}
 		background-size: cover
 	&__content
-		display: flex
-		justify-content: center
-		flex-wrap: wrap
+		text-align: center
+		font-size: 0
+		br
+			display: none
+			@media(max-width: 1360px)
+				display: block
+			@media(max-width: 767px)
+				display: none
 		@media #{$_xs}
 			display: block
 		&__item
@@ -15,6 +20,7 @@
 			height: 162px
 			border: 1px solid #e6e6e6
 			position: relative
+			display: inline-block
 			@media #{$_xs}
 				width: 50%
 				float: left

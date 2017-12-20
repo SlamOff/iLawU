@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
 	new WOW().init();
+
 	//placeholder
 	$("input, textarea").focus(function () {
 		$(this).data("placeholder", $(this).attr("placeholder")), $(this).attr("placeholder", "");
@@ -9,13 +10,22 @@ $(document).ready(function () {
 		$(this).attr("placeholder", $(this).data("placeholder"));
 	});
 
-	// scroll to 
+	// search opacity
+	$('input[type="search"]').focus(function () {
+		this.style.borderBottom = '1px solid rgba(255,255,255,1)';
+		$(this).siblings('i').css('opacity', '1');
+	});
+	$('input[type="search"]').blur(function () {
+		this.style.borderBottom = '1px solid rgba(255,255,255,.5)';
+		$(this).siblings('i').css('opacity', '.5');
+	});
+
+	// scroll to
 	$('.scroll_down').click(function (e) {
 		e.preventDefault();
 		var scrollEl = $(this).attr('href');
-
 		if ($(scrollEl).length != 0) {
-			$('html, body').animate({ scrollTop: $(scrollEl).offset().top - 100 }, 700);
+			$('html, body').animate({ scrollTop: $(scrollEl).offset().top }, 700);
 		}
 		return false;
 	});
@@ -33,6 +43,8 @@ $(document).ready(function () {
 		}
 		if (scrolled > 1 && $(window).width() > 768 && moveTop == false) {
 			$(header).addClass('main__nav--scrolled');
+			$('.nav_rolled').removeClass('rolled');
+			$('.sandwich').removeClass('active');
 		} else if (scrolled <= 1 && $(window).width() > 768 || moveTop == true) {
 			$(header).removeClass('main__nav--scrolled');
 		}
@@ -43,9 +55,6 @@ $(document).ready(function () {
 		$('.divided .service_hover_item').find('.close_service').hide();
 		if (!e.target.classList.contains('close_service') && !e.target.parentNode.classList.contains('close_service')) {
 			$('.service__addition').slideDown();
-			//console.log(this == $('.service_hover_person'));
-			// console.log(this);
-			// console.log($('.service_hover_person'));
 			if ($(this).attr('data-content') == 'person_service') {
 				$('.service__addition_legal').hide();
 			} else {
@@ -61,16 +70,21 @@ $(document).ready(function () {
 				});
 				this.style.backgroundColor = '#20233a';
 				this.style.color = '#fff';
-			} else {
-				// ??
 			}
 		} else {
 			$('.service__addition').slideUp();
-			//$('.divided .service_hover').hide();
 		}
 		// для кнопки
 		var button = $(this).attr('data-content');
 		$('.service__addition__footer .main_btn').attr('data-content', button);
+	});
+	$('.close_service').click(function () {
+		$('.divided .service_hover').css('opacity', 0);
+		$('.divided .service_hover').hover(function () {
+			this.style.opacity = '1';
+		}, function () {
+			this.style.opacity = '0';
+		});
 	});
 
 	// Переваги слайдер
@@ -99,11 +113,22 @@ $(document).ready(function () {
 	$('.change_lang').click(function () {
 		$(this).find('span:first').siblings().toggleClass('shown');
 		this.classList.toggle('rotated');
+		$('.change_lang span').click(function () {
+			var select = $('.select_lang');
+			var selected = $('.selected_lang');
+			var langText = this.textContent;
+			console.log(langText);
+			if (langText == 'Рус') {
+				select.text('Укр');
+				selected.text('Рус');
+			} else {
+				selected.text('Укр');
+				select.text('Рус');
+			}
+		});
 	});
-	// popup
-	// function togglePopup(){
 
-	// }
+	// popup
 	var popupWrapperConsult = $('.popup_wrapper_consult'),
 	    popupWrapperBuy = $('.popup_wrapper_buy'),
 	    popupWrapperFeedback = $('.popup_wrapper_feedback'),
@@ -183,5 +208,71 @@ $(document).ready(function () {
 	});
 	$('.contact__item--form').find('.btn_close').click(function () {
 		$(this).parent().fadeOut();
+	});
+	var locationURL = window.location.pathname;
+	if (locationURL == "/ua") {
+		var validationName = "Обов'язкого для заповнення";
+		var validationNameMax = "Від 2 до 16 літер";
+		var validationPhone = "Невірний формат номеру";
+		var validationEmail = "Введите вірний E-mail";
+	} else {
+		var validationName = "Обязательно для заполнения";
+		var validationNameMax = "От 2 до 16 букв";
+		var validationPhone = "Неправильный формат номера";
+		var validationEmail = "Введите корректный E-mail";
+	}
+	$('#contactForm').validate({
+		errorElement: "span",
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationNameMax,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, l) {
+			//console.log(this);
+			for (var i = 0; i < l.errorList.length; i++) {
+				console.log(l.errorList[i].element);
+			}
+			//console.log(l.errorList.length);
+
+			// $('span.error').click(function(){
+			// 	console.log(1);
+			// });
+		}
+	});
+	$('.error').click(function () {
+		validator.resetForm();
 	});
 });

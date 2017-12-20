@@ -2,6 +2,14 @@
 	background-image: url('../img/header.jpg')
 	background-position: 50% 0
 	background-repeat: no-repeat
+	background-size: cover
+	padding: 25% 0
+	.container
+		@media #{$_sm}
+			height: 100%
+	@media #{$_sm}
+		height: 600px
+		padding: 0
 	@media #{$_xs}
 		background-image: url("../img/header_m.jpg")
 	&__logo
@@ -25,7 +33,7 @@
 		opacity: 1
 		@media #{$_s}
 			display: block
-			height: 160px
+			//height: 160px
 			padding: 0 15px
 		&--scrolled
 			height: 0
@@ -94,13 +102,19 @@
 		display: flex
 		justify-content: space-between
 		align-items: center
-		//height: 100vh
-		height: 630px
-		@media #{$_s}
+		position: absolute
+		transform: translateY(-50%)
+		width: 100%
+		left: 0
+		padding: 0 15px
+		@media #{$_sm}
 			height: auto
 			display: block
-			padding: 130px 0 40px
+			padding: 0 15px
 			text-align: center
+			top: 50%
+		@media #{$_xs}
+			top: 55%
 	&__title
 		font-weight: 300
 		font-size: 4rem
@@ -110,6 +124,8 @@
 		span
 			font-weight: 600
 	.main_btn
+		@media #{$_sm}
+			margin: 30px auto 0
 		@media #{$_s}
 			margin: 0 auto
 	&__menu_btn
