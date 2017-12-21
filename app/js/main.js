@@ -200,6 +200,20 @@ $(document).ready(function () {
 			}
 		});
 	}
+
+	// accordion service_page
+	$('.service_add__content__item h4').click(function () {
+		var arrow = $(this).find('.arrow');
+		$('.service_add__content__item h4 .arrow').removeClass('rotated');
+		arrow.addClass('rotated');
+		$('.service_add__content__item .hidden_text').slideUp();
+		if ($(this).siblings('.hidden_text').is(':hidden')) {
+			$(this).siblings('.hidden_text').slideDown();
+		} else {
+			arrow.removeClass('rotated');
+		}
+	});
+
 	// contact form popup
 	$('.contact__popup').click(function (e) {
 		e.preventDefault();
@@ -222,7 +236,7 @@ $(document).ready(function () {
 		var validationEmail = "Введите корректный E-mail";
 	}
 	$('#contactForm').validate({
-		errorElement: "span",
+		errorElement: 'span',
 		focusInvalid: false,
 		rules: {
 			name: {
@@ -249,7 +263,7 @@ $(document).ready(function () {
 				maxlength: validationNameMax
 			},
 			email: {
-				required: validationNameMax,
+				required: validationName,
 				email: validationEmail
 			},
 			phone: {
@@ -260,19 +274,17 @@ $(document).ready(function () {
 				required: validationName
 			}
 		},
-		invalidHandler: function invalidHandler(e, l) {
-			//console.log(this);
-			for (var i = 0; i < l.errorList.length; i++) {
-				console.log(l.errorList[i].element);
-			}
-			//console.log(l.errorList.length);
-
-			// $('span.error').click(function(){
-			// 	console.log(1);
-			// });
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
 		}
-	});
-	$('.error').click(function () {
-		validator.resetForm();
 	});
 });

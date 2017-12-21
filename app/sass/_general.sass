@@ -76,11 +76,13 @@ span.error
 	font-size: 14px
 	text-indent: 20px
 	line-height: 52px
-	z-index: 0
+	z-index: 2
 	user-select: none
 	background-color: #ffb8b8
 	cursor: pointer
-input.error
+span.error.clicked
+	z-index: -1
+input.error, textarea.error
 	border-color: red!important
 .popup_wrapper
 	position: fixed
