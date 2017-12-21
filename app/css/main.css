@@ -461,7 +461,7 @@ span.error.clicked {
   z-index: -1; }
 
 input.error, textarea.error {
-  border-color: red !important; }
+  border: 1px solid red !important; }
 
 .popup_wrapper {
   position: fixed;
@@ -756,6 +756,10 @@ html {
     right: 0;
     margin: auto; }
 
+.input_wrapper {
+  position: relative;
+  display: block; }
+
 .main {
   background-image: url("../img/header.jpg");
   background-position: 50% 0;
@@ -1037,7 +1041,8 @@ html {
       margin: 0 20px;
       -webkit-transition: color .2s;
       -o-transition: color .2s;
-      transition: color .2s; }
+      transition: color .2s;
+      font-size: 14px; }
       .main__menu li:hover {
         color: #9b6e5b; }
   .main__search {
@@ -1718,11 +1723,12 @@ html {
   display: block;
   text-align: center;
   background-image: url("../img/call_main.jpg");
-  -webkit-background-size: cover;
-          background-size: cover;
   height: 630px;
   position: relative;
-  padding: 0 15px; }
+  padding: 0 15px;
+  -webkit-background-size: cover;
+          background-size: cover;
+  padding: 25% 15px; }
   @media (max-width: 575px) {
     .call_page .main__title {
       font-size: 32px;
@@ -1865,6 +1871,7 @@ html {
               margin-bottom: 15px; } }
     .call_page .call_order .call_order_form label.textarea_wrapper {
       margin-right: 0;
+      margin-top: 0;
       width: 49%; }
       .call_page .call_order .call_order_form label.textarea_wrapper textarea {
         width: 100%;
@@ -1872,11 +1879,9 @@ html {
         background-color: #f2f2f2;
         border: 0;
         margin: 0;
-        height: 186px;
-        margin-bottom: 85px; }
+        height: 186px; }
         @media (max-width: 575px) {
           .call_page .call_order .call_order_form label.textarea_wrapper textarea {
-            margin-bottom: 40px;
             width: 100%; } }
 
 .contact {
@@ -2152,7 +2157,8 @@ html {
   background-repeat: no-repeat;
   -webkit-background-size: cover;
           background-size: cover;
-  position: relative; }
+  position: relative;
+  padding: 25% 15px; }
   .contact_page .main__title {
     font-weight: 600;
     width: 100%;
@@ -2187,7 +2193,10 @@ html {
 
 .service_page .main {
   background-image: url("../img/service_bg.jpg");
-  position: relative; }
+  position: relative;
+  -webkit-background-size: cover;
+          background-size: cover;
+  padding: 25% 15px; }
   .service_page .main__title {
     width: 100%;
     text-align: center;
@@ -2249,7 +2258,7 @@ html {
   .service_page .service_add__content__item .hidden_text {
     display: none;
     padding-left: 100px; }
-    @media (max-width: 350px) {
+    @media (max-width: 575px) {
       .service_page .service_add__content__item .hidden_text {
         padding-left: 0; } }
     .service_page .service_add__content__item .hidden_text ul.list {
@@ -2257,6 +2266,8 @@ html {
       padding-left: 55px;
       margin-top: 40px;
       font-weight: 600; }
+      .service_page .service_add__content__item .hidden_text ul.list.not_sub {
+        font-weight: normal; }
       @media (max-width: 1024px) {
         .service_page .service_add__content__item .hidden_text ul.list {
           padding-left: 20px; } }
@@ -2275,18 +2286,23 @@ html {
           font-weight: normal; }
           .service_page .service_add__content__item .hidden_text ul.list li ul.sublist li {
             font-size: 15px; }
+    .service_page .service_add__content__item .hidden_text .main_btn {
+      margin: 40px 0 0 40px; }
+      @media (max-width: 575px) {
+        .service_page .service_add__content__item .hidden_text .main_btn {
+          margin: 40px auto 0; } }
 
 .social_page .main {
   background-image: url("../img/social_bg.jpg");
-  -webkit-background-size: cover;
-          background-size: cover;
   background-repeat: no-repeat;
   display: block;
   text-align: center;
-  background-size: cover;
   height: 630px;
   position: relative;
-  padding: 0 15px; }
+  padding: 0 15px;
+  -webkit-background-size: cover;
+          background-size: cover;
+  padding: 25% 15px; }
   .social_page .main .container {
     position: static; }
   .social_page .main__content {

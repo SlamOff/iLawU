@@ -29,7 +29,14 @@ $(document).ready(function () {
 		}
 		return false;
 	});
-
+	$('.scroll_down_main').click(function (e) {
+		e.preventDefault();
+		var scrollEl = $(this).attr('href');
+		if ($(scrollEl).length != 0) {
+			$('html, body').animate({ scrollTop: $(scrollEl).offset().top }, 700);
+		}
+		return false;
+	});
 	// nav
 	var prevY = 0;
 	var moveTop = false;
@@ -200,7 +207,17 @@ $(document).ready(function () {
 			}
 		});
 	}
-
+	// click service
+	$('.service_alternate a').click(function (e) {
+		var serviceId = this.getAttribute('data-service-id');
+		var serviceItemId = '#' + serviceId;
+		//console.log(serviceItemId);
+		e.preventDefault();
+		window.location.href = $(this).attr('href');
+		var el = $(serviceItemId);
+		console.log(el);
+		el.slideDown();
+	});
 	// accordion service_page
 	$('.service_add__content__item h4').click(function () {
 		var arrow = $(this).find('.arrow');
@@ -271,6 +288,324 @@ $(document).ready(function () {
 				digits: validationPhone
 			},
 			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
+		}
+	});
+	$('#formPopup1').validate({
+		errorElement: 'span',
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationName,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
+		}
+	});
+	$('#formPopup2').validate({
+		errorElement: 'span',
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationName,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
+		}
+	});
+	$('#formPopup3').validate({
+		errorElement: 'span',
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationName,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
+		}
+	});
+	$('#contactFormPage').validate({
+		errorElement: 'span',
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationName,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
+		}
+	});
+	$('#callForm').validate({
+		errorElement: 'span',
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationName,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			}
+		},
+		invalidHandler: function invalidHandler(e, v) {
+			for (var i = 0; i < v.errorList.length; i++) {
+				v.errorList[i].element.onclick = function () {
+					this.nextSibling.classList.add('clicked');
+				};
+			};
+			this.onsubmit = function () {
+				for (var j = 0; j < v.errorList.length; j++) {
+					$(this).find('span.error').removeClass('clicked');
+				}
+			};
+		}
+	});
+	$('#orderForm').validate({
+		errorElement: 'span',
+		focusInvalid: false,
+		rules: {
+			name: {
+				required: true,
+				minlength: 2,
+				maxlength: 16
+			},
+			phone: {
+				required: true,
+				digits: true
+			},
+			email: {
+				required: true,
+				email: true
+			},
+			message: {
+				required: true
+			},
+			address: {
+				required: true
+			}
+		},
+		messages: {
+			name: {
+				required: validationName,
+				minlength: validationNameMax,
+				maxlength: validationNameMax
+			},
+			email: {
+				required: validationName,
+				email: validationEmail
+			},
+			phone: {
+				required: validationName,
+				digits: validationPhone
+			},
+			message: {
+				required: validationName
+			},
+			address: {
 				required: validationName
 			}
 		},

@@ -2,6 +2,8 @@
 	.main
 		background-image: url("../img/service_bg.jpg")
 		position: relative
+		background-size: cover
+		padding: 25% 15px
 		&__title
 			width: 100%
 			text-align: center
@@ -56,13 +58,15 @@
 				.hidden_text
 					display: none
 					padding-left: 100px
-					@media #{$_xs}
+					@media #{$_s}
 						padding-left: 0
 					ul.list
 						list-style-type: disc
 						padding-left: 55px
 						margin-top: 40px
 						font-weight: 600
+						&.not_sub
+							font-weight: normal
 						@media #{$_md}
 							padding-left: 20px
 						li
@@ -79,3 +83,7 @@
 								font-weight: normal
 								li
 									font-size: 15px
+					.main_btn
+						margin: 40px 0 0 40px
+						@media #{$_s}
+							margin: 40px auto 0
