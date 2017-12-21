@@ -640,4 +640,21 @@ $(document).ready(function() {
 			}
 		}
 	});
+	$('form').submit(function(event) {
+		event.preventDefault();
+		var data = $(event.target).serialize();
+		var action = $(event.target).attr('action');
+		$.ajax({
+			url: action,
+			type: 'POST',
+			data: data,
+			dataType: 'json',
+			success: function (data) {
+				alert(data['answer']);
+			},
+			error: function (result) {
+				alert('error');
+			}
+		});
+	});
 });
