@@ -29,7 +29,6 @@
 			@media #{$_s}
 				width: 100%
 				border: 0
-				//border-bottom: 1px solid #cfcfcf
 				padding: 20px
 				&:after
 					height: 1px
@@ -90,7 +89,6 @@
 						clear: both
 						content: ""
 					@media #{$_s}
-						//background-color: transparent
 						z-index: 2
 						position: static
 					.service_hover_item
@@ -154,7 +152,6 @@
 			&:hover .service_hover
 				opacity: 1
 				@media #{$_s}
-					//background-color: transparent
 			h4
 				font-size: 2.6rem
 				font-weight: 600
@@ -262,8 +259,10 @@
 .service_alternate
 	background-image: url('../img/service_alternate.jpg')
 	top: -4px
-	height: 670px
+	height: 800px
 	z-index: 2
+	padding-top: 100px
+	background-size: cover
 	@media #{$_lg}
 		height: auto
 	.section_title
@@ -271,7 +270,7 @@
 		@media (max-width: 767px)
 			margin-bottom: 50px
 	&__content
-		margin-bottom: 60px
+		margin-bottom: 80px
 		@media (max-width: 767px)
 			margin: 0
 		&:last-of-type
@@ -298,6 +297,7 @@
 			color: $brown
 			font-size: 16px
 			line-height: 16px
+			margin-top: 20px
 			@media (max-width: 767px)
 				font-size: 14px
 		i
