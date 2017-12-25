@@ -455,13 +455,11 @@ span.error {
           user-select: none;
   background-color: #ffb8b8;
   cursor: pointer;
-  text-align: center; }
+  text-align: center;
+  border: 1px solid red !important; }
 
 span.error.clicked {
   z-index: -1; }
-
-input.error, textarea.error {
-  border: 1px solid red !important; }
 
 .popup_wrapper {
   position: fixed;

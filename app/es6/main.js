@@ -79,12 +79,13 @@ $(document).ready(function() {
             $('.service__addition').slideDown();
             if($(this).attr('data-content') == 'person_service'){
                 $('.service__addition_legal').hide();
+                $('.service__addition_person').show();
             }
             else {
                 $('.service__addition_person').hide();
+                $('.service__addition_legal').show();
             }
 
-            
             $(this).find('.close_service').show();
             if($('.service__addition').is(':visible')){
                 $('.divided .service_hover').css('opacity', 1);
@@ -105,11 +106,13 @@ $(document).ready(function() {
     });
     $('.close_service').click(function(){
         $('.divided .service_hover').css('opacity', 0);
-            $('.divided .service_hover').hover(function(){
-            this.style.opacity = '1';
+            $('.divided .service_hover, .service__addition').hover(function(){
+            //this.style.opacity = '1';
+            $('.divided .service_hover').css('opacity', '1');
         },
         function(){
-            this.style.opacity = '0';
+            //this.style.opacity = '0';
+            $('.divided .service_hover').css('opacity', '0');
         });
     });
 
@@ -159,7 +162,12 @@ $(document).ready(function() {
         });
     });
 
-
+    function offScroll(){
+        var winScrollTop = $(window).scrollTop();
+            $(window).bind('scroll',function () {
+            $(window).scrollTop(winScrollTop);
+        });
+    }
     // popup
     var popupWrapperConsult = $('.popup_wrapper_consult'),
         popupWrapperBuy = $('.popup_wrapper_buy'),
@@ -173,12 +181,14 @@ $(document).ready(function() {
         popupWrapperConsult.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
+        offScroll();
     });
     $('.popup_feedback').click(function(e) {
         e.preventDefault();
         popupWrapperFeedback.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
+        offScroll();
     });
 
     $('.popup_buy').click(function(e) {
@@ -186,14 +196,17 @@ $(document).ready(function() {
         popupWrapperBuy.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
+        offScroll();
     });
 
     $('.btn_close').click(function() {
         popupWrapper.removeClass('opened');
+        $(window).unbind('scroll');
     });
-    popupWrapperConsult.click(function(e) {
+    popupWrapper.click(function(e) {
         if(e.target == this){
             this.classList.remove('opened');
+            $(window).unbind('scroll');
         }
     });
 
@@ -255,9 +268,11 @@ $(document).ready(function() {
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
+        offScroll();
     });
     $('.contact__item--form').find('.btn_close').click(function(){
         $(this).parent().fadeOut();
+        $(window).unbind('scroll');
     });
     var locationURL = window.location.pathname;
     if ( locationURL == "/ua" ) {
@@ -480,6 +495,7 @@ $(document).ready(function() {
             }
         }
     });
+    
     $('#contactFormPage').validate({
         errorElement: 'span',
         focusInvalid: false,
@@ -640,6 +656,18 @@ $(document).ready(function() {
                     $(this).find('span.error').removeClass('clicked');
                 }
             }
+        }
+    });
+    $('.btn_close').click(function() {
+        popupWrapper.removeClass('opened');
+        $(window).unbind('scroll');
+        $('#formPopup3').validate().resetForm();
+    });
+    popupWrapper.click(function(e) {
+        if(e.target == this){
+            this.classList.remove('opened');
+            $(window).unbind('scroll');
+            $('#formPopup3').validate().resetForm();
         }
     });
     // $('form').submit(function(event) {
