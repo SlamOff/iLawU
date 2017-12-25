@@ -484,7 +484,11 @@ span.error.clicked {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  display: none; }
+  display: none;
+  overflow: scroll; }
+  @media (max-width: 575px) {
+    .popup_wrapper {
+      height: 100vh; } }
   .popup_wrapper.opened {
     z-index: 100;
     display: -webkit-box;
@@ -492,7 +496,6 @@ span.error.clicked {
     display: -ms-flexbox;
     display: flex; }
   .popup_wrapper .popup_window {
-    position: fixed;
     z-index: 222;
     width: 100%;
     padding: 50px;
@@ -500,7 +503,8 @@ span.error.clicked {
             background-size: cover; }
     @media (max-width: 575px) {
       .popup_wrapper .popup_window {
-        padding: 50px 20px; } }
+        padding: 50px 20px;
+        height: 100vh; } }
     .popup_wrapper .popup_window_mask {
       position: absolute;
       width: 100%;
@@ -2056,6 +2060,9 @@ html {
     .contact__item--form {
       background-color: rgba(32, 35, 58, 0.6);
       position: relative; }
+      @media (max-width: 575px) {
+        .contact__item--form {
+          overflow: scroll; } }
       .contact__item--form .btn_close {
         right: 15px;
         top: 15px;
@@ -2285,7 +2292,8 @@ html {
           background-color: #f2f2f2; }
     @media (max-width: 575px) {
       .contact_page .contact__item--form {
-        background-color: #20233a; } }
+        background-color: #20233a;
+        overflow: scroll; } }
     .contact_page .contact__item--text ul li:first-of-type {
       margin-top: 0; }
 

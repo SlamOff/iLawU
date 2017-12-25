@@ -98,16 +98,20 @@ input.error, textarea.error
 	align-items: center
 	justify-content: center
 	display: none
+	overflow: scroll
+	@media #{$_s}
+		height: 100vh
 	&.opened
 		z-index: 100
 		display: flex
 	.popup_window
-		position: fixed
+		//position: fixed
 		z-index: 222
 		width: 100%
 		padding: 50px
 		@media #{$_s}
 			padding: 50px 20px
+			height: 100vh
 		//background-size: 100% 100%
 		background-size: cover
 		&_mask

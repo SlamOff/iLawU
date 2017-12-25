@@ -70,6 +70,8 @@
 		&--form
 			background-color: rgba(32,35,58,.6)
 			position: relative
+			@media #{$_s}
+				overflow: scroll
 			.btn_close
 				right: 15px
 				top: 15px
@@ -79,7 +81,7 @@
 				border: 1px solid #fff
 				position: absolute
 				@media #{$s}
-					display: none				
+					display: none			
 				img
 					position: absolute
 					left: 0
