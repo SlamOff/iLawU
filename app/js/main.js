@@ -152,12 +152,12 @@ $(document).ready(function () {
         });
     });
 
-    function offScroll() {
-        var winScrollTop = $(window).scrollTop();
-        $(window).bind('scroll', function () {
-            $(window).scrollTop(winScrollTop);
-        });
-    }
+    // function offScroll(){
+    //     var winScrollTop = $(window).scrollTop();
+    //         $(window).bind('scroll',function () {
+    //         $(window).scrollTop(winScrollTop);
+    //     });
+    // }
     // popup
     var popupWrapperConsult = $('.popup_wrapper_consult'),
         popupWrapperBuy = $('.popup_wrapper_buy'),
@@ -170,14 +170,16 @@ $(document).ready(function () {
         popupWrapperConsult.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
-        offScroll();
+        //offScroll();
+        $('body').css('overflow', 'hidden');
     });
     $('.popup_feedback').click(function (e) {
         e.preventDefault();
         popupWrapperFeedback.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
-        offScroll();
+        // offScroll();
+        $('body').css('overflow', 'hidden');
     });
 
     $('.popup_buy').click(function (e) {
@@ -185,17 +187,20 @@ $(document).ready(function () {
         popupWrapperBuy.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
-        offScroll();
+        //offScroll();
+        $('body').css('overflow', 'hidden');
     });
 
     $('.btn_close').click(function () {
         popupWrapper.removeClass('opened');
         $(window).unbind('scroll');
+        $('body').css('overflow', 'visible');
     });
     popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
             $(window).unbind('scroll');
+            $('body').css('overflow', 'visible');
         }
     });
 
@@ -254,11 +259,11 @@ $(document).ready(function () {
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
-        offScroll();
+        $('body').css('overflow', 'hidden');
     });
     $('.contact__item--form').find('.btn_close').click(function () {
         $(this).parent().fadeOut();
-        $(window).unbind('scroll');
+        $('body').css('overflow', 'visible');
     });
     var locationURL = window.location.pathname;
     if (locationURL == "/ua") {
@@ -282,8 +287,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                //digits: true
             },
             email: {
                 required: true,
@@ -304,8 +309,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                // digits: validationPhone
             },
             message: {
                 required: validationName
@@ -334,8 +339,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                // digits: true
             },
             email: {
                 required: true,
@@ -356,8 +361,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                // digits: validationPhone
             },
             message: {
                 required: validationName
@@ -386,8 +391,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                //digits: true
             },
             email: {
                 required: true,
@@ -408,8 +413,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                //digits: validationPhone
             },
             message: {
                 required: validationName
@@ -438,8 +443,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                //digits: true
             },
             email: {
                 required: true,
@@ -460,8 +465,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                // digits: validationPhone
             },
             message: {
                 required: validationName
@@ -491,8 +496,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                //digits: true
             },
             email: {
                 required: true,
@@ -513,8 +518,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                //digits: validationPhone
             },
             message: {
                 required: validationName
@@ -543,8 +548,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                //digits: true
             },
             email: {
                 required: true,
@@ -565,8 +570,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                // digits: validationPhone
             },
             message: {
                 required: validationName
@@ -595,8 +600,8 @@ $(document).ready(function () {
                 maxlength: 16
             },
             phone: {
-                required: true,
-                digits: true
+                required: true
+                // digits: true
             },
             email: {
                 required: true,
@@ -620,8 +625,8 @@ $(document).ready(function () {
                 email: validationEmail
             },
             phone: {
-                required: validationName,
-                digits: validationPhone
+                required: validationName
+                // digits: validationPhone
             },
             message: {
                 required: validationName

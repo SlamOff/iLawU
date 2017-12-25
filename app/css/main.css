@@ -597,6 +597,8 @@ span.error.clicked {
           clear: both;
           display: table;
           content: ""; }
+        .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset span.error {
+          line-height: 44px; }
       .popup_wrapper.popup_wrapper_consult .popup_window .popup_form .textarea_wrapper {
         float: left;
         height: 186px;
