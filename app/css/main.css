@@ -585,7 +585,12 @@ span.error.clicked {
         width: 49%;
         margin-right: 2%; }
         .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset input {
-          height: 44px; }
+          overflow: visible;
+          line-height: 52px; }
+          @media (max-width: 575px) {
+            .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset input {
+              height: 44px;
+              line-height: 44px; } }
         @media (max-width: 575px) {
           .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset {
             width: 100%;

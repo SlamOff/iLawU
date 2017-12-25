@@ -191,7 +191,11 @@ input.error, textarea.error
 					width: 49%
 					margin-right: 2%
 					input
-						height: 44px
+						overflow: visible
+						line-height: 52px
+						@media #{$_s}
+							height: 44px
+							line-height: 44px
 					@media #{$_s}
 						width: 100%
 						margin-right: 0
