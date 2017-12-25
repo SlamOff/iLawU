@@ -556,19 +556,36 @@ span.error.clicked {
       font-size: 16px;
       line-height: 24px;
       text-align: center; }
+      @media (max-width: 575px) {
+        .popup_wrapper .popup_window p {
+          font-size: 14px !important; }
+          .popup_wrapper .popup_window p br {
+            display: none; } }
   .popup_wrapper.popup_wrapper_consult .popup_window {
     max-width: 700px;
     background-image: url("../img/popup2_bg_smart.jpg"); }
     .popup_wrapper.popup_wrapper_consult .popup_window .popup_form {
       max-width: 580px; }
+      @media (max-width: 575px) {
+        .popup_wrapper.popup_wrapper_consult .popup_window .popup_form {
+          margin-top: 15px; } }
+      .popup_wrapper.popup_wrapper_consult .popup_window .popup_form p {
+        font-size: 14px !important; }
+        .popup_wrapper.popup_wrapper_consult .popup_window .popup_form p br {
+          display: none; }
       .popup_wrapper.popup_wrapper_consult .popup_window .popup_form .main_btn {
         width: 100%;
         max-width: 300px;
         margin: 35px auto 0; }
+        @media (max-width: 575px) {
+          .popup_wrapper.popup_wrapper_consult .popup_window .popup_form .main_btn {
+            margin-top: 15px; } }
       .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset {
         float: left;
         width: 49%;
         margin-right: 2%; }
+        .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset input {
+          height: 44px; }
         @media (max-width: 575px) {
           .popup_wrapper.popup_wrapper_consult .popup_window .popup_form fieldset {
             width: 100%;
@@ -585,7 +602,7 @@ span.error.clicked {
           .popup_wrapper.popup_wrapper_consult .popup_window .popup_form .textarea_wrapper {
             width: 100%;
             margin-bottom: 0;
-            height: 100px; } }
+            height: 80px; } }
         .popup_wrapper.popup_wrapper_consult .popup_window .popup_form .textarea_wrapper textarea {
           resize: none;
           height: 100%;

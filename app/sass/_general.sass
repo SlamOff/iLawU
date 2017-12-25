@@ -164,20 +164,34 @@ input.error, textarea.error
 			font-size: 16px
 			line-height: 24px
 			text-align: center
+			@media #{$_s}
+				font-size: 14px!important
+				br
+					display: none
 	&.popup_wrapper_consult
 		.popup_window
 			max-width: 700px
 			background-image: url('../img/popup2_bg_smart.jpg')
 			.popup_form
 				max-width: 580px
+				@media #{$_s}
+					margin-top: 15px
+				p
+					font-size: 14px!important
+					br
+						display: none
 				.main_btn
 					width: 100%
 					max-width: 300px
 					margin: 35px auto 0
+					@media #{$_s}
+						margin-top: 15px
 				fieldset
 					float: left
 					width: 49%
 					margin-right: 2%
+					input
+						height: 44px
 					@media #{$_s}
 						width: 100%
 						margin-right: 0
@@ -192,7 +206,7 @@ input.error, textarea.error
 					@media #{$_s}
 						width: 100%
 						margin-bottom: 0
-						height: 100px
+						height: 80px
 					textarea
 						resize: none
 						height: 100%
