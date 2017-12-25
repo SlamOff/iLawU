@@ -231,16 +231,20 @@
 			float: left
 			width: 49%
 			position: relative
+			height: 52px
+			@media #{$_s}
+				width: 100%
 			&:first-of-type
 				margin-right: 2%
 				@media #{$_s}
 					margin: 0 0 15px 0
 			input
 				width: 100%
-				height: 52px
+				height: 100%
 				background-color: #fff
 				text-indent: 20px
 				border: 1px solid #fff
+				display: block
 				@media #{$_s}
 					width: 100%
 					margin: 0
@@ -248,14 +252,16 @@
 				width: 100%
 				margin-top: 15px
 				margin-bottom: 50px
+				height: 180px
+				@media #{$_s}
+					margin-bottom: 15px
 				textarea
 					resize: none
 					width: 100%
-					height: 180px
+					height: 100%
 					padding-top: 20px
 					text-indent: 20px
-					@media #{$_md}
-						margin-bottom: 30px
+						
 		button.main_btn
 			display: block
 			margin: 0 auto

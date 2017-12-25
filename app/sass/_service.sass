@@ -30,6 +30,7 @@
 				width: 100%
 				border: 0
 				padding: 20px
+				overflow: hidden
 				&:after
 					height: 1px
 					background-color: #cfcfcf
@@ -236,14 +237,22 @@
 				border-bottom: 1px solid #37394e
 				width: 50%
 				margin: 0
-				padding: 20px 0 10px
+				padding: 10px
+			@media (max-width:414px)
+				width: 100%
 			p
 				width: 50%
 				&.item_h
 					width: 100%
+				@media #{$_sm}
+					width: 80%
 				@media #{$_s}
 					width: 100%
-					height: 32px
+					height: 35px
+					font-size: 12px
+				@media (max-width:414px)
+					height: auto
+					font-size: 14px
 			&:after
 				display: table
 				clear: both
@@ -300,6 +309,7 @@
 			margin-top: 20px
 			@media (max-width: 767px)
 				font-size: 14px
+				margin-top: -10px
 		i
 			font-size: 70px
 			color: $brown
