@@ -30,7 +30,6 @@
 				width: 100%
 				border: 0
 				padding: 20px
-				overflow: hidden
 				&:after
 					height: 1px
 					background-color: #cfcfcf
@@ -139,6 +138,8 @@
 								bottom: 0
 								margin: auto
 								left: 55px
+								@media #{$_s}
+									width: 30px
 							&:before
 								@extend :after
 								left: auto

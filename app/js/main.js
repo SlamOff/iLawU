@@ -147,6 +147,14 @@ $(document).ready(function () {
             }
         });
     });
+	function offScroll(){
+		var winScrollTop = $(window).scrollTop();
+			$(window).bind('scroll',function () {
+			$(window).scrollTop(winScrollTop);
+		});
+	}
+	  // $(window).unbind('scroll'); Запустили отмену прокрутки
+	
 
     // popup
     var popupWrapperConsult = $('.popup_wrapper_consult'),
@@ -160,30 +168,35 @@ $(document).ready(function () {
         popupWrapperConsult.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
+        offScroll();
     });
+    
     $('.popup_feedback').click(function (e) {
         e.preventDefault();
         popupWrapperFeedback.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
+         offScroll();
     });
-
     $('.popup_buy').click(function (e) {
         e.preventDefault();
         popupWrapperBuy.addClass('opened');
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
+         offScroll();
     });
 
     $('.btn_close').click(function () {
         popupWrapper.removeClass('opened');
+        $(window).unbind('scroll');
     });
-    popupWrapperConsult.click(function (e) {
+    popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
+            $(window).unbind('scroll');
         }
     });
-
+	
     // copyright year
     var mdate = new Date();
     $('.footer__logo span').text(mdate.getFullYear());
@@ -239,9 +252,11 @@ $(document).ready(function () {
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
+        offScroll();
     });
     $('.contact__item--form').find('.btn_close').click(function () {
         $(this).parent().fadeOut();
+        $(window).unbind('scroll');
     });
     var locationURL = window.location.pathname;
     if (locationURL == "/ua") {
