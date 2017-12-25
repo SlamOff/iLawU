@@ -662,12 +662,16 @@ $(document).ready(function() {
         popupWrapper.removeClass('opened');
         $(window).unbind('scroll');
         $('#formPopup3').validate().resetForm();
+        $('#formPopup1').validate().resetForm();
+        $('#formPopup2').validate().resetForm();
     });
     popupWrapper.click(function(e) {
         if(e.target == this){
             this.classList.remove('opened');
             $(window).unbind('scroll');
             $('#formPopup3').validate().resetForm();
+            $('#formPopup1').validate().resetForm();
+            $('#formPopup2').validate().resetForm();
         }
     });
     // $('form').submit(function(event) {
