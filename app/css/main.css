@@ -488,7 +488,7 @@ span.error.clicked {
   overflow: scroll; }
   @media (max-width: 575px) {
     .popup_wrapper {
-      height: 100vh; } }
+      background-image: url("../img/popup_bg_smart.jpg"); } }
   .popup_wrapper.opened {
     z-index: 100;
     display: -webkit-box;
@@ -496,6 +496,7 @@ span.error.clicked {
     display: -ms-flexbox;
     display: flex; }
   .popup_wrapper .popup_window {
+    position: relative;
     z-index: 222;
     width: 100%;
     padding: 50px;
@@ -556,6 +557,9 @@ span.error.clicked {
           line-height: 20px; }
       .popup_wrapper .popup_window .popup_form .main_btn {
         margin: 50px auto 0; }
+        @media (max-width: 575px) {
+          .popup_wrapper .popup_window .popup_form .main_btn {
+            margin: 20px auto; } }
     .popup_wrapper .popup_window p {
       font-weight: 300;
       color: #333;
@@ -570,6 +574,9 @@ span.error.clicked {
   .popup_wrapper.popup_wrapper_consult .popup_window {
     max-width: 700px;
     background-image: url("../img/popup2_bg_smart.jpg"); }
+    @media (max-width: 575px) {
+      .popup_wrapper.popup_wrapper_consult .popup_window {
+        background-image: none; } }
     .popup_wrapper.popup_wrapper_consult .popup_window .popup_form {
       max-width: 580px; }
       @media (max-width: 575px) {
@@ -619,6 +626,9 @@ span.error.clicked {
   .popup_wrapper.popup_wrapper_feedback .popup_window {
     max-width: 500px;
     background-image: url("../img/popup_bg_smart.jpg"); }
+    @media (max-width: 575px) {
+      .popup_wrapper.popup_wrapper_feedback .popup_window {
+        background-image: none; } }
     .popup_wrapper.popup_wrapper_feedback .popup_window .popup_form {
       max-width: 300px; }
       .popup_wrapper.popup_wrapper_feedback .popup_window .popup_form .main_btn {
@@ -629,7 +639,8 @@ span.error.clicked {
     background-image: url("../img/popup_bg_smart.jpg"); }
     @media (max-width: 575px) {
       .popup_wrapper.popup_wrapper_buy .popup_window {
-        padding: 45px 20px; } }
+        padding: 45px 20px;
+        background-image: none; } }
     .popup_wrapper.popup_wrapper_buy .popup_window .popup_form .main_btn {
       width: 100%;
       max-width: 300px; }
@@ -667,6 +678,11 @@ html {
     position: relative;
     margin: 0 auto;
     overflow-x: hidden; }
+    html body.no_scroll {
+      position: fixed;
+      overflow: hidden;
+      width: 100%;
+      height: 100%; }
     html body p {
       font-size: 1.6rem;
       line-height: 2.4rem; }
@@ -1375,6 +1391,8 @@ html {
       clear: both;
       display: table;
       content: ""; }
+  .service__content .row_agency {
+    min-height: 320px; }
   .service__content__item {
     width: 50%;
     float: left;
@@ -1602,6 +1620,8 @@ html {
           -webkit-transform: rotate(180deg);
               -ms-transform: rotate(180deg);
                   transform: rotate(180deg); }
+    .service__content__item .row_agency h4 {
+      height: 130px; }
     @media (max-width: 575px) {
       .service__content__item .wrap_accordion {
         display: none; }
@@ -2560,6 +2580,51 @@ html {
     display: block;
     margin: 50px auto 36px;
     max-width: 100%; }
+
+.search_page .main {
+  background-image: url("../img/search_bg.jpg");
+  background-repeat: no-repeat;
+  text-align: center;
+  position: relative;
+  padding: 0 15px;
+  -webkit-background-size: cover;
+          background-size: cover;
+  padding: 25% 15px; }
+  .search_page .main__text {
+    color: #908e8e; }
+    .search_page .main__text .search_request {
+      font-weight: 600;
+      color: #a3877b; }
+  .search_page .main .container {
+    position: static; }
+  .search_page .main__logo {
+    text-align: left; }
+  .search_page .main__content {
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+    left: 0;
+    height: auto; }
+  .search_page .main__title {
+    font-weight: 600;
+    padding-bottom: 70px;
+    position: relative;
+    margin-bottom: 50px; }
+    .search_page .main__title:before {
+      height: 2px;
+      width: 35px;
+      content: "";
+      left: 0;
+      right: 0;
+      margin: auto;
+      position: absolute;
+      bottom: 0;
+      background-color: #20233a; }
 
 .footer {
   background-color: #20233a;

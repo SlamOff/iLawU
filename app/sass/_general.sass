@@ -100,12 +100,12 @@ input.error, textarea.error
 	display: none
 	overflow: scroll
 	@media #{$_s}
-		height: 100vh
+		background-image: url('../img/popup_bg_smart.jpg')
 	&.opened
 		z-index: 100
 		display: flex
 	.popup_window
-		//position: fixed
+		position: relative
 		z-index: 222
 		width: 100%
 		padding: 50px
@@ -164,6 +164,8 @@ input.error, textarea.error
 					line-height: 20px
 			.main_btn
 				margin: 50px auto 0
+				@media #{$_s}
+					margin: 20px auto
 		p
 			font-weight: 300
 			color: #333
@@ -178,6 +180,8 @@ input.error, textarea.error
 		.popup_window
 			max-width: 700px
 			background-image: url('../img/popup2_bg_smart.jpg')
+			@media #{$_s}
+				background-image: none
 			.popup_form
 				max-width: 580px
 				@media #{$_s}
@@ -225,6 +229,8 @@ input.error, textarea.error
 			max-width: 500px
 			// background-image: url('../img/popup_bg.jpg')
 			background-image: url('../img/popup_bg_smart.jpg')
+			@media #{$_s}
+				background-image: none
 			.popup_form
 				max-width: 300px
 				.main_btn
@@ -236,6 +242,7 @@ input.error, textarea.error
 			background-image: url('../img/popup_bg_smart.jpg')
 			@media #{$_s}
 				padding: 45px 20px
+				background-image: none
 			.popup_form
 				.main_btn
 					width: 100%
@@ -266,6 +273,11 @@ html
 		position: relative
 		margin: 0 auto
 		overflow-x: hidden
+		&.no_scroll
+			position: fixed
+			overflow: hidden
+			width: 100%
+			height: 100%
 		p
 			font-size: 1.6rem
 			line-height: 2.4rem

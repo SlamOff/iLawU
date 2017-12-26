@@ -1,0 +1,42 @@
+.search_page
+	.main
+		background-image: url("../img/search_bg.jpg")
+		background-repeat: no-repeat
+		text-align: center
+		position: relative
+		padding: 0 15px
+		background-size: cover
+		padding: 25% 15px
+		&__text
+			color: #908e8e
+			.search_request
+				font-weight: 600
+				color: #a3877b
+		.container
+			position: static
+		&__logo
+			text-align: left
+		&__content
+			display: block
+			position: absolute
+			width: 100%
+			text-align: center
+			top: 50%
+			transform: translateY(-50%)
+			left: 0
+			height: auto
+		&__title
+			font-weight: 600
+			padding-bottom: 70px
+			position: relative
+			margin-bottom: 50px
+			&:before
+				height: 2px
+				width: 35px
+				content: ""
+				left: 0
+				right: 0
+				margin: auto
+				position: absolute
+				bottom: 0
+				background-color: $blue

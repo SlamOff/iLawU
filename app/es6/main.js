@@ -182,7 +182,8 @@ $(document).ready(function() {
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
         //offScroll();
-        $('body').css('overflow', 'hidden');
+        //$('body').css('overflow', 'hidden');
+        $('body').addClass('no_scroll');
     });
     $('.popup_feedback').click(function(e) {
         e.preventDefault();
@@ -190,7 +191,8 @@ $(document).ready(function() {
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
        // offScroll();
-       $('body').css('overflow', 'hidden');
+       //$('body').css('overflow', 'hidden');
+        $('body').addClass('no_scroll');
     });
 
     $('.popup_buy').click(function(e) {
@@ -199,19 +201,22 @@ $(document).ready(function() {
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
         //offScroll();
-        $('body').css('overflow', 'hidden');
+        //$('body').css('overflow', 'hidden');
+        $('body').addClass('no_scroll');
     });
 
     $('.btn_close').click(function() {
         popupWrapper.removeClass('opened');
         $(window).unbind('scroll');
-        $('body').css('overflow', 'visible');
+        $('body').removeClass('no_scroll');
+        //$('body').css('overflow', 'visible');
     });
     popupWrapper.click(function(e) {
         if(e.target == this){
             this.classList.remove('opened');
             $(window).unbind('scroll');
-            $('body').css('overflow', 'visible');
+            $('body').removeClass('no_scroll');
+            //$('body').css('overflow', 'visible');
         }
     });
 
@@ -273,11 +278,13 @@ $(document).ready(function() {
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
-        $('body').css('overflow', 'hidden');
+        $('body').addClass('no_scroll');
+        //$('body').css('overflow', 'hidden');
     });
     $('.contact__item--form').find('.btn_close').click(function(){
         $(this).parent().fadeOut();
-        $('body').css('overflow', 'visible');
+       // $('body').css('overflow', 'visible');
+       $('body').removeClass('no_scroll');
     });
     var locationURL = window.location.pathname;
     if ( locationURL == "/ua" ) {
