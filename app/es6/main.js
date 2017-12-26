@@ -250,7 +250,7 @@ $(document).ready(function() {
         return currentScroll;
     };
     function setCurrentScroll(){
-        $('html').scrollTop(current);
+        $('html').scrollTop(current) || $('body').scrollTop(current);
     };
     // var obj = {
     //     currentScroll: 0,
