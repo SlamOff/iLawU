@@ -51,6 +51,8 @@ $(document).ready(function () {
         return false;
     });
     // nav
+
+
     var prevY = 0;
     var moveTop = false;
     window.onscroll = function () {
@@ -166,6 +168,13 @@ $(document).ready(function () {
     var popupForm = document.getElementsByClassName('popup_form')[0];
 
     $('.popup_service').click(function (e) {
+        current = getCurrentScroll();
+        $('.btn_close').click(function () {
+            setCurrentScroll();
+        });
+        popupWrapper.click(function (e) {
+            setCurrentScroll();
+        });
         e.preventDefault();
         popupWrapperConsult.addClass('opened');
         popupForm.dataset.form = whatForm;
@@ -175,6 +184,13 @@ $(document).ready(function () {
         $('body').addClass('no_scroll');
     });
     $('.popup_feedback').click(function (e) {
+        current = getCurrentScroll();
+        $('.btn_close').click(function () {
+            setCurrentScroll();
+        });
+        popupWrapper.click(function (e) {
+            setCurrentScroll();
+        });
         e.preventDefault();
         popupWrapperFeedback.addClass('opened');
         popupForm.dataset.form = whatForm;
@@ -185,6 +201,13 @@ $(document).ready(function () {
     });
 
     $('.popup_buy').click(function (e) {
+        current = getCurrentScroll();
+        $('.btn_close').click(function () {
+            setCurrentScroll();
+        });
+        popupWrapper.click(function (e) {
+            setCurrentScroll();
+        });
         e.preventDefault();
         popupWrapperBuy.addClass('opened');
         popupForm.dataset.form = whatForm;
@@ -208,7 +231,20 @@ $(document).ready(function () {
             //$('body').css('overflow', 'visible');
         }
     });
+    var currentScroll;
+    var current;
+    function getCurrentScroll() {
+        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        currentScroll = scrolled;
+        return currentScroll;
+    };
+    function setCurrentScroll() {
+        $('html').scrollTop(current);
+    };
+    // var obj = {
+    //     currentScroll: 0,
 
+    // }
     // copyright year
     var mdate = new Date();
     $('.footer__logo span').text(mdate.getFullYear());
@@ -261,16 +297,22 @@ $(document).ready(function () {
 
     // contact form popup
     $('.contact__popup').click(function (e) {
+        current = getCurrentScroll();
+        $('.contact__item--form').find('.btn_close').click(function () {
+            setCurrentScroll();
+        });
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
         $('body').addClass('no_scroll');
+
         //$('body').css('overflow', 'hidden');
     });
     $('.contact__item--form').find('.btn_close').click(function () {
         $(this).parent().fadeOut();
         // $('body').css('overflow', 'visible');
         $('body').removeClass('no_scroll');
+        //console.log(scrolled);
     });
     var locationURL = window.location.pathname;
     if (locationURL == "/ua") {
@@ -655,20 +697,22 @@ $(document).ready(function () {
             };
         }
     });
-    $('.btn_close').click(function () {
+    $('.popup_window .btn_close').click(function () {
         popupWrapper.removeClass('opened');
-        $(window).unbind('scroll');
-        $('#formPopup3').validate().resetForm();
-        $('#formPopup1').validate().resetForm();
-        $('#formPopup2').validate().resetForm();
+        //$(window).unbind('scroll');
+        $(this).siblings().find('.popup_form').validate().resetForm();
+        // $('#formPopup3').validate().resetForm();
+        // $('#formPopup1').validate().resetForm();
+        // $('#formPopup2').validate().resetForm();
     });
     popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
-            $(window).unbind('scroll');
-            $('#formPopup3').validate().resetForm();
-            $('#formPopup1').validate().resetForm();
-            $('#formPopup2').validate().resetForm();
+            //$(window).unbind('scroll');
+            $(this).siblings().find('.popup_form').validate().resetForm();
+            // $('#formPopup3').validate().resetForm();
+            // $('#formPopup1').validate().resetForm();
+            // $('#formPopup2').validate().resetForm();
         }
     });
     // $('form').submit(function(event) {
