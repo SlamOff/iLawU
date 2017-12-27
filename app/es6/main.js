@@ -1,9 +1,9 @@
 $(window).on('load', function() {
 	var hash = window.location.hash.split('#')[1];
 	if(hash != undefined){
-		var el = '#' + hash;
-		$(el).find('.hidden_text').slideDown();
-		$(el).find('.arrow').addClass('rotated');
+		var elem = '#' + hash;
+		$(elem).find('.hidden_text').slideDown();
+		$(elem).find('.arrow').addClass('rotated');
 	}
 });
 
@@ -106,18 +106,18 @@ $(document).ready(function() {
         var button = $(this).attr('data-content');
         $('.service__addition__footer .main_btn').attr('data-content', button);
     });
-    $('.close_service').click(function(){
-        $('.divided .service_hover').css('opacity', 0);
-            $('.divided .service_hover, .service__addition').hover(function(){
-            //this.style.opacity = '1';
-            $('.divided .service_hover').css('opacity', '1');
-        },
-        function(){
-            //this.style.opacity = '0';
-            $('.divided .service_hover').css('opacity', '0');
+    if($(window).width() > 576){
+        $('.close_service').click(function(){
+            $('.divided .service_hover').css('opacity', 0);
+                $('.divided .service_hover, .service__addition').hover(function(){
+                //this.style.opacity = '1';
+                $('.divided .service_hover').css('opacity', '1');
+            },
+            function(){
+                 $('.divided .service_hover').css('opacity', '0');
+            });
         });
-    });
-
+    }
     // Переваги слайдер
     $('.advantage__slider').slick({
         slidesToShow: 1,
@@ -143,6 +143,44 @@ $(document).ready(function() {
         $('.nav_rolled').toggleClass('rolled');
         $('.main__search').toggleClass('translated');
     });
+    // function changeSearchText(){
+         
+    // }
+    //var searchQuery;
+    
+    // $('input[type="submit"]').parent('a').click(function(e){
+    //     e.preventDefault();
+    //     searchQuery = $(this).siblings('input').val();
+    //     console.log(searchQuery);
+
+    //     //return false;
+    //     window.location.href = this.getAttribute('href');
+    //     var link = window.location;
+    //     console.log(link);
+    //     console.log(searchQuery);
+    // });
+
+    //$('.search_request').text('123');
+    //console.log($('input[type=search]').val());
+    
+     //$('.search_request').text(searchQuery);
+    //changeSearchText(); 
+//console.log(searchQuery);
+    $('.search_page .main__text').click(function(){
+        var value = $(this).find('span').text() + ' ';
+        var inputWrap = $(this).siblings('.main__edit_search');
+        var input = inputWrap.find('input[type="search"]');
+        inputWrap.addClass('shown');
+        input.val(value);
+        input.focus();
+        $('body').click(function(e){
+            console.log(e.target);
+            if (!e.target){
+                inputWrap.removeClass('shown');
+            }
+        });
+    });
+
 
     // lang
     $('.change_lang').click(function(){
@@ -191,7 +229,7 @@ $(document).ready(function() {
         popupForm.dataset.form = whatForm;
         var whatForm =  this.dataset.form;
         //offScroll();
-        //$('body').css('overflow', 'hidden');
+        
         $('body').addClass('no_scroll');
     });
     $('.popup_feedback').click(function(e) {
@@ -311,16 +349,16 @@ $(document).ready(function() {
 
     // contact form popup
     $('.contact__popup').click(function(e){
+        e.preventDefault();
         current = getCurrentScroll();
-        $('.contact__item--form').find('.btn_close').click(function(){
-            setCurrentScroll();
+        $('.contact__item--form').find('.btn_close').click(function(e){
+            e.preventDefault();
+           // setCurrentScroll();
         });
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
         $('body').addClass('no_scroll');
-
-        //$('body').css('overflow', 'hidden');
     });
     $('.contact__item--form').find('.btn_close').click(function(){
         $(this).parent().fadeOut();
