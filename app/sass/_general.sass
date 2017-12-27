@@ -101,6 +101,7 @@ input.error, textarea.error
 	overflow: scroll
 	@media #{$_s}
 		background-image: url('../img/popup_bg_smart.jpg')
+		background-size: cover
 	&.opened
 		z-index: 100
 		display: flex
@@ -151,6 +152,8 @@ input.error, textarea.error
 		.popup_form
 			text-align: center
 			margin: 50px auto 0
+			@media #{$_s}
+				margin: 20px auto 0
 			.input_wrapper
 				margin-bottom: 15px
 				input,
@@ -241,7 +244,7 @@ input.error, textarea.error
 			padding: 45px 60px
 			background-image: url('../img/popup_bg_smart.jpg')
 			@media #{$_s}
-				padding: 45px 20px
+				padding: 50px 20px
 				background-image: none
 			.popup_form
 				.main_btn

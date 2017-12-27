@@ -205,13 +205,13 @@ $(document).ready(function () {
     var popupForm = document.getElementsByClassName('popup_form')[0];
 
     $('.popup_service').click(function (e) {
-        current = getCurrentScroll();
-        $('.btn_close').click(function () {
-            setCurrentScroll();
-        });
-        popupWrapper.click(function (e) {
-            setCurrentScroll();
-        });
+        // current = getCurrentScroll();
+        // $('.btn_close').click(function(){
+        //     setCurrentScroll();
+        // });
+        // popupWrapper.click(function(e) {
+        //     setCurrentScroll();
+        // });
         e.preventDefault();
         popupWrapperConsult.addClass('opened');
         popupForm.dataset.form = whatForm;
@@ -221,13 +221,13 @@ $(document).ready(function () {
         $('body').addClass('no_scroll');
     });
     $('.popup_feedback').click(function (e) {
-        current = getCurrentScroll();
-        $('.btn_close').click(function () {
-            setCurrentScroll();
-        });
-        popupWrapper.click(function (e) {
-            setCurrentScroll();
-        });
+        // current = getCurrentScroll();
+        // $('.btn_close').click(function(){
+        //     setCurrentScroll();
+        // });
+        // popupWrapper.click(function(e) {
+        //     setCurrentScroll();
+        // });
         e.preventDefault();
         popupWrapperFeedback.addClass('opened');
         popupForm.dataset.form = whatForm;
@@ -238,13 +238,13 @@ $(document).ready(function () {
     });
 
     $('.popup_buy').click(function (e) {
-        current = getCurrentScroll();
-        $('.btn_close').click(function () {
-            setCurrentScroll();
-        });
-        popupWrapper.click(function (e) {
-            setCurrentScroll();
-        });
+        // current = getCurrentScroll();
+        // $('.btn_close').click(function(){
+        //     setCurrentScroll();
+        // });
+        // popupWrapper.click(function(e) {
+        //     setCurrentScroll();
+        // });
         e.preventDefault();
         popupWrapperBuy.addClass('opened');
         popupForm.dataset.form = whatForm;
@@ -256,28 +256,28 @@ $(document).ready(function () {
 
     $('.btn_close').click(function () {
         popupWrapper.removeClass('opened');
-        $(window).unbind('scroll');
+        //$(window).unbind('scroll');
         $('body').removeClass('no_scroll');
         //$('body').css('overflow', 'visible');
     });
     popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
-            $(window).unbind('scroll');
+            //$(window).unbind('scroll');
             $('body').removeClass('no_scroll');
             //$('body').css('overflow', 'visible');
         }
     });
-    var currentScroll;
-    var current;
-    function getCurrentScroll() {
-        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-        currentScroll = scrolled;
-        return currentScroll;
-    };
-    function setCurrentScroll() {
-        $('html').scrollTop(current) || $('body').scrollTop(current) || $(document).scrollTop(current);
-    };
+    // var currentScroll;
+    // var current;
+    // function getCurrentScroll(){
+    //     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    //     currentScroll = scrolled;
+    //     return currentScroll;
+    // };
+    // function setCurrentScroll(){
+    //     $('html').scrollTop(current) || $('body').scrollTop(current) || $(document).scrollTop(current);
+    // };
     // var obj = {
     //     currentScroll: 0,
 
@@ -336,10 +336,9 @@ $(document).ready(function () {
     $('.contact__popup').click(function (e) {
         e.preventDefault();
         current = getCurrentScroll();
-        $('.contact__item--form').find('.btn_close').click(function (e) {
-            e.preventDefault();
-            // setCurrentScroll();
-        });
+        // $('.contact__item--form').find('.btn_close').click(function(e){
+        //     e.preventDefault();
+        // });
         e.preventDefault();
         $('.contact__item--form').find('button').removeClass('blue_btn');
         $('.contact__item--form').fadeIn();
@@ -347,9 +346,7 @@ $(document).ready(function () {
     });
     $('.contact__item--form').find('.btn_close').click(function () {
         $(this).parent().fadeOut();
-        // $('body').css('overflow', 'visible');
         $('body').removeClass('no_scroll');
-        //console.log(scrolled);
     });
     var locationURL = window.location.pathname;
     if (locationURL == "/ua") {
