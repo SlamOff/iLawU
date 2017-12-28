@@ -2838,6 +2838,9 @@ html {
         font-weight: 300;
         color: #333;
         margin-bottom: 10px; }
+        @media (max-width: 766px) {
+          .search_page .search_list__item__content p {
+            margin: 0 0 10px 0; } }
     .search_page .search_list__item:first-of-type .search_list__item__content {
       display: block; }
   .search_page .search_list__nav {
