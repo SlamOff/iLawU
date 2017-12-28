@@ -83,11 +83,15 @@
 			transform: translateY(-50%)
 			left: 0
 			height: auto
+			@media #{$_xs}
+				transform: translateY(-75%)
 		&__title
 			font-weight: 600
 			padding-bottom: 70px
 			position: relative
 			margin-bottom: 50px
+			@media #{$_xs}
+				padding-bottom: 45px
 			&:before
 				height: 2px
 				width: 35px

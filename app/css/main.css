@@ -2702,11 +2702,19 @@ html {
             transform: translateY(-50%);
     left: 0;
     height: auto; }
+    @media (max-width: 350px) {
+      .search_page .main__content {
+        -webkit-transform: translateY(-75%);
+            -ms-transform: translateY(-75%);
+                transform: translateY(-75%); } }
   .search_page .main__title {
     font-weight: 600;
     padding-bottom: 70px;
     position: relative;
     margin-bottom: 50px; }
+    @media (max-width: 350px) {
+      .search_page .main__title {
+        padding-bottom: 45px; } }
     .search_page .main__title:before {
       height: 2px;
       width: 35px;
