@@ -335,8 +335,8 @@ $(document).ready(function () {
         $(this).parent().fadeOut();
         $('body').removeClass('no_scroll');
     });
-    var locationURL = window.location.pathname;
-    if (locationURL == "/ua") {
+    var locationURL = document.documentElement.getAttribute('lang');
+    if (locationURL == "ua") {
         var validationName = "Обов'язкого для заповнення";
         var validationNameMax = "Від 2 до 16 літер";
         var validationPhone = "Невірний формат номеру";
@@ -347,6 +347,14 @@ $(document).ready(function () {
         var validationPhone = "Неправильный формат номера";
         var validationEmail = "Введите корректный E-mail";
     }
+    $('.service .main_btn').click(function () {
+        var action = $(this).attr('href');
+        $('form#formPopup1').attr('action', action);
+    });
+    $('.service_add .main_btn').click(function () {
+        var action = $(this).attr('href');
+        $('form#formPopup3').attr('action', action);
+    });
     $('#contactForm').validate({
         errorElement: 'span',
         focusInvalid: false,
@@ -397,8 +405,28 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#contactForm')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
         }
     });
+
     $('#formPopup1').validate({
         errorElement: 'span',
         focusInvalid: false,
@@ -449,6 +477,25 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#formPopup1')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
         }
     });
     $('#formPopup2').validate({
@@ -553,6 +600,25 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#formPopup3')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
         }
     });
 
@@ -606,6 +672,25 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#contactFormPage')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
         }
     });
     $('#callForm').validate({
@@ -658,6 +743,25 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#callForm')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
         }
     });
     $('#orderForm').validate({
@@ -716,41 +820,52 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#orderForm')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
         }
     });
     $('.popup_window .btn_close').click(function () {
         popupWrapper.removeClass('opened');
-        //$(window).unbind('scroll');
         $(this).siblings().find('.popup_form').validate().resetForm();
-        // $('#formPopup3').validate().resetForm();
-        // $('#formPopup1').validate().resetForm();
-        // $('#formPopup2').validate().resetForm();
     });
     popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
-            //$(window).unbind('scroll');
             $(this).siblings().find('.popup_form').validate().resetForm();
-            // $('#formPopup3').validate().resetForm();
-            // $('#formPopup1').validate().resetForm();
-            // $('#formPopup2').validate().resetForm();
         }
     });
-    // $('form').submit(function(event) {
-    //  event.preventDefault();
-    //  var data = $(event.target).serialize();
-    //  var action = $(event.target).attr('action');
-    //  $.ajax({
-    //      url: action,
-    //      type: 'POST',
-    //      data: data,
-    //      dataType: 'json',
-    //      success: function (data) {
-    //          alert(data['answer']);
-    //      },
-    //      error: function (result) {
-    //          alert('error');
-    //      }
-    //  });
-    // });
+    $('#load').click(function (event) {
+        var action = $(event.target).attr('name');
+        event.preventDefault();
+        $.ajax({
+            url: action,
+            type: 'GET',
+            dataType: 'json',
+            success: function success(data) {
+                $('.social__content').append(data['html']);
+                $('#load').attr('name', data['href']);
+                if (!data['flag']) $('#load').hide();
+            },
+            error: function error(result) {
+                alert('error');
+            }
+        });
+    });
 });

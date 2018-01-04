@@ -2489,6 +2489,10 @@ html {
 
 .social_page .social {
   padding: 80px 0 160px; }
+  .social_page .social .row:after, .social_page .social .service__content__item.divided .service_hover .service_hover_item .row.close_service:before, .service__content__item.divided .service_hover .service_hover_item .social_page .social .row.close_service:before {
+    display: table;
+    clear: both;
+    content: ""; }
   .social_page .social .main_btn {
     margin: 0 auto; }
   .social_page .social .container:after, .social_page .social .service__content__item.divided .service_hover .service_hover_item .container.close_service:before, .service__content__item.divided .service_hover .service_hover_item .social_page .social .container.close_service:before {
@@ -2534,7 +2538,6 @@ html {
       margin-bottom: 40px;
       position: relative;
       padding: 50% 0;
-      background-image: url("../img/social_1.jpg");
       -webkit-background-size: cover;
               background-size: cover; }
       @media (max-width: 575px) {
