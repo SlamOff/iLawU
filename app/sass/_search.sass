@@ -44,18 +44,18 @@
 					font-size: 16px
 					color: $blue
 					font-weight: normal
-					padding: 15px 20px
 					position: relative
 					cursor: pointer
 					overflow: hidden
+					a
+						padding: 15px 20px
+						display: block
 					@media #{$_md}
 						padding: 10px 20px
 					@media #{$_sm}
 						display: inline-block
 					@media #{$_xs}
 						display: block
-					&:hover:before
-						width: 100%
 					&:before
 						position: absolute
 						background-color: $blue
@@ -64,7 +64,6 @@
 						content: ""
 						width: 23px
 						height: 2px
-						transition: width .3s
 						@media #{$_sm}
 							display: none
 					&.active
@@ -151,6 +150,19 @@
 				font-size: 24px
 	.search_list
 		padding: 100px 0 120px
+		&__pagination
+			text-align: center
+			padding-top: 20px
+			.pagination
+				display: inline-block
+				user-select: none
+				li
+					display: inline-block
+					margin: 0 5px
+					user-select: none
+					&.active
+						font-weight: bold
+						color: #999
 		@media #{$_md}
 			padding: 60px 0
 		@media #{$_sm}
@@ -199,6 +211,8 @@
 					font-weight: 300
 					color: #333
 					margin-bottom: 10px
+					span.search_span
+						color: #f00
 					@media #{$_sm}
 						margin: 0 0 10px 0
 			&:first-of-type

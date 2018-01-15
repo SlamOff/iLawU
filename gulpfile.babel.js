@@ -119,7 +119,7 @@ gulp.task('build', ['clean'], function () {
 // copy images to outputDir
 gulp.task('imgBuild', ['clean'], function() {
 	return gulp.src(paths.devDir + 'img/**/*')
-		.pipe(imagemin('----------------'))
+		.pipe(imagemin('480DKIlZJUpG8I-LDzmYbgta6fLj0Vfg'))
 		.pipe(gulp.dest(paths.outputDir + 'img/'));
 });
 

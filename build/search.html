@@ -54,23 +54,24 @@
 		<div class="container container--narrow">
 			<div class="main__content">
 				<h1 class="wow zoomIn main__title">Результати пошуку</h1>
-				<p class="main__text">За запитом <span class="search_request">“Спадкоємець”</span></p>
+				<p class="main__text">За запитом <span class="search_request">13</span></p>
 				<div class="main__edit_search">
-					<input type="search">
-<!-- 				<label> -->
-					<input type="submit" value="">
-					<i class="icon-search"></i>
+					<form action="/ua/search" method="get">
+                        <input type="search">
+						<input type="submit" value="">
+						<i class="icon-search"></i>
+                    </form>
 				</div>
 			</div>
 		</div>
 		<div class="search_filter">
 			<div class="container">
 				<ul class="search_filter__content">
-					<li class="search_filter__content__item active">Всі результати</li>
-					<li class="search_filter__content__item">Документи</li>
-					<li class="search_filter__content__item">Блог</li>
-					<li class="search_filter__content__item">Соціальні проекти</li>
-					<li class="search_filter__content__item">Інше</li>
+					<li class="search_filter__content__item active"><a href="">Всі результати</a></li>
+					<li class="search_filter__content__item"><a href="">Документи</a></li>
+					<li class="search_filter__content__item"><a href="">Блог</a></li>
+					<li class="search_filter__content__item"><a href="">Соціальні проекти</a></li>
+					<li class="search_filter__content__item"><a href="">Інше</a></li>
 				</ul>
 			</div>
 		</div>
@@ -111,6 +112,16 @@
 						</nav>
 					</div>
 				</div>
+				<div class="search_list__pagination">
+					<ul class="pagination">
+	                    <li class="disabled"><span>«</span></li>
+	                    <li class="active"><span>1</span></li>
+	                    <li><a href="http://ilawu.loc/ua/search?page=2">2</a></li>
+	                    <li><a href="http://ilawu.loc/ua/search?page=3">3</a></li>
+	                    <li><a href="http://ilawu.loc/ua/search?page=2" rel="next">»</a></li>
+	            	</ul>
+				</div>
+				
 			</div>
 	</section>
 

@@ -18,12 +18,16 @@
 		&__item
 			width: 170px
 			height: 162px
-			border: 1px solid #e6e6e6
+			//border: 1px solid #e6e6e6
 			position: relative
 			display: inline-block
-			@media #{$_xs}
+			width: 25%
+			@media #{$_s}
 				width: 50%
+			@media #{$_xs}
+				
 				float: left
+				width: 100%
 			img
 				position: absolute
 				margin: auto
@@ -32,3 +36,4 @@
 				right: 0
 				bottom: 0
 				//max-height: 70%
+				max-width: 100%

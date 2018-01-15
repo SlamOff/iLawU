@@ -41,11 +41,13 @@
 			z-index: -1
 		.nav_rolled
 			position: absolute
-			left: 0
+			left: 50%
+			transform: translateX(-50%)
 			height: 210px
 			top: 0
 			right: 0
-			margin: auto
+			//margin: auto
+			width: 100%
 			max-width: 66%
 			background-color: rgba(32,35,58,.9)
 			display: none
@@ -210,6 +212,7 @@
 		height: 30px
 		width: 180px
 		margin-left: 300px
+		right: 80px
 		@media #{$_lg}
 			margin-left: 0
 		@media (max-width: 767px)
@@ -285,12 +288,14 @@
 			display: inline-block
 			float: left
 			margin-right: 20px
-			cursor: pointer
+			// cursor: pointer
 			opacity: .7
+			opacity: 0
 			transition: opacity .2s
 			user-select: none
 			&:hover
-				opacity: 1
+				//opacity: 1
+				opacity: 0
 		.change_lang
 			display: inline-block
 			float: left
