@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8" />
+	<title>Lawyer</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<!-- build:css css/combined.css -->
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="libs/slick-carousel/slick/slick.css" />
+	<link rel="stylesheet" href="libs/animate.css/animate.min.css" />
+	<!-- endbuild -->
+</head>
+<body class="reg_page">
+	<section class="reg">
+		<div class="reg__left">
+			<div class="reg__logo">
+				<img src="img/logo_reg.png" alt="">
+				<h2 class="reg__left__title">Зареєструвавшись, ви отримуєте такі переваги</h2>
+
+			</div>
+			<div class="reg__left__trigger">
+				<img src="img/discount.png" alt="">
+				<p class="reg__left__text">10% знижки на завантаження <br>платних документів протягом місяця</p>
+			</div>
+			<div class="reg__left__trigger">
+				<img src="img/24.png" alt="">
+				<p class="reg__left__text">Безперервний доступ <br>до всіх завантажених документів</p>
+			</div>
+		</div>
+		<div class="reg__right">
+			<h3 class="section_title">Реєстрація</h3>
+			<form action="" class="reg__right__form" id="regForm">
+				<fieldset>
+					<label class="input_wrapper"><input type="email" name="email" placeholder="E-mail (логін) *"></label>
+					<label class="input_wrapper"><input type="password" id="password" name="password" placeholder="Пароль *"></label>
+					<label class="input_wrapper"><input type="password" name="repassword" placeholder="Підтвердження пароля *"></label>
+				</fieldset>
+				<fieldset>
+					<label class="input_wrapper"><input type="text" name="name" placeholder="Ім’я *"></label>
+					<label class="input_wrapper"><input type="tel" class="phone" name="phone" placeholder="Телефон *"></label>
+					<label id="checkbox">
+						<p>Я погоджуюсь з <a href="">умовами використання ресурсу</a></p>
+						<input class="checkbox" type="checkbox" name="checkbox">
+						<span class="mask"></span>
+					</label>
+				</fieldset>
+				<div class="clearfix"></div>
+				<button type="submit" class="main_btn blue_btn">Зареєструватися</button>
+			</form>
+			<div class="reg__right__footer">
+				<div class="enter">
+					Вже зареєстровані? <a href="">Увійти</a>
+				</div>
+				<div class="enter enter_social">
+					Увійти через
+					<ul class="social_icons">
+						<li><b class="icon-fb"></b></li>
+						<li><b class="icon-google"></b></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/dist/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/dist/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/dist/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/dest/respond.min.js"></script>
+	<![endif]-->
+	
+	<!-- build:js scripts/combined.js -->
+	<script src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="libs/slick-carousel/slick/slick.min.js"></script>
+	<script src="libs/wow/dist/wow.min.js"></script>
+	<script src="libs/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="libs/jquery.maskedinput/dist/jquery.maskedinput.min.js"></script>
+	<script src="js/main.js"></script>
+	<!-- endbuild -->
+</body>
+</html>

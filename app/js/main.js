@@ -179,11 +179,22 @@ $(document).ready(function () {
     $('.popup_service').click(function (e) {
         e.preventDefault();
         var text = $(this).parent().siblings('h4').text();
+        var textData = $('.service__content .row_agency .divided h4').text();
+        var textDataFor;
         popupWrapperConsult.addClass('opened');
-        popupWrapperConsult.find('h4').text(text);
         popupForm.dataset.form = whatForm;
         var whatForm = this.dataset.form;
         $('body').addClass('no_scroll');
+        if (this.hasAttribute('data-content')) {
+            if (this.dataset.content == 'person_service') {
+                textDataFor = $('.service__content .row_agency .divided .service_hover_person .sub span').text();
+            } else if (this.dataset.content == 'legal_service') {
+                textDataFor = $('.service__content .row_agency .divided .service_hover_legal .sub span').text();
+            }
+            popupWrapperConsult.find('h4').text(textData + ' ' + textDataFor.toLowerCase());
+        } else {
+            popupWrapperConsult.find('h4').text(text);
+        }
     });
     $('.show_map').click(function (e) {
         e.preventDefault();
@@ -218,20 +229,15 @@ $(document).ready(function () {
             //$('body').css('overflow', 'visible');
         }
     });
-    // var currentScroll;
-    // var current;
-    // function getCurrentScroll(){
-    //     var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    //     currentScroll = scrolled;
-    //     return currentScroll;
-    // };
-    // function setCurrentScroll(){
-    //     $('html').scrollTop(current) || $('body').scrollTop(current) || $(document).scrollTop(current);
-    // };
-    // var obj = {
-    //     currentScroll: 0,
-
-    // }
+    // checkbox
+    var checkBox = $('.reg').find('#checkbox input');
+    $('body').find('#checkbox').click(function () {
+        if (checkBox.is(':checked')) {
+            $(this).find('.mask').css('background-image', 'url(img/tick.png)');
+        } else {
+            $(this).find('.mask').css('background-image', 'none');
+        }
+    });
     // copyright year
     var mdate = new Date();
     $('.footer__logo span').text(mdate.getFullYear());
@@ -372,12 +378,16 @@ $(document).ready(function () {
     var locationURL = document.documentElement.getAttribute('lang');
     if (locationURL == "ua") {
         var validationName = "Обов'язково для заповнення";
+        var validationPass = 'Мінімум 6 символів';
+        var validationRepass = 'Паролі не співпадають';
         var validationNameMax = "Від 2 до 16 літер";
         var validationPhone = "Невірний формат номеру";
         var validationEmail = "Введите вірний E-mail";
     } else {
         var validationName = "Обязательно для заполнения";
         var validationNameMax = "От 2 до 16 букв";
+        var validationPass = 'Минимум 6 символов';
+        var validationRepass = 'Пароли не совпадают';
         var validationPhone = "Неправильный формат номера";
         var validationEmail = "Введите корректный E-mail";
     }
@@ -403,7 +413,7 @@ $(document).ready(function () {
                 //digits: true
             },
             email: {
-                //required: true,
+                required: true,
                 email: true
             },
             message: {
@@ -498,6 +508,82 @@ $(document).ready(function () {
             },
             message: {
                 required: validationName
+            }
+        },
+        invalidHandler: function invalidHandler(e, v) {
+            for (var i = 0; i < v.errorList.length; i++) {
+                v.errorList[i].element.onclick = function () {
+                    this.nextSibling.classList.add('clicked');
+                };
+            };
+            this.onsubmit = function () {
+                for (var j = 0; j < v.errorList.length; j++) {
+                    $(this).find('span.error').removeClass('clicked');
+                }
+            };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#formPopup1')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false;
+        }
+    });
+    $('#regForm').validate({
+        errorElement: 'span',
+        focusInvalid: false,
+        rules: {
+            name: {
+                required: true,
+                minlength: 2,
+                maxlength: 16
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            repassword: {
+                required: true,
+                equalTo: "#password"
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            checkbox: {
+                required: true
+            }
+        },
+        messages: {
+            name: {
+                required: validationName,
+                minlength: validationNameMax,
+                maxlength: validationNameMax
+            },
+            email: {
+                required: validationName,
+                email: validationEmail
+            },
+            password: {
+                required: validationName,
+                minlength: validationPass
+            },
+            repassword: {
+                required: validationName,
+                equalTo: validationRepass
             }
         },
         invalidHandler: function invalidHandler(e, v) {
@@ -670,7 +756,7 @@ $(document).ready(function () {
                 //digits: true
             },
             email: {
-                //required: true,
+                required: true,
                 email: true
             },
             message: {

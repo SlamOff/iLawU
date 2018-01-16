@@ -74,13 +74,22 @@ span.error
 	height: 100%
 	color: red
 	font-size: 14px
-	line-height: 52px
+	//line-height: 52px
 	z-index: 2
 	user-select: none
 	background-color: #ffb8b8
 	cursor: pointer
 	text-align: center
 	border: 1px solid red!important
+	display: flex
+	align-items: center
+	padding-left: 20px
+	@media #{$_md}
+		font-size: 12px
+		@media #{$_s}
+			justify-content: center
+			font-size: 14px
+			padding-left: 0
 span.error.clicked
 	z-index: -1
 input.error, textarea.error

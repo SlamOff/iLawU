@@ -31,6 +31,8 @@
 		z-index: 50
 		transition: all .3s
 		opacity: 1
+		@media #{$_sm}
+			padding: 0 65px 0 15px;
 		@media #{$_s}
 			display: block
 			//height: 160px
@@ -215,6 +217,7 @@
 		right: 80px
 		@media #{$_lg}
 			margin-left: 0
+			right: 0
 		@media (max-width: 767px)
 			display: none
 		@media #{$_s}
@@ -288,14 +291,14 @@
 			display: inline-block
 			float: left
 			margin-right: 20px
-			// cursor: pointer
+			cursor: pointer
 			opacity: .7
-			opacity: 0
+			//opacity: 0
 			transition: opacity .2s
 			user-select: none
 			&:hover
-				//opacity: 1
-				opacity: 0
+				opacity: 1
+				//opacity: 0
 		.change_lang
 			display: inline-block
 			float: left

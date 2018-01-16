@@ -1,0 +1,111 @@
+.not_found_page
+	.main
+		background-image: url("../img/404.jpg")
+		background-repeat: no-repeat
+		display: block
+		text-align: center
+		//height: 630px
+		position: relative
+		padding: 0 15px
+		background-size: cover
+		padding: 22% 15px
+		@media #{$_md}
+			padding: 30% 15px
+		.container
+			position: static
+		&__logo
+			text-align: left
+		&__content
+			display: block
+			position: absolute
+			width: 100%
+			text-align: center
+			top: 50%
+			transform: translateY(-50%)
+			left: 0
+			height: auto
+		&__title
+			font-weight: 600
+			padding-bottom: 50px
+			position: relative
+			margin-bottom: 50px
+			&:before
+				height: 2px
+				width: 35px
+				content: ""
+				left: 0
+				right: 0
+				margin: auto
+				position: absolute
+				bottom: 0
+				background-color: $blue
+		&__text
+			max-width: 650px
+			margin: 0 auto
+			color: #908e8e
+			@media #{$_s}
+				max-width: 270px
+				font-size: 14px
+				line-height: 20px
+			br
+				@media #{$_s}
+					display: none
+		&__back
+			margin: 70px auto 0
+			max-width: 580px
+			@media #{$_s}
+				margin: 0 auto
+			a
+				display: block
+				&:hover
+					div:before
+						opacity: 1
+				div
+					position: relative
+					font-size: 18px
+					font-weight: 600
+					color: $blue
+					@media #{$_s}
+						margin-top: 50px
+					&:before
+						position: absolute
+						content: ""
+						width: 30px
+						height: 30px
+						border-radius: 50%
+						border: 1px solid #000
+						cursor: pointer
+						top: 0
+						bottom: 0
+						margin: auto
+						opacity: .3
+						background-position: 48% 50%
+						background-repeat: no-repeat
+						background-size: 25%
+						transition: opacity .3s
+				.back_left
+					float: left
+					text-align: left
+					padding-left: 52px
+					@media #{$_s}
+						float: none
+						text-align: center
+						padding: 0
+						&:before
+							display: none
+					&:before
+						left: 0
+						background-image: url("../img/prev.png")
+				.back_right
+					float: right
+					text-align: right
+					padding-right: 52px
+					@media #{$_s}
+						float: none
+						text-align: center
+						padding: 0
+						&:before
+							display: none
+					&:before
+						right: 0
+						background-image: url("../img/next.png")
