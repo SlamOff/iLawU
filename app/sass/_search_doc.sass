@@ -1,0 +1,482 @@
+.search_doc
+	.main
+		background-image: url("../img/search_doc.jpg")
+		background-repeat: no-repeat
+		text-align: center
+		position: relative
+		background-size: cover
+		padding: 25% 15px
+		&__text
+			color: #908e8e
+			display: inline-block
+			max-width: 570px
+			font-weight: 300
+			margin-bottom: 45px
+			@media #{$_md}
+				margin-bottom: 30px
+			.search_request
+				font-weight: 600
+				color: #a3877b
+		.search_filter
+			height: 140px
+			background-color: #f7f7f7
+			position: absolute
+			width: 100%
+			left: 0
+			bottom: 0
+			padding: 0 70px
+			position: static
+			@media #{$_lg}
+				height: 100px
+			@media #{$_md}
+				height: auto
+				padding: 15px 0
+			.container
+				height: 100%
+			&__content
+				display: flex
+				height: 100%
+				align-items: center
+				justify-content: space-between
+				position: relative
+				left: -20px
+				@media #{$_sm}
+					display: block
+					//flex-wrap: wrap
+					left: 0
+				&__item
+					font-size: 16px
+					color: $blue
+					font-weight: normal
+					position: relative
+					cursor: pointer
+					overflow: hidden
+					a
+						padding: 15px 20px
+						display: block
+					@media #{$_md}
+						padding: 10px 20px
+					@media #{$_sm}
+						display: inline-block
+					@media #{$_xs}
+						display: block
+					&:before
+						position: absolute
+						background-color: $blue
+						left: 20px
+						bottom: 0
+						content: ""
+						width: 23px
+						height: 2px
+						@media #{$_sm}
+							display: none
+					&.active
+						color: #fff
+						background-color: $blue
+		.container
+			position: static
+		&__logo
+			text-align: left
+		&__content
+			display: block
+			position: absolute
+			width: 100%
+			text-align: center
+			top: 50%
+			transform: translateY(-50%)
+			left: 0
+			height: auto
+		&__title
+			font-weight: 600
+			padding-bottom: 70px
+			position: relative
+			margin-bottom: 50px
+			@media #{$_md}
+				margin-bottom: 30px
+				padding-bottom: 30px
+			@media #{$_xs}
+				padding-bottom: 45px
+			&:before
+				height: 2px
+				width: 35px
+				content: ""
+				left: 0
+				right: 0
+				margin: auto
+				position: absolute
+				bottom: 0
+				background-color: $blue
+		&__doc_search
+			position: relative
+			max-width: 100%
+			width: 580px
+			margin: 0 auto
+			height: 48px
+			//opacity: 0
+			//z-index: -1
+			//top: -36px
+			transition: all .2s
+			@media #{$_lg}
+				width: 480px
+			@media #{$_md}
+				width: 380px
+			&.shown
+				opacity: 1
+				z-index: 1
+			input[type="search"]
+				border: 2px solid $brownText!important
+				border-radius: 24px
+				height: 100%
+				width: 100%
+				padding: 0 30px
+				position: absolute
+				top: 0
+				left: 0
+				color: #a3877b
+				font-size: 16px
+				background-color: transparent
+			input::-webkit-input-placeholder
+				font-size: 16px
+				color: #a3877b
+				font-weight: normal
+				font-family: "OpenSans", sans-serif
+			input::-moz-placeholder
+				font-size: 16px
+				color: #a3877b
+				font-weight: normal
+				font-family: "OpenSans", sans-serif
+			input:-ms-input-placeholder
+				font-size: 16px
+				color: #a3877b
+				font-weight: normal
+				font-family: "OpenSans", sans-serif
+			input:-moz-placeholder
+				font-size: 16px
+				color: #a3877b
+				font-weight: normal
+				font-family: "OpenSans", sans-serif
+			input[type="submit"]
+				z-index: 1
+				width: 60px
+				height: 100%
+				position: absolute
+				top: 0
+				right: 0
+				opacity: 0
+				cursor: pointer
+			i
+				position: absolute
+				right: 0
+				top: 0
+				height: 100%
+				width: 60px
+				line-height: 45px
+				color: $brownText
+				opacity: 1!important
+				font-size: 24px
+
+	.cat
+		padding: 0
+		&__title
+			font-weight: 600
+			font-size: 18px
+			color: #fff
+			text-transform: uppercase
+			text-align: center
+			display: block
+			margin-top: 50px
+			position: relative
+			&:before
+				position: absolute
+				content: ""
+				height: 2px
+				width: 35px
+				top: -22px
+				left: 0
+				right: 0
+				background-color: #fff
+				margin: auto
+		&__item
+			height: 270px
+			width: 20%
+			padding-top: 20px
+			float: left
+			position: relative
+			cursor: pointer
+			user-select: none
+			min-width: 200px
+			&__decor
+				position: absolute
+				//content: ""
+				top: 100%
+				left: 0
+				right: 0
+				margin: auto
+				width: 0
+				height: 0
+				border-left: 15px solid transparent
+				border-right: 15px solid transparent
+				border-top-style: solid
+				border-top-width: 15px
+				border-top-color: inherit
+				opacity: 0
+				transition: opacity .3s
+				z-index: 10
+			&:first-of-type
+				background-color: #46495e
+				border-top-color: #46495e
+			&:nth-of-type(2)
+				background-color: #2c304a
+				border-top-color: #2c304a
+			&:nth-of-type(3)
+				background-color: $blue
+				border-top-color: $blue
+			&:nth-of-type(4)
+				background-color: #2c304a
+				border-top-color: #2c304a
+			&:last-of-type
+				background-color: #46495e
+				border-top-color: #46495e
+			&:hover
+				.cat__item__decor
+					opacity: 1
+			&__pict
+				margin: 0 auto
+				text-align: center
+				width: 145px
+				height: 145px
+				border-radius: 50%
+				overflow: hidden
+				text-align: center
+				img
+					width: 170%
+					height: 100%
+					display: inline-block
+	.result
+		padding: 70px 0 100px
+		display: none
+		&__title
+			font-size: 20px
+			color: #000
+		&__item
+			display: flex
+			align-items: center
+			justify-content: space-between
+			height: 100px
+			border-bottom: 1px solid #e5e5e5
+			&__action
+				user-select: none
+				div
+					display: inline-block
+					cursor: pointer
+					width: 110px
+					text-align: center
+					&:hover
+						span,i
+							color: $blue
+					&:first-of-type
+						padding-right: 20px
+						padding-left: 10px
+						border-right: 1px solid #e5e5e5
+					&:last-of-type
+						padding-left: 20px
+						padding-right: 10px
+					span
+						color: $brownText
+						font-weight: 300
+						font-size: 14px
+						transition: color .3s
+					i
+						color: $brownText
+						display: block
+						text-align: center
+						font-size: 30px
+						height: 30px
+						transition: color .3s
+	.subcat
+		background-color: #f7f7f7
+		padding: 0
+		height: 140px
+		display: none
+		.container
+			height: 100%
+		&__content
+			display: flex
+			align-items: center
+			height: 100%
+			justify-content: space-around
+			&__item
+				cursor: pointer
+				padding: 10px 20px
+				position: relative
+				transition: all .3s
+				font-size: 18px
+				@media #{$_md}
+				padding-left: 10px
+				padding-right: 10px
+				&.active
+					background-color: $blue
+					color: #fff
+				&:before
+					content: ""
+					position: absolute
+					bottom: 0
+					left: 20px
+					width: 23px
+					height: 2px
+					background-color: $blue
+	.viewed
+		background-color: #f8f8f8
+		padding: 60px 0 140px
+		@media #{$_s}
+			.section_title
+				font-size: 3.2rem
+		.prev
+			width: 40px
+			height: 40px
+			border-radius: 50%
+			border: 1px solid #000
+			position: absolute
+			right: 51%
+			bottom: -70px
+			cursor: pointer
+			opacity: .3
+			transition: opacity .2s
+			&:hover
+				opacity: 1
+			img
+				position: absolute
+				left: 0
+				right: 0
+				top: 0
+				bottom: 0
+				margin: auto
+		.next
+			@extend .prev
+			right: auto
+			left: 51%
+		&__item
+			width: 25%
+			float: left
+			padding: 25px 0
+			background-color: #fff
+			outline: none
+			&:last-of-type
+				.viewed__item__content
+					border: 0
+			&__content
+				border-right: 1px solid #e5e5e5
+				padding: 0 40px
+				@media #{$_md}
+					padding: 0 15px
+		&__title
+			font-size: 20px
+			color: $blue
+			margin-bottom: 35px
+			@media #{$_md}
+				font-size: 18px
+		&__btns
+			&:after
+				display: table
+				clear: both
+				content: ""
+		&__btn
+			float: left
+			width: 50%
+			&:first-of-type
+				border-right: 1px solid #e5e5e5
+			i
+				display: block
+				text-align: center
+				font-size: 30px
+			span
+				font-size: 14px
+				text-align: center
+				display: block
+
+	
+
+	.search_list
+		padding: 100px 0 120px
+		&__pagination
+			text-align: center
+			padding-top: 20px
+			.pagination
+				display: inline-block
+				user-select: none
+				li
+					display: inline-block
+					margin: 0 5px
+					user-select: none
+					&.active
+						font-weight: bold
+						color: #999
+		@media #{$_md}
+			padding: 60px 0
+		@media #{$_sm}
+			padding: 40px 0
+		&__item
+			padding: 30px 0
+			border-bottom: 1px solid #e5e5e5
+			position: relative
+			h4
+				color: #000
+				font-size: 20px
+				line-height: 24px
+				margin-bottom: 10px
+				position: relative
+				padding-right: 160px
+				cursor: pointer
+				@media #{$_s}
+					padding-right: 40px
+				span
+					color: #000099
+				.arrow
+					width: 30px
+					height: 30px
+					position: absolute
+					border-radius: 50%
+					margin: auto
+					top: 0
+					bottom: 0
+					right: 20px
+					border: 1px solid #000
+					background-image: url(../img/arrow_down.png)
+					background-repeat: no-repeat
+					background-position: center
+					opacity: .4
+					transition: all .2s
+					@media #{$_s}
+						right: 0
+					&.rotated
+						transform: rotate(180deg)
+			&__content
+				display: none
+				padding-right: 160px
+				@media #{$_s}
+					padding-right: 0
+				p
+					font-weight: 300
+					color: #333
+					margin-bottom: 10px
+					span.search_span
+						color: #f00
+					@media #{$_sm}
+						margin: 0 0 10px 0
+			&:first-of-type
+				.search_list__item__content
+					display: block
+		&__nav
+			color: #333
+			font-size: 14px
+			span
+				margin-right: 10px
+				position: relative
+				cursor: pointer
+				&:after
+					content: "/"
+					position: absolute
+					right: -10px
+					top: 0
+				&:last-of-type:after
+					display: none

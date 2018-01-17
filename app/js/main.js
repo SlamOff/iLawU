@@ -50,9 +50,10 @@ $(document).ready(function () {
         }
         return false;
     });
-    // nav
-
-
+    $('.subcat__content__item').click(function () {
+        $('.subcat__content__item').removeClass('active');
+        $(this).addClass('active');
+    });
     // Юридичнi послуги
     $('.divided .service_hover_item').click(function (e) {
         $('.divided .service_hover_item').find('.close_service').hide();
@@ -113,7 +114,43 @@ $(document).ready(function () {
             }
         }]
     });
-
+    $('.viewed__slider').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        prevArrow: '.viewed_prev',
+        nextArrow: '.viewed_next',
+        speed: 1000,
+        //lazyLoad: 'ondemand',
+        //autoplay: true,
+        //autoplaySpeed: 2000,
+        swipe: false,
+        responsive: [{
+            breakpoint: 992,
+            settings: {
+                slidesToShow: 3
+            }
+        }, {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2
+            }
+        }, {
+            breakpoint: 576,
+            settings: {
+                slidesToShow: 1
+            }
+        }]
+    });
+    var views = document.querySelectorAll('.viewed .viewed__item');
+    console.log(views);
+    views.length != 0 ? $('.viewed').show() : $('.viewed').hide();
+    // if(views.length != 0){
+    //     $('.viewed').show();
+    // }
+    $('.cat__item').click(function () {
+        $('.subcat').slideDown();
+        $('.result').slideDown();
+    });
     // menu btn
     $('.main__menu_btn').click(function () {
         $('.sandwich').toggleClass('active');

@@ -81,6 +81,32 @@
 	//src: url('../fonts/new.svg?25906864#new') format('svg')
 	font-weight: normal
 	font-style: normal
+@font-face
+	font-family: "doc_font"
+	src: url('../fonts/doc_font.eot')
+	src: url('../fonts/doc_font.eot?#iefix') format('eot')
+	src: url('../fonts/doc_font.woff2') format('woff2')
+	src: url('../fonts/doc_font.woff') format('woff')
+	src: url('../fonts/doc_font.ttf') format('truetype')
+	//src: url('doc_font.svg#doc_font') format('svg');
+.df:before
+	font-family: "doc_font"
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	font-style: normal
+	font-variant: normal
+	font-weight: normal
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none
+	text-transform: none
+.df-download:before 
+	content: "\E001"
+.df-eye:before
+	content: "\E002"
+.df-round-arrow:before
+	content: "\E003"
+.df-trolley:before
+	content: "\E004"
 .mf:before 
 	font-family: "icon"
 	-webkit-font-smoothing: antialiased

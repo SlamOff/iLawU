@@ -44,8 +44,8 @@ var useref = require('gulp-useref'),
 gulp.task("fontIcon", function() {
 	return gulp.src(['app/icons/*.svg'])
 		.pipe(fontIcon({
-			fontName: "service_test",
-			fontAlias: "sf6"
+			fontName: "doc_font",
+			fontAlias: "df"
 		}))
 		.pipe(gulp.dest("app/font_icons/"));
 });
