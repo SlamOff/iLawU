@@ -94,6 +94,45 @@
   src: url("../fonts/doc_font.woff") format("woff");
   src: url("../fonts/doc_font.ttf") format("truetype"); }
 
+@font-face {
+  font-family: "doc";
+  src: url("../fonts/new.eot?21225162");
+  src: url("../fonts/new.eot?21225162#iefix") format("embedded-opentype");
+  src: url("../fonts/new.woff2?21225162") format("woff2");
+  src: url("../fonts/new.woff?21225162") format("woff");
+  src: url("../fonts/new.ttf?21225162") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+.search_doc [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "doc";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: .2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-round-arrow:before {
+  content: '\e807'; }
+
+.icon-eye:before {
+  content: '\e808'; }
+
+.icon-download:before {
+  content: '\e809'; }
+
+.icon-trolley:before {
+  content: '\e810'; }
+
 .df:before {
   font-family: "doc_font";
   -webkit-font-smoothing: antialiased;
@@ -356,6 +395,18 @@
 
 .icon-fb:before {
   content: '\e806'; }
+
+.icon-round-arrow:before {
+  content: '\e807'; }
+
+.icon-eye:before {
+  content: '\e808'; }
+
+.icon-download:before {
+  content: '\e809'; }
+
+.icon-trolley:before {
+  content: '\e810'; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -3463,7 +3514,7 @@ html {
         .search_doc .main .search_filter__content__item:before {
           position: absolute;
           background-color: #20233a;
-          left: 20px;
+          left: 10px;
           bottom: 0;
           content: "";
           width: 23px;
@@ -3583,7 +3634,24 @@ html {
       font-size: 24px; }
 
 .search_doc .cat {
-  padding: 0; }
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  overflow: auto;
+  overflow-y: visible; }
+  .search_doc .cat .space {
+    height: 15px;
+    background-color: #f8f8f8;
+    position: absolute;
+    background-color: #f8f8f8;
+    bottom: 0;
+    width: 100%;
+    height: 15px; }
   .search_doc .cat__title {
     font-weight: 600;
     font-size: 18px;
@@ -3593,6 +3661,9 @@ html {
     display: block;
     margin-top: 50px;
     position: relative; }
+    @media (max-width: 575px) {
+      .search_doc .cat__title {
+        font-size: 14px; } }
     .search_doc .cat__title:before {
       position: absolute;
       content: "";
@@ -3607,7 +3678,6 @@ html {
     height: 270px;
     width: 20%;
     padding-top: 20px;
-    float: left;
     position: relative;
     cursor: pointer;
     -webkit-user-select: none;
@@ -3615,9 +3685,13 @@ html {
         -ms-user-select: none;
             user-select: none;
     min-width: 200px; }
+    @media (max-width: 575px) {
+      .search_doc .cat__item {
+        min-width: 50%;
+        max-width: 50%; } }
     .search_doc .cat__item__decor {
       position: absolute;
-      top: 100%;
+      bottom: 0;
       left: 0;
       right: 0;
       margin: auto;
@@ -3667,9 +3741,17 @@ html {
 .search_doc .result {
   padding: 70px 0 100px;
   display: none; }
+  @media (max-width: 575px) {
+    .search_doc .result {
+      padding: 40px 0; } }
   .search_doc .result__title {
     font-size: 20px;
-    color: #000; }
+    color: #000;
+    max-width: 50%; }
+    @media (max-width: 575px) {
+      .search_doc .result__title {
+        max-width: 100%;
+        margin-bottom: 15px; } }
   .search_doc .result__item {
     display: -webkit-box;
     display: -webkit-flex;
@@ -3685,6 +3767,12 @@ html {
             justify-content: space-between;
     height: 100px;
     border-bottom: 1px solid #e5e5e5; }
+    @media (max-width: 575px) {
+      .search_doc .result__item {
+        display: block;
+        text-align: center;
+        height: auto;
+        padding: 20px 0; } }
     .search_doc .result__item__action {
       -webkit-user-select: none;
          -moz-user-select: none;
@@ -3741,6 +3829,11 @@ html {
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around; }
+    @media (max-width: 766px) {
+      .search_doc .subcat__content {
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap; } }
     .search_doc .subcat__content__item {
       cursor: pointer;
       padding: 10px 20px;
@@ -3748,9 +3841,14 @@ html {
       -webkit-transition: all .3s;
       -o-transition: all .3s;
       transition: all .3s;
-      font-size: 18px;
-      padding-left: 10px;
-      padding-right: 10px; }
+      font-size: 18px; }
+      @media (max-width: 1024px) {
+        .search_doc .subcat__content__item {
+          padding-left: 10px;
+          padding-right: 10px; } }
+      @media (max-width: 575px) {
+        .search_doc .subcat__content__item {
+          font-size: 14px; } }
       .search_doc .subcat__content__item.active {
         background-color: #20233a;
         color: #fff; }
@@ -3762,6 +3860,9 @@ html {
         width: 23px;
         height: 2px;
         background-color: #20233a; }
+        @media (max-width: 1024px) {
+          .search_doc .subcat__content__item:before {
+            left: 10px; } }
 
 .search_doc .viewed {
   background-color: #f8f8f8;
@@ -3806,7 +3907,7 @@ html {
     .search_doc .viewed__item__content {
       border-right: 1px solid #e5e5e5;
       padding: 0 40px; }
-      @media (max-width: 1024px) {
+      @media (max-width: 1224px) {
         .search_doc .viewed__item__content {
           padding: 0 15px; } }
   .search_doc .viewed__title {
@@ -3816,6 +3917,9 @@ html {
     @media (max-width: 1024px) {
       .search_doc .viewed__title {
         font-size: 18px; } }
+    @media (max-width: 575px) {
+      .search_doc .viewed__title {
+        text-align: center; } }
   .search_doc .viewed__btns:after, .search_doc .service__content__item.divided .service_hover .service_hover_item .viewed__btns.close_service:before, .service__content__item.divided .service_hover .service_hover_item .search_doc .viewed__btns.close_service:before {
     display: table;
     clear: both;

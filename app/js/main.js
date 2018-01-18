@@ -119,7 +119,6 @@ $(document).ready(function () {
         slidesToScroll: 1,
         prevArrow: '.viewed_prev',
         nextArrow: '.viewed_next',
-        speed: 1000,
         //lazyLoad: 'ondemand',
         //autoplay: true,
         //autoplaySpeed: 2000,
