@@ -94,45 +94,6 @@
   src: url("../fonts/doc_font.woff") format("woff");
   src: url("../fonts/doc_font.ttf") format("truetype"); }
 
-@font-face {
-  font-family: "doc";
-  src: url("../fonts/new.eot?21225162");
-  src: url("../fonts/new.eot?21225162#iefix") format("embedded-opentype");
-  src: url("../fonts/new.woff2?21225162") format("woff2");
-  src: url("../fonts/new.woff?21225162") format("woff");
-  src: url("../fonts/new.ttf?21225162") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-.search_doc [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "doc";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1em;
-  margin-left: .2em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-
-.icon-round-arrow:before {
-  content: '\e807'; }
-
-.icon-eye:before {
-  content: '\e808'; }
-
-.icon-download:before {
-  content: '\e809'; }
-
-.icon-trolley:before {
-  content: '\e810'; }
-
 .df:before {
   font-family: "doc_font";
   -webkit-font-smoothing: antialiased;
@@ -396,17 +357,35 @@
 .icon-fb:before {
   content: '\e806'; }
 
-.icon-round-arrow:before {
-  content: '\e807'; }
+@font-face {
+  font-family: "doc";
+  src: url("../fonts/doc.eot");
+  src: url("../fonts/doc.eot?#iefix") format("eot");
+  src: url("../fonts/doc.woff2") format("woff2");
+  src: url("../fonts/doc.woff") format("woff");
+  src: url("../fonts/doc.ttf") format("truetype"); }
 
-.icon-eye:before {
-  content: '\e808'; }
+.search_doc .icon:before {
+  font-family: "doc" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none; }
 
-.icon-download:before {
-  content: '\e809'; }
+.search_doc .icon-download:before {
+  content: "\E001"; }
 
-.icon-trolley:before {
-  content: '\e810'; }
+.search_doc .icon-eye:before {
+  content: "\E002"; }
+
+.search_doc .icon-round-arrow:before {
+  content: "\E003"; }
+
+.search_doc .icon-trolley:before {
+  content: "\E004"; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -3652,6 +3631,9 @@ html {
     bottom: 0;
     width: 100%;
     height: 15px; }
+    @media (max-width: 575px) {
+      .search_doc .cat .space {
+        display: none; } }
   .search_doc .cat__title {
     font-weight: 600;
     font-size: 18px;
@@ -3707,6 +3689,9 @@ html {
       -o-transition: opacity .3s;
       transition: opacity .3s;
       z-index: 10; }
+      @media (max-width: 575px) {
+        .search_doc .cat__item__decor {
+          display: none; } }
     .search_doc .cat__item:first-of-type {
       background-color: #46495e;
       border-top-color: #46495e; }
@@ -3834,6 +3819,9 @@ html {
         -webkit-flex-wrap: wrap;
             -ms-flex-wrap: wrap;
                 flex-wrap: wrap; } }
+    @media (max-width: 575px) {
+      .search_doc .subcat__content {
+        display: block; } }
     .search_doc .subcat__content__item {
       cursor: pointer;
       padding: 10px 20px;
@@ -3926,7 +3914,8 @@ html {
     content: ""; }
   .search_doc .viewed__btn {
     float: left;
-    width: 50%; }
+    width: 50%;
+    cursor: pointer; }
     .search_doc .viewed__btn:first-of-type {
       border-right: 1px solid #e5e5e5; }
     .search_doc .viewed__btn i {
@@ -4038,6 +4027,64 @@ html {
         top: 0; }
       .search_doc .search_list__nav span:last-of-type:after, .search_doc .search_list__nav .service__content__item.divided .service_hover .service_hover_item span.close_service:last-of-type:before, .service__content__item.divided .service_hover .service_hover_item .search_doc .search_list__nav span.close_service:last-of-type:before {
         display: none; }
+
+.profile_page .profile {
+  min-height: 668px;
+  height: 100vh; }
+  .profile_page .profile__edit {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer; }
+  .profile_page .profile__quit {
+    position: absolute;
+    text-align: center;
+    bottom: 35px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    color: #d7d7d7;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer; }
+  .profile_page .profile__info {
+    width: 32%;
+    background-image: url("../img/profile_bg.jpg");
+    height: 100%;
+    text-align: center;
+    padding-top: 7rem;
+    position: relative; }
+    .profile_page .profile__info__inner {
+      display: inline-block;
+      max-width: 270px; }
+  .profile_page .profile__avatar {
+    width: 150px;
+    height: 150px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%; }
+  .profile_page .profile__name {
+    font-size: 20px;
+    color: #d7d7d7;
+    line-height: 24px;
+    margin-top: 30px; }
+  .profile_page .profile__doc {
+    padding-top: 7rem;
+    width: 68%;
+    height: 100%; }
+  .profile_page .profile__phone {
+    color: #915e47;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left; }
+    .profile_page .profile__phone span {
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
+      display: block;
+      float: left;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #915e47; }
 
 .footer {
   background-color: #20233a;

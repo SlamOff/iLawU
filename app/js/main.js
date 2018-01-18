@@ -141,11 +141,7 @@ $(document).ready(function () {
         }]
     });
     var views = document.querySelectorAll('.viewed .viewed__item');
-    console.log(views);
     views.length != 0 ? $('.viewed').show() : $('.viewed').hide();
-    // if(views.length != 0){
-    //     $('.viewed').show();
-    // }
     $('.cat__item').click(function () {
         $('.subcat').slideDown();
         $('.result').slideDown();
@@ -161,16 +157,7 @@ $(document).ready(function () {
     $('.search_page .main').on('click', function (e) {
         var value = $('.search_request').text() + ' ';
         var inputWrap = $('.main__edit_search');
-
         var input = inputWrap.find('input[type="search"]');
-
-        //input.val(value);
-        //console.log(input.val());
-        // input.keypress(function(){
-        //     var value2 = $(this).val();
-        //     $(this).val(value2);
-        //     console.log(input.val(value));
-        // });
         input.focus();
         if ($(e.target).hasClass('main__text') || $(e.target).hasClass('search_request') || e.target.hasAttribute('type')) {
             inputWrap.addClass('shown');

@@ -1,0 +1,38 @@
+@font-face {
+	font-family: "doc";
+	src: url('./doc.eot');
+	src: url('./doc.eot?#iefix') format('eot'),
+		url('./doc.woff2') format('woff2'),
+		url('./doc.woff') format('woff'),
+		url('./doc.ttf') format('truetype'),
+		url('./doc.svg#doc') format('svg');
+}
+
+.icon:before {
+	font-family: "doc";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-download:before {
+	content: "\E001";
+}
+
+.icon-eye:before {
+	content: "\E002";
+}
+
+.icon-round-arrow:before {
+	content: "\E003";
+}
+
+.icon-trolley:before {
+	content: "\E004";
+}

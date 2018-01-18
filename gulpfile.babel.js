@@ -25,6 +25,8 @@ var useref = require('gulp-useref'),
 	imagemin = require('gulp-tinify'),
 	gitignore = require('gulp-gitignore'),
 	fontIcon = require("gulp-font-icon");
+	var iconfont = require('gulp-iconfont');
+	var iconfontCss = require('gulp-iconfont-css');
 	//ftp = require('vinyl-ftp');
 	var paths = {
 		sass: 'app/sass/*.sass',
@@ -32,7 +34,9 @@ var useref = require('gulp-useref'),
 		js: 'app/js/*.js',
 		ecma6: 'app/es6/*.js',
 		devDir: 'app/',
-		outputDir: 'build/'
+		outputDir: 'build/',
+		svgTo: 'app/font_icons',
+		svgFrom: 'app/icons/*.svg'
 	};
 	require('babel-register');
 
@@ -40,15 +44,30 @@ var useref = require('gulp-useref'),
 		Developer tasks
 *********************************/
 //svg
-
-gulp.task("fontIcon", function() {
-	return gulp.src(['app/icons/*.svg'])
-		.pipe(fontIcon({
-			fontName: "doc_font",
-			fontAlias: "df"
+	gulp.task('iconfont', function(){
+	gulp.src(paths.svgFrom)
+		.pipe(iconfontCss({
+			fontName: 'doc',
+			//path: paths.svgTo,
+			//targetPath: paths.svgTo,
+			//fontPath: paths.svgTo
+			
 		}))
-		.pipe(gulp.dest("app/font_icons/"));
+		.pipe(iconfont({
+			fontName: 'doc',
+			normalize: true,
+        	fontHeight: 1001
+		}))
+	.pipe(gulp.dest(paths.svgTo));
 });
+// gulp.task("fontIcon", function() {
+// 	return gulp.src(['app/icons/*.svg'])
+// 		.pipe(fontIcon({
+// 			fontName: "doc_font",
+// 			fontAlias: "df"
+// 		}))
+// 		.pipe(gulp.dest("app/font_icons/"));
+// });
 //sass compile
 gulp.task('sass', function() {
 	return gulp.src(paths.sass)

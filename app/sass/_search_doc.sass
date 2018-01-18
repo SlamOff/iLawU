@@ -189,6 +189,8 @@
 			bottom: 0
 			width: 100%
 			height: 15px
+			@media #{$_s}
+				display: none
 		&__title
 			font-weight: 600
 			font-size: 18px
@@ -239,6 +241,8 @@
 				opacity: 0
 				transition: opacity .3s
 				z-index: 10
+				@media #{$_s}
+					display: none
 			&:first-of-type
 				background-color: #46495e
 				border-top-color: #46495e
@@ -335,6 +339,8 @@
 			justify-content: space-around
 			@media #{$_sm}
 				flex-wrap: wrap
+			@media #{$_s}
+				display: block
 			&__item
 				cursor: pointer
 				padding: 10px 20px
@@ -419,6 +425,7 @@
 		&__btn
 			float: left
 			width: 50%
+			cursor: pointer
 			&:first-of-type
 				border-right: 1px solid #e5e5e5
 			i
