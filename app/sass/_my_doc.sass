@@ -1,7 +1,9 @@
 .profile_page
 	.profile
-		min-height: 668px
-		height: 100vh
+		&:after
+			clear: both
+			display: table
+			content: ""	
 		&__edit
 			position: absolute
 			right: 30px
@@ -24,9 +26,17 @@
 			text-align: center
 			padding-top: 7rem
 			position: relative
+			min-height: 668px
+			float: left
+			height: 100vh
+			@media #{$_md}
+				width: 40%
+			@media #{$_sm}
+				width: 100%
+				min-height: 1px
 			&__inner
 				display: inline-block
-				max-width: 270px
+				max-width: 300px
 		&__avatar
 			width: 150px
 			height: 150px
@@ -35,16 +45,15 @@
 			font-size: 20px
 			color: #d7d7d7
 			line-height: 24px
-			margin-top: 30px
-		&__doc
-			padding-top: 7rem
-			width: 68%
-			height: 100%
-		&__phone
+			margin: 30px 0 110px
+			@media #{$_sm}
+				margin: 30px 0 60px
+		&__contact
 			color: $brownText
 			font-size: 16px
 			font-weight: bold
 			text-align: left
+
 			span
 				border-radius: 50%
 				display: block
@@ -52,3 +61,351 @@
 				width: 30px
 				height: 30px
 				border: 1px solid $brownText
+				position: relative
+				margin-right: 25px
+				top: -2px
+				@media #{$_sm}
+					display: none
+				i
+					font-size: 35px
+					position: absolute
+					width: 100%
+					left: -3px
+					top: 2px
+					height: 100%
+					@media #{$_sm}
+						top: 5px
+			&.phone
+				margin-bottom: 25px
+				@media #{$_sm}
+					text-align: center
+			&.email
+				font-weight: normal
+				@media #{$_sm}
+					text-align: center
+		&__editing
+			text-align: center
+			display: none
+			.quit_editing
+				position: absolute
+				top: 30px
+				right: 80px
+				width: 36px
+				height: 36px
+				border-radius: 50%
+				background-image: url("../img/profile_close.png")
+				background-repeat: no-repeat
+				background-position: center center
+				cursor: pointer
+			.change_photo
+				text-decoration: underline
+				color: $brownText
+				font-size: 12px
+				span
+					cursor: pointer
+			.editing_form
+				max-width: 280px
+				margin: 30px auto 0
+				.profile_btn
+					width: 36px
+					height: 36px
+					border-radius: 50%
+					position: absolute
+					right: 30px
+					top: 30px
+					border: 1px solid $brownText
+					background-color: transparent
+					background-image: url("../img/profile_tick.png")
+					background-repeat: no-repeat
+					background-position: center center
+				.input_wrapper
+					height: 52px
+					width: 100%
+					position: relative
+					margin-bottom: 15px
+					@media #{$_s}
+						height: 40px
+					.edit_icon
+						position: absolute
+						top: 0
+						bottom: 0
+						right: 20px
+						margin: auto
+						width: 18px
+						height: 18px
+						background-image: url("../img/editing.png")
+						z-index: 10
+						display: none
+					.edit_password
+						@extend .edit_icon
+						display: block
+						width: auto
+						height: 24px
+						background: none
+						color: $brownText
+						font-size: 12px
+						line-height: 12px
+						text-align: right
+						text-decoration: underline
+						cursor: pointer
+					&:last-of-type
+						margin-bottom: 0
+						display: none
+					input
+						border: 0
+						position: absolute
+						left: 0
+						top: 0
+						width: 100%
+						height: 100%
+						padding: 0 50px 0 20px
+						font-size: 14px
+						color: #939393
+						font-weight: 600
+						font-family: "OpenSans", sans-serif
+						&.pswd
+							padding: 0 100px 0 20px
+						&:focus
+							color: $blue
+
+
+
+
+
+		&__doc
+			padding-top: 7rem
+			width: 68%
+			float: left
+			height: 100vh
+			min-height: 668px
+			position: relative
+			padding-left: 15px
+			padding-right: 15px
+			@media #{$_md}
+				width: 60%
+			@media #{$_sm}
+				width: 100%
+				min-height: 1px
+				height: auto
+				padding-bottom: 82px 
+			// display: flex
+			// flex-direction: column
+			// justify-content: space-between
+			.section_title
+				text-transform: uppercase
+				color: $blue
+				text-align: center
+				font-size: 3.6rem
+				font-weight: 300
+				text-transform: uppercase
+				margin-bottom: 0
+				letter-spacing: .1em
+				margin-bottom: 7rem
+			&__list
+				//padding: 0 9rem 0 6rem
+				//max-height: 320px
+				max-width: 840px
+				width: 100%
+				margin: 0 auto
+				@media #{$_md}
+					background-color: #e5e5e5
+					padding: 10px 0
+				&__item
+					padding: 25px 0
+					border-bottom: 1px solid #e5e5e5
+					@media #{$_md}
+						border: 0
+					&:last-of-type
+						@media #{$_md}
+							border: 0
+					&:after
+						display: table
+						clear: both
+						content: ""
+					.doc_name
+						width: 50%
+						float: left
+						@media #{$_md}
+							width: 100%
+							text-align: center
+							float: none
+							margin-bottom: 30px
+						h4
+							padding-bottom: 5px
+							font-size: 20px
+							line-height: 24px
+							white-space: nowrap
+							text-overflow: ellipsis
+							overflow: hidden
+							padding-right: 20px
+						.doc_path
+							font-size: 14px
+							font-weight: 300
+							line-height: 24px
+							white-space: nowrap
+							text-overflow: ellipsis
+							overflow: hidden
+							padding-right: 20px
+					.doc_info
+						width: 50%
+						float: left
+						&:after
+							display: table
+							clear: both
+							content: ""
+						@media #{$_md}
+							width: 100%
+							float: none
+							display: flex
+							justify-content: center
+							flex-wrap: wrap
+						// .status_wrapper
+						// 	width: 120px
+						// 	float: left
+						&__status
+							width: 33.33%
+							float: left
+							@media #{$_md}
+								float: none
+								width: 120px
+								margin-bottom: 30px
+							.status
+								width: 100%
+								height: 26px
+								position: relative
+								border-radius: 12px
+								margin-bottom: 10px
+								font-size: 10px
+								line-height: 25px
+								font-weight: 600
+								padding-left: 28px
+								max-width: 120px
+								@media #{$_lg}
+									font-size: 8px
+								@media #{$_md}
+									font-size: 10px
+								&:before
+									width: 15px
+									height: 15px
+									position: absolute
+									top: 0
+									bottom: 0
+									margin: auto
+									left: 8px
+									content: ""
+								&.status_green
+									border: 1px solid #076c10
+									color: #076c10
+									&:before
+										background-image: url("../img/status_green.png")
+								&.status_red
+									border: 1px solid #a50d0d
+									color: #a50d0d
+									&:before
+										background-image: url("../img/status_red.png")
+								&.status_gray
+									border: 1px solid #a3a3a3
+									color: #a3a3a3
+									padding-left: 0
+									text-align: center
+									&:before
+										display: none
+						&__action
+							float: left
+							width: 66.66%
+							@media #{$_md}
+								float: none
+								width: auto
+							&__item
+								width: 50%
+								float: left
+								text-align: center
+								color: $brownText
+								font-size: 14px
+								font-weight: 300
+								transition: color .3s
+								cursor: pointer
+								@media #{$_md}
+									//padding: 0 30px
+									width: 150px
+								@media (max-width: 680px)
+									width: 100px
+								&:first-of-type
+									border-right: 1px solid #e5e5e5
+								&:hover
+									color: $blue
+								i
+									font-size: 30px
+									display: inline-block
+									margin-top: -5px
+								span
+									display: block
+									margin-top: -5px
+						.date
+							font-size: 10px
+							font-weight: 600
+							color: #a3a3a3
+							padding-left: 8px
+							position: relative
+							max-width: 120px
+							&:after
+								content: ""
+								position: absolute
+								top: 0
+								bottom: 0
+								margin: auto
+								right: 8px
+								width: 9px
+								height: 6px
+								background-image: url("../img/arrow_down_small.png")
+
+			&__footer
+				height: 82px
+				text-align: center
+				font-size: 18px
+				font-weight: 600
+				color: $blue
+				line-height: 82px
+				border-top: 1px solid #e5e5e5
+				position: absolute
+				left: 0
+				bottom: 0
+				width: 100%
+				@media #{$_sm}
+					border: 0
+				.arrow_right
+					width: 30px
+					height: 30px
+					position: relative
+					border-radius: 50%
+					margin: auto
+					border: 1px solid #000
+					background-repeat: no-repeat
+					background-position: center
+					opacity: .4
+					transition: all .2s
+					display: inline-block
+					transform: translateY(8px)
+					margin-left: 25px
+					&:hover
+						opacity: 1
+					img
+						position: absolute
+						top: 0
+						right: 0
+						left: 0
+						bottom: 0
+						margin: auto
+						height: 12px
+
+.mCSB_draggerRail,
+.mCSB_draggerContainer
+	background: transparent!important
+.mCSB_dragger_bar
+	background-color: #e8e8e8!important
+	border-radius: 0!important
+	width: 6px!important
+	@media #{$_md}
+		background-color: $blue!important
+.mCSB_container
+	margin-left: 30px

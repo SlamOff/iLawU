@@ -29,10 +29,11 @@ $(document).ready(function () {
         $(this).siblings('i').css('opacity', '.5');
     });
 
-    // phone mask
+    //phone mask
     jQuery(function ($) {
-        $('.phone').mask('+38(099) 999-9999');
+        $('.phone').mask('+38(0ss) sss-ssss');
     });
+
     // scroll to
     $('.scroll_down').click(function (e) {
         e.preventDefault();
@@ -1012,5 +1013,197 @@ $(document).ready(function () {
                 alert('error');
             }
         });
+    });
+    var contact = {
+        data: {
+            name: $('.profile_page .profile__name'),
+            tel: $('.profile_page .profile__contact.phone a'),
+            email: $('.profile_page .profile__contact.email a')
+        },
+        input: {
+            name: $('.editing_form').find('.input_wrapper').find('[name = name]'),
+            tel: $('.editing_form').find('.input_wrapper').find('[name = phone]'),
+            email: $('.editing_form').find('.input_wrapper').find('[name = email]')
+        },
+        setData: function setData() {
+            for (var prop in this.data) {
+                this.input[prop].val(this.data[prop].text());
+            };
+        },
+        focus: function focus() {
+            for (var prop in this.input) {
+                this.input[prop].focusout(function () {
+                    $('.edit_icon').fadeOut();
+                });
+                this.input[prop].focusin(function () {
+                    $(this).siblings('.edit_icon').fadeIn();
+                });
+            }
+        },
+        changeProfile: function changeProfile() {
+            for (var prop in this.data) {
+                this.data[prop].text(this.input[prop].val() + '');
+            }
+        }
+    };
+    // editing profile
+    $('.profile__edit').click(function () {
+        $(this).hide();
+        $('.profile__quit').hide();
+        $('.profile__info__inner').hide();
+        $('.profile__editing').show();
+        contact.setData();
+        contact.focus();
+    });
+    !function ($) {
+        $(document).ready(function () {
+            $('.profile_page .phone').focusin(function () {
+                $(this).mask('+38(0ss) sss ss ss');
+            }).focusout(function () {
+                $(this).unmask();
+            });
+        });
+    }(jQuery);
+    $('.start_edit_password').click(function (c) {
+        $(this).fadeOut('fast');
+        $(c.target).siblings('input').removeAttr('disabled');
+        $('.editing_form').find('.input_wrapper').find('[name = password_new]').parent().css('display', 'block');
+    });
+    $('.end_edit_password').click(function (c) {
+        c.target.parentElement.style.display = 'none';
+        $('.editing_form').find('.input_wrapper').find('[name = password_old]').attr('disabled', 'disabled');
+        $('.start_edit_password').fadeIn('fast');
+    });
+    $('.quit_editing').click(function () {
+        closeEditing();
+    });
+    function closeEditing() {
+        $('.profile__editing').hide();
+        $('.profile__quit').show();
+        $('.profile__info__inner').show();
+        $('.profile__edit').show();
+    };
+    // Object.defineProperty(contact, "setData", {
+    //     enumerable: false
+    // });
+    // Object.defineProperty(contact, "focus", {
+    //     enumerable: false
+    // });
+
+    $('#profileForm').validate({
+        errorElement: 'span',
+        focusInvalid: false,
+        rules: {
+            name: {
+                required: true,
+                minlength: 2
+            },
+            phone: {
+                required: true
+                // digits: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password_new: {
+                required: true,
+                minlength: 6
+            },
+            password_old: {
+                required: true,
+                minlength: 6
+            },
+            message: {
+                //required: true
+            },
+            address: {
+                required: true
+            }
+        },
+        messages: {
+            name: {
+                required: validationName,
+                minlength: validationNameMax
+            },
+            email: {
+                required: validationName,
+                email: validationEmail
+            },
+            phone: {
+                required: validationName
+                // digits: validationPhone
+            },
+            password_new: {
+                required: validationName,
+                minlength: validationPass
+            },
+            password_old: {
+                required: validationName,
+                minlength: validationPass
+            },
+            message: {
+                required: validationName
+            },
+            address: {
+                required: validationName
+            }
+        },
+        invalidHandler: function invalidHandler(e, v) {
+            for (var i = 0; i < v.errorList.length; i++) {
+                v.errorList[i].element.onclick = function () {
+                    this.nextSibling.classList.add('clicked');
+                };
+            };
+            this.onsubmit = function () {
+                for (var j = 0; j < v.errorList.length; j++) {
+                    $(this).find('span.error').removeClass('clicked');
+                }
+            };
+        },
+        submitHandler: function submitHandler(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function success(data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $(form).reset();
+                    alert(data['answer']);
+                },
+                error: function error(result) {
+                    alert('error');
+                }
+            });
+            closeEditing();
+            contact.changeProfile();
+            return false;
+        }
+    });
+    $('.profile__doc__list').mCustomScrollbar();
+    function checkHeight() {
+        var wrapper = document.querySelector('.profile__doc__list');
+        var item = document.querySelector('.profile__doc__list__item');
+        var itemHeight = parseInt(getComputedStyle(item).height);
+        $('.profile__doc__list').mCustomScrollbar("destroy");
+        if ($(window).width() > 1024) {
+            wrapper.style.height = itemHeight * 3 + 'px';
+            $('.profile__doc__list').mCustomScrollbar();
+        } else if ($(window).width() <= 1024 && $(window).width() > 800) {
+            wrapper.style.height = itemHeight * 2 + 'px';
+            $('.profile__doc__list').mCustomScrollbar();
+        } else if ($(window).width() <= 800) {
+            $('.profile__doc__list').mCustomScrollbar();
+            wrapper.style.height = itemHeight * 1 + 'px';
+        }
+    }
+    checkHeight();
+    $(window).on('resize', function () {
+        checkHeight();
+    });
+    $(window).on('orientationchange', function () {
+        checkHeight();
     });
 });

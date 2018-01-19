@@ -44,19 +44,19 @@ var useref = require('gulp-useref'),
 		Developer tasks
 *********************************/
 //svg
-	gulp.task('iconfont', function(){
+gulp.task('iconfont', function(){
 	gulp.src(paths.svgFrom)
 		.pipe(iconfontCss({
-			fontName: 'doc',
+			fontName: 'doc2',
 			//path: paths.svgTo,
 			//targetPath: paths.svgTo,
 			//fontPath: paths.svgTo
 			
 		}))
 		.pipe(iconfont({
-			fontName: 'doc',
+			fontName: 'doc2',
 			normalize: true,
-        	fontHeight: 1001
+			fontHeight: 1001
 		}))
 	.pipe(gulp.dest(paths.svgTo));
 });

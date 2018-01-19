@@ -312,7 +312,7 @@
 	display: inline-block
 	text-decoration: inherit
 	width: 1em
-	margin-right: .2em
+	//margin-right: .2em
 	text-align: center
 .icon-google:before
 	content: '\e800'
@@ -336,8 +336,8 @@
 	src: url('../fonts/doc.woff') format('woff')
 	src: url('../fonts/doc.ttf') format('truetype')
 	//src: url('./doc.svg#doc') format('svg')
-.search_doc .icon:before
-	font-family: "doc"!important
+.search_doc .icon:before,
+.profile_page .icon:before
 	-webkit-font-smoothing: antialiased
 	-moz-osx-font-smoothing: grayscale
 	font-style: normal
@@ -345,11 +345,39 @@
 	font-weight: normal
 	text-decoration: none
 	text-transform: none
-.search_doc .icon-download:before
+.search_doc .icon-download:before,
+.profile_page .icon-download:before
 	content: "\E001"
-.search_doc .icon-eye:before
+	font-family: "doc"
+.search_doc .icon-eye:before,
+.profile_page .icon-eye:before
 	content: "\E002"
-.search_doc .icon-round-arrow:before
+	font-family: "doc"
+.search_doc .icon-round-arrow:before,
+.profile_page .icon-round-arrow:before
 	content: "\E003"
-.search_doc .icon-trolley:before
+	font-family: "doc"
+.search_doc .icon-trolley:before,
+.profile_page .icon-trolley:before
 	content: "\E004"
+	font-family: "doc"
+
+@font-face
+	font-family: "doc2"
+	src: url('../fonts/doc2.eot')
+	src: url('../fonts/doc2.eot?#iefix') format('eot')
+	src: url('../fonts/doc2.woff2') format('woff2')
+	src: url('../fonts/doc2.woff') format('woff')
+	src: url('../fonts/doc2.ttf') format('truetype')
+	//src: url('./doc2.svg#doc2') format('svg')
+.icon2:before
+	font-family: "doc2"
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	font-style: normal
+	font-variant: normal
+	font-weight: normal
+	text-decoration: none
+	text-transform: none
+.icon-round-arrow:before
+	content: "\E001"

@@ -8,6 +8,7 @@
 	<!-- build:css css/combined.css -->
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="libs/slick-carousel/slick/slick.css" />
+	<link rel="stylesheet" href="libs/scroll/jquery.mcustomscrollbar.min.css" />
 	<link rel="stylesheet" href="libs/animate.css/animate.min.css" />
 	<!-- endbuild -->
 </head>
@@ -15,19 +16,154 @@
 	<setion class="profile">
 		<div class="profile__info">
 			<img src="img/edit.png" alt="" class="profile__edit">
-			<span class="profile__quit">Выйти</span>
+			<span class="profile__quit"><a href="reg.html">Выйти</a></span>
 			<div class="profile__info__inner">
 				<img src="img/avatar.jpg" alt="" class="profile__avatar">
 				<h4 class="profile__name">Константинопольский Володимир</h4>
-				<p class="profile__phone">
+				<p class="profile__contact phone">
 					<span><i class="icon icon-phone"></i></span>
-					<a href="tel:+380993547535">+38 (099) 354 75 35</a>
+					<a class="profile__tel" href="tel:+380993547535">+38 (099) 354 75 35</a>
+				</p>
+				<p class="profile__contact email">
+					<span><i class="icon icon-mail"></i></span>
+					<a class="profile__email" href="mailto:konstantinopolsky@gmail.com">konstantinopolsky@gmail.com</a>
 				</p>
 			</div>
-			
+			<div class="profile__editing">
+				<img src="img/avatar.jpg" alt="" class="profile__avatar">
+				<p class="change_photo"><span>Змінити фото</span></p>
+				<form class="editing_form" id="profileForm" action="" method="post">
+					<label class="input_wrapper">
+						<span class="edit_icon"></span>
+						<input type="text" name="name" value></label>
+					<label class="input_wrapper">
+						<span class="edit_icon"></span>
+						<input type="tel" class="phone" name="phone" value placeholder></label>
+					<label class="input_wrapper">
+						<span class="edit_icon"></span>
+						<input type="email" name="email" value></label>
+					<label class="input_wrapper">
+						<span class="edit_password start_edit_password">Змінити <br>пароль</span>
+						<input class="pswd" type="password" disabled name="password_old" value placeholder="Старий пароль *"></label>
+					<label class="input_wrapper">
+						<span class="edit_password end_edit_password">Відмінити <br>зміну</span>
+						<input class="pswd" type="password" name="password_new" value placeholder="Новий пароль *"></label>
+					<button type="submit" class="profile_btn"></button>
+				</form>
+				<div class="quit_editing"></div>
+			</div>
 		</div>
 		<div class="profile__doc">
-			
+			<h3 class="section_title">Мої документи</h3>
+			<div class="profile__doc__list">
+				<div class="profile__doc__list__item">
+					<div class="doc_name">
+						<h4>“Заява про відвід судді”</h4>
+						<div class="doc_path">Адміністративні / Процесуальні документи</div>
+					</div>
+					<div class="doc_info">
+						<!-- <div class="status_wrapper"> -->
+							<div class="doc_info__status">
+								<div class="status status_green">
+									Версія оновлена
+								</div>
+								<div class="date">Сьогодні 17:21</div>
+							</div>
+						<!-- </div> -->
+						<div class="doc_info__action">
+							<div class="doc_info__action__item">
+								<i class="icon icon-eye"></i>
+								<span>Подивитися</span>
+							</div>
+							<div class="doc_info__action__item">
+								<i class="icon icon-download"></i>
+								<span>Завантажити</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="profile__doc__list__item">
+					<div class="doc_name">
+						<h4>“Заява про відвід судді”</h4>
+						<div class="doc_path">Адміністративні / Процесуальні документи</div>
+					</div>
+					<div class="doc_info">
+						<!-- <div class="status_wrapper"> -->
+							<div class="doc_info__status">
+								<div class="status status_red">
+									Версія застаріла
+								</div>
+								<div class="date">Сьогодні 17:21</div>
+							</div>
+						<!-- </div> -->
+						<div class="doc_info__action">
+							<div class="doc_info__action__item">
+								<i class="icon icon-eye"></i>
+								<span>Подивитися</span>
+							</div>
+							<div class="doc_info__action__item">
+								<i class="icon2 icon-round-arrow"></i>
+								<span>Оновити</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="profile__doc__list__item">
+					<div class="doc_name">
+						<h4>“Заява про відвід судді”</h4>
+						<div class="doc_path">Адміністративні / Процесуальні документи</div>
+					</div>
+					<div class="doc_info">
+						<!-- <div class="status_wrapper"> -->
+							<div class="doc_info__status">
+								<div class="status status_gray">
+									Версія актуальна
+								</div>
+								<div class="date">Сьогодні 17:21</div>
+							</div>
+						<!-- </div> -->
+						<div class="doc_info__action">
+							<div class="doc_info__action__item">
+								<i class="icon icon-eye"></i>
+								<span>Подивитися</span>
+							</div>
+							<div class="doc_info__action__item">
+								<i class="icon icon-download"></i>
+								<span>Завантажити</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="profile__doc__list__item">
+					<div class="doc_name">
+						<h4>“Заява про відвід судді”</h4>
+						<div class="doc_path">Адміністративні / Процесуальні документи</div>
+					</div>
+					<div class="doc_info">
+						<!-- <div class="status_wrapper"> -->
+							<div class="doc_info__status">
+								<div class="status status_gray">
+									Версія актуальна
+								</div>
+								<div class="date">Сьогодні 17:21</div>
+							</div>
+						<!-- </div> -->
+						<div class="doc_info__action">
+							<div class="doc_info__action__item">
+								<i class="icon icon-eye"></i>
+								<span>Подивитися</span>
+							</div>
+							<div class="doc_info__action__item">
+								<i class="icon icon-download"></i>
+								<span>Завантажити</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="profile__doc__footer">
+				<a href="index.html">Повернутися до сайту <div class="arrow_right"><img src="img/next.png" alt=""></div></a>
+			</div>
 		</div>
 	</setion>
 	<!--[if lt IE 9]>
@@ -42,7 +178,9 @@
 	<script src="libs/slick-carousel/slick/slick.min.js"></script>
 	<script src="libs/wow/dist/wow.min.js"></script>
 	<script src="libs/jquery-validation/dist/jquery.validate.min.js"></script>
-	<script src="libs/jquery.maskedinput/dist/jquery.maskedinput.min.js"></script>
+	<script src="libs/scroll/jquery.mcustomscrollbar.concat.min.js"></script>
+	<script src="libs/jquery.maskedinput/dist/jquery.maskedinput.js"></script>
+	<!-- <script src="libs/jquery.maskedinput/dist/jquery.mask.js"></script> -->
 	<script src="js/main.js"></script>
 	<!-- endbuild -->
 </body>
