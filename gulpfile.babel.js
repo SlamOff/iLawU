@@ -23,8 +23,7 @@ var useref = require('gulp-useref'),
 	rimraf = require('rimraf'),
 	notify = require('gulp-notify'),
 	imagemin = require('gulp-tinify'),
-	gitignore = require('gulp-gitignore'),
-	fontIcon = require("gulp-font-icon");
+	gitignore = require('gulp-gitignore');
 	var iconfont = require('gulp-iconfont');
 	var iconfontCss = require('gulp-iconfont-css');
 	//ftp = require('vinyl-ftp');
@@ -48,10 +47,6 @@ gulp.task('iconfont', function(){
 	gulp.src(paths.svgFrom)
 		.pipe(iconfontCss({
 			fontName: 'doc2',
-			//path: paths.svgTo,
-			//targetPath: paths.svgTo,
-			//fontPath: paths.svgTo
-			
 		}))
 		.pipe(iconfont({
 			fontName: 'doc2',
@@ -60,14 +55,6 @@ gulp.task('iconfont', function(){
 		}))
 	.pipe(gulp.dest(paths.svgTo));
 });
-// gulp.task("fontIcon", function() {
-// 	return gulp.src(['app/icons/*.svg'])
-// 		.pipe(fontIcon({
-// 			fontName: "doc_font",
-// 			fontAlias: "df"
-// 		}))
-// 		.pipe(gulp.dest("app/font_icons/"));
-// });
 //sass compile
 gulp.task('sass', function() {
 	return gulp.src(paths.sass)
