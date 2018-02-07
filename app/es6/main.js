@@ -418,7 +418,7 @@ $(document).ready(function() {
         });
     };
     //accordion search_page
-    $('.search_page .search_list__item h4').click(function(){
+    $(document).on('click', '.search_page .search_list__item h4', function(){
         var arrow = $(this).find('.arrow');
         $('.search_page .search_list__item h4 .arrow').removeClass('rotated');
         arrow.addClass('rotated');
@@ -1259,7 +1259,7 @@ $(document).ready(function() {
             }
         },
         submitHandler: function(form) {
-            changeProfile(event);
+            editProfile();
             closeEditing();
             contact.changeProfile();
             return false;
@@ -1292,7 +1292,7 @@ $(document).ready(function() {
         checkHeight();
     });
 
-    function changeProfile (event) {
+    function editProfile (event) {
     event.preventDefault();
     $.ajaxSetup({
         headers: {
