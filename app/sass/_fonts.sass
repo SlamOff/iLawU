@@ -88,7 +88,15 @@
 	src: url('../fonts/doc_font.woff2') format('woff2')
 	src: url('../fonts/doc_font.woff') format('woff')
 	src: url('../fonts/doc_font.ttf') format('truetype')
-	//src: url('doc_font.svg#doc_font') format('svg');
+@font-face
+	font-family: "doc3";
+	src: url('../fonts/doc3.eot');
+	src: url('../fonts/doc3.eot?#iefix') format('eot')
+	src: url('../fonts/doc3.woff2') format('woff2')
+	src: url('../fonts/doc3.woff') format('woff')
+	src: url('../fonts/doc3.ttf') format('truetype')
+
+
 // @font-face
 // 	font-family: "doc"
 // 	src: url('../fonts/new.eot?21225162')
@@ -353,10 +361,10 @@
 .profile_page .icon-eye:before
 	content: "\E002"
 	font-family: "doc"
-.search_doc .icon-round-arrow:before,
-.profile_page .icon-round-arrow:before
-	content: "\E003"
-	font-family: "doc"
+// .search_doc .icon-round-arrow:before,
+// .profile_page .icon-round-arrow:before
+// 	content: "\E003"
+// 	font-family: "doc"
 .search_doc .icon-trolley:before,
 .profile_page .icon-trolley:before
 	content: "\E004"
@@ -372,6 +380,15 @@
 	//src: url('./doc2.svg#doc2') format('svg')
 .icon2:before
 	font-family: "doc2"
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	font-style: normal
+	font-variant: normal
+	font-weight: normal
+	text-decoration: none
+	text-transform: none
+.icon-3:before
+	font-family: "doc3"
 	-webkit-font-smoothing: antialiased
 	-moz-osx-font-smoothing: grayscale
 	font-style: normal

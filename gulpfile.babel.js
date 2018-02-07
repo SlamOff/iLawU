@@ -39,17 +39,17 @@ var useref = require('gulp-useref'),
 	};
 	require('babel-register');
 
-	/*********************************
+/*********************************
 		Developer tasks
 *********************************/
 //svg
 gulp.task('iconfont', function(){
 	gulp.src(paths.svgFrom)
 		.pipe(iconfontCss({
-			fontName: 'doc2',
+			fontName: 'doc3',
 		}))
 		.pipe(iconfont({
-			fontName: 'doc2',
+			fontName: 'doc3',
 			normalize: true,
 			fontHeight: 1001
 		}))

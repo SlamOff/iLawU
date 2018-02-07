@@ -293,13 +293,17 @@ input.error, textarea.error
 					filter: invert(1)
 	&.popup_wrapper_buy
 		.popup_window
-			max-width: 700px
+			max-width: 500px
 			padding: 45px 60px
 			//background-image: url('../img/popup_bg_smart.jpg')
-			background-image: url('../img/new_popup.jpg')
+			background-image: url('../img/new_popup_buy.jpg')
 			@media #{$_s}
 				padding: 50px 20px
 				background-image: none
+			h4
+				white-space: nowrap
+				text-overflow: ellipsis
+				overflow: hidden
 			.popup_form
 				.main_btn
 					width: 100%

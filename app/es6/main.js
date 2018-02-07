@@ -208,8 +208,10 @@ $(document).ready(function() {
     });
     var popupWrapperConsult = $('.popup_wrapper_consult'),
         popupWrapperBuy = $('.popup_wrapper_buy'),
+        popupWrapperShow = $('.popup_wrapper_show'),
         popupWrapperFeedback = $('.popup_wrapper_feedback'),
-        popupWrapper = $('.popup_wrapper');
+        popupWrapper = $('.popup_wrapper'),
+        popupPay = $('.popup_wrapper_pay');
     var popupForm = document.getElementsByClassName('popup_form')[0];
 
     $('.popup_service').click(function(e){
@@ -242,12 +244,38 @@ $(document).ready(function() {
 
     $('.popup_buy').click(function(e) {
         e.preventDefault();
+        //$(e.target).parent('.result__item__action').css('color', 'red');
+        
+        var target = e.target;
+        var targetParent = $(target).closest('.result__item__action')[0];
+        var finalTarget = $(targetParent).siblings('h4');
+        var text = finalTarget.text();
+        //console.log(text);
+        //$(e.target)[0].parent('.result__item__action').css('color', 'red');
         popupWrapperBuy.addClass('opened');
-        popupForm.dataset.form = whatForm;
-        var text = $(this).parent().siblings('h4').text();
+        //var text = $(this).parent().siblings('h4').text();
         console.log(text);
         popupWrapperBuy.find('h4').text(text);
-        var whatForm =  this.dataset.form;
+        
+        //offScroll();
+        //$('body').css('overflow', 'hidden');
+        $('body').addClass('no_scroll');
+    });
+    $('.popup_show').click(function(e) {
+        e.preventDefault();
+        //$(e.target).parent('.result__item__action').css('color', 'red');
+        
+        // var target = e.target;
+        // var targetParent = $(target).closest('.result__item__action')[0];
+        // var finalTarget = $(targetParent).siblings('h4');
+        // var text = finalTarget.text();
+        //console.log(text);
+        //$(e.target)[0].parent('.result__item__action').css('color', 'red');
+        popupWrapperShow.addClass('opened');
+        //var text = $(this).parent().siblings('h4').text();
+        console.log(text);
+        //popupWrapperBuy.find('h4').text(text);
+        
         //offScroll();
         //$('body').css('overflow', 'hidden');
         $('body').addClass('no_scroll');
@@ -341,7 +369,6 @@ $(document).ready(function() {
             }, 400);
         }
         else {
-            console.log('else');
             $('html, body').animate({
                 scrollTop: scrollEl.offset().top - prevHeight + 127
             }, 400);
@@ -554,6 +581,53 @@ $(document).ready(function() {
             },
             message: {
                 required: validationName
+            }
+        },
+        invalidHandler: function(e, v){
+            for (var i = 0; i < v.errorList.length; i++){
+                v.errorList[i].element.onclick = function(){
+                    this.nextSibling.classList.add('clicked');
+                }
+            };
+            this.onsubmit = function(){
+                for(var j = 0; j < v.errorList.length; j++){
+                    $(this).find('span.error').removeClass('clicked');
+                }
+            }
+        },
+        submitHandler: function(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                dataType: 'json',
+                success: function (data) {
+                    $('.popup_wrapper').removeClass('opened');
+                    $('body').removeClass('no_scroll');
+                    $('#formPopup1')[0].reset();
+                    alert(data['answer']);
+                },
+                error: function (result) {
+                    alert('error');
+                }
+            });
+            console.log(form);
+            return false; 
+        }
+    });
+    $('#formBuy').validate({
+        errorElement: 'span',
+        focusInvalid: false,
+        rules: {
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            email: {
+                required: validationName,
+                email: validationEmail
             }
         },
         invalidHandler: function(e, v){
@@ -1185,21 +1259,7 @@ $(document).ready(function() {
             }
         },
         submitHandler: function(form) {
-            $.ajax({
-                url: form.action,
-                type: 'POST',
-                data: $(form).serialize(),
-                dataType: 'json',
-                success: function (data) {
-                    $('.popup_wrapper').removeClass('opened');
-                    $('body').removeClass('no_scroll');
-                    $(form).reset();
-                    alert(data['answer']);
-                },
-                error: function (result) {
-                    alert('error');
-                }
-            });
+            changeProfile(event);
             closeEditing();
             contact.changeProfile();
             return false;
@@ -1231,4 +1291,40 @@ $(document).ready(function() {
     $(window).on('orientationchange',function(){
         checkHeight();
     });
+
+    function changeProfile (event) {
+    event.preventDefault();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/home/edit', // путь к php-обработчику
+        type: 'POST', // метод передачи данных
+        dataType: 'json', // тип ожидаемых данных в ответе
+        beforeSend: function () { // Функция вызывается перед отправкой запроса
+            console.debug('Запрос отправлен. Ждите ответа.');
+            // тут можно, к примеру, начинать показ прелоадера, в общем, на ваше усмотрение
+        },
+        error: function (req, text, error) { // отслеживание ошибок во время выполнения ajax-запроса
+            console.error('Упс! Ошибочка: ' + text + ' | ' + error);
+        },
+        complete: function () { // функция вызывается по окончании запроса
+            console.debug('Запрос полностью завершен!');
+            // тут завершаем показ прелоадера, если вы его показывали
+        }
+    });
+
+    var $that = $('.editing_form'),
+        formData = new FormData($that.get(0)); // создаем новый экземпляр объекта и передаем ему нашу форму (*)
+    $.ajax({
+        contentType: false, // важно - убираем форматирование данных по умолчанию
+        processData: false, // важно - убираем преобразование строк по умолчанию
+        data: formData,
+        success: function (json) {
+            if (json) {
+                // тут что-то делаем с полученным результатом
+            }
+        }
+    });
+}
 });

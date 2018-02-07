@@ -1,0 +1,26 @@
+@font-face {
+	font-family: "doc3";
+	src: url('./doc3.eot');
+	src: url('./doc3.eot?#iefix') format('eot'),
+		url('./doc3.woff2') format('woff2'),
+		url('./doc3.woff') format('woff'),
+		url('./doc3.ttf') format('truetype'),
+		url('./doc3.svg#doc3') format('svg');
+}
+
+.icon:before {
+	font-family: "doc3";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	/* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+	text-decoration: none;
+	text-transform: none;
+}
+
+
+.icon-round-arrow:before {
+	content: "\E001";
+}

@@ -132,11 +132,13 @@
 				<h4 class="result__title">“Заява про відвід судді”</h4>
 				<div class="result__item__action">
 					<div class="result__btn watch">
-						<i class="icon icon-eye"></i>
-						<span>Подивитися</span>
+						<a href="" class="popup_show">
+							<i class="icon icon-eye"></i>
+							<span>Подивитися</span>
+						</a>
 					</div>
 					<div class="download">
-						<i class="icon df-download"></i>
+						<i class="icon icon-download"></i>
 						<span>Завантажити</span>
 					</div>
 				</div>
@@ -162,8 +164,10 @@
 						<span>Подивитися</span>
 					</div>
 					<div class="buy">
-						<i class="icon icon-trolley"></i>
-						<span>Купити</span>
+						<a href="" class="popup_buy">
+							<i class="icon icon-trolley"></i>
+							<span>Купити</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -300,6 +304,30 @@
 			</div>
 		</div>
 	</footer>
+
+	<div class="popup_wrapper popup_wrapper_buy">
+		<div class="popup_window">
+			<div class="btn_close"><img src="img/btn_close.png" alt=""></div>
+			<div class="popup_window_content">
+				<h4></h4>
+				<p>Вкажіть e-mail, на який ми надішлемо документ після оплати</p>
+				<form id="formBuy" action="" method="post" class="popup_form">
+						<label class="input_wrapper"><input type="email" name="email" placeholder="E-mail"></label>
+					<div class="clearfix"></div>
+					<button type="submit" class="main_btn blue_btn">Перейти до оплати</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="popup_wrapper popup_wrapper_show">
+		<div class="popup_window">
+			<div class="btn_close"><img src="img/btn_close.png" alt=""></div>
+			<div class="popup_window_content">
+				123
+			</div>
+		</div>
+	</div>
 	<!--[if lt IE 9]>
 	<script src="libs/html5shiv/dist/es5-shim.min.js"></script>
 	<script src="libs/html5shiv/dist/html5shiv.min.js"></script>
