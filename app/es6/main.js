@@ -1077,7 +1077,6 @@ $(document).ready(function() {
                     alert('error');
                 }
             });
-            console.log(form);
             return false; 
         }
     });
@@ -1293,38 +1292,41 @@ $(document).ready(function() {
     });
 
     function editProfile (event) {
-    event.preventDefault();
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url: '/home/edit', // путь к php-обработчику
-        type: 'POST', // метод передачи данных
-        dataType: 'json', // тип ожидаемых данных в ответе
-        beforeSend: function () { // Функция вызывается перед отправкой запроса
-            console.debug('Запрос отправлен. Ждите ответа.');
-            // тут можно, к примеру, начинать показ прелоадера, в общем, на ваше усмотрение
-        },
-        error: function (req, text, error) { // отслеживание ошибок во время выполнения ajax-запроса
-            console.error('Упс! Ошибочка: ' + text + ' | ' + error);
-        },
-        complete: function () { // функция вызывается по окончании запроса
-            console.debug('Запрос полностью завершен!');
-            // тут завершаем показ прелоадера, если вы его показывали
-        }
-    });
-
-    var $that = $('.editing_form'),
-        formData = new FormData($that.get(0)); // создаем новый экземпляр объекта и передаем ему нашу форму (*)
-    $.ajax({
-        contentType: false, // важно - убираем форматирование данных по умолчанию
-        processData: false, // важно - убираем преобразование строк по умолчанию
-        data: formData,
-        success: function (json) {
-            if (json) {
-                // тут что-то делаем с полученным результатом
+        console.log('before');
+        event.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/home/edit', // путь к php-обработчику
+            type: 'POST', // метод передачи данных
+            dataType: 'json', // тип ожидаемых данных в ответе
+            beforeSend: function () { // Функция вызывается перед отправкой запроса
+                console.debug('Запрос отправлен. Ждите ответа.');
+                // тут можно, к примеру, начинать показ прелоадера, в общем, на ваше усмотрение
+            },
+            error: function (req, text, error) { // отслеживание ошибок во время выполнения ajax-запроса
+                console.error('Упс! Ошибочка: ' + text + ' | ' + error);
+            },
+            complete: function () { // функция вызывается по окончании запроса
+                console.debug('Запрос полностью завершен!');
+                console.log('ajax');
+                // тут завершаем показ прелоадера, если вы его показывали
             }
-        }
-    });
-}
+        });
+
+        var $that = $('.editing_form'),
+            formData = new FormData($that.get(0)); // создаем новый экземпляр объекта и передаем ему нашу форму (*)
+        $.ajax({
+            contentType: false, // важно - убираем форматирование данных по умолчанию
+            processData: false, // важно - убираем преобразование строк по умолчанию
+            data: formData,
+            success: function (json) {
+                if (json) {
+                    // тут что-то делаем с полученным результатом
+                }
+            }
+        });
+        console.log('after');
+    }
 });

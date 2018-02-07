@@ -1055,7 +1055,6 @@ $(document).ready(function () {
                     alert('error');
                 }
             });
-            console.log(form);
             return false;
         }
     });
@@ -1268,6 +1267,7 @@ $(document).ready(function () {
     });
 
     function editProfile(event) {
+        console.log('before');
         event.preventDefault();
         $.ajaxSetup({
             headers: {
@@ -1288,6 +1288,7 @@ $(document).ready(function () {
             complete: function complete() {
                 // функция вызывается по окончании запроса
                 console.debug('Запрос полностью завершен!');
+                console.log('ajax');
                 // тут завершаем показ прелоадера, если вы его показывали
             }
         });
@@ -1304,5 +1305,6 @@ $(document).ready(function () {
                 }
             }
         });
+        console.log('after');
     }
 });
