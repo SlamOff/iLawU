@@ -9,8 +9,92 @@ $(window).on('load', function () {
         $('html, body').animate({ scrollTop: $(elem).offset().top }, 700);
     }
 });
-
+//var flag = true;
 $(document).ready(function () {
+    var locationURL = document.documentElement.getAttribute('lang');
+    if (locationURL == "ua") {
+        var validationName = "Обов'язково для заповнення";
+        var validationPass = 'Мінімум 6 символів';
+        var validationRepass = 'Паролі не співпадають';
+        var validationNameMax = "Від 2 до 64 літер";
+        var validationPhone = "Невірний формат номеру";
+        var validationEmail = "Введите вірний E-mail";
+    } else {
+        var validationName = "Обязательно для заполнения";
+        var validationNameMax = "От 2 до 64 букв";
+        var validationPass = 'Минимум 6 символов';
+        var validationRepass = 'Пароли не совпадают';
+        var validationPhone = "Неправильный формат номера";
+        var validationEmail = "Введите корректный E-mail";
+    }
+
+    $('#search_doc').on('submit', function (e) {
+        e.preventDefault();
+        var data = $('#search_doc').serialize();
+        $.ajax({
+            url: $('#search_doc').attr('action'),
+            type: 'get',
+            data: data,
+            dataType: 'json',
+            success: function success(data) {
+                $('.subcat').hide();
+                $('.result').html(data['result']);
+                $('.result').show();
+            },
+            error: function error(data) {
+                console.log(data);
+            }
+        });
+    });
+    if ($('body').hasClass('blog_page')) {
+        $('.blog_page .tags h6').on('click', function (e) {
+            var arrow = $(this).find('.arrow');
+            var list = $('.tags__list');
+            arrow.toggleClass('rotated');
+            if (arrow.hasClass('rotated')) {
+                list.slideDown('fast');
+            } else {
+                list.slideUp('fast');
+            }
+        });
+
+        $('.blog_page .tags__list span').on('click', function (e) {
+            if ($(e.target).hasClass('close')) {
+                $(this).removeClass('choosed');
+            } else {
+                $(this).addClass('choosed');
+            }
+        });
+    }
+
+    $(document).on('click', '.popup_buy', function (e) {
+
+        e.preventDefault();
+        var token = $('meta[name=_token]').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var popupWrapperBuy = $('.popup_wrapper_buy');
+
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'post',
+            data: { _token: token },
+            success: function success(data) {
+                popupWrapperBuy.find('.popup_window_content').html(data);
+                popupWrapperBuy.addClass('opened');
+                validateEmail();
+            },
+            error: function error(data) {
+                console.log(data);
+            }
+        });
+        ////////////////
+
+        //////////////////
+    });
     new WOW().init();
     //placeholder
     $("input, textarea").focus(function () {
@@ -19,6 +103,9 @@ $(document).ready(function () {
         $(this).attr("placeholder", $(this).data("placeholder"));
     });
 
+    $(document).on('click', '.search_doc .search_list__pagination .pagination li', function () {
+        $('html, body').animate({ scrollTop: $('.result').offset().top }, 700);
+    });
     // search opacity
     $('input[type="search"]').focus(function () {
         this.style.borderBottom = '1px solid rgba(255,255,255,1)';
@@ -51,7 +138,7 @@ $(document).ready(function () {
         }
         return false;
     });
-    $(document).on('click', '.subcat__content__item', function () {
+    $('.subcat__content__item').click(function () {
         $('.subcat__content__item').removeClass('active');
         $(this).addClass('active');
     });
@@ -144,6 +231,7 @@ $(document).ready(function () {
     var views = document.querySelectorAll('.viewed .viewed__item');
     views.length != 0 ? $('.viewed').show() : $('.viewed').hide();
     $('.cat__item').click(function () {
+        $('.space').css('background-color', '#f8f8f8');
         $('.subcat').slideDown();
         $('.result').slideDown();
     });
@@ -165,6 +253,11 @@ $(document).ready(function () {
         } else {
             inputWrap.removeClass('shown');
         }
+    });
+    $(document).on('click', '.main__text', function () {
+        var inputWrap = $('.main__edit_search');
+        var input = inputWrap.find('input[type="search"]');
+        input.val('');
     });
     // search filter
     $('.search_filter__content__item').click(function () {
@@ -199,7 +292,8 @@ $(document).ready(function () {
         popupWrapperShow = $('.popup_wrapper_show'),
         popupWrapperFeedback = $('.popup_wrapper_feedback'),
         popupWrapper = $('.popup_wrapper'),
-        popupPay = $('.popup_wrapper_pay');
+        popupPay = $('.popup_wrapper_pay'),
+        popupStatus = $('.popup_wrapper_status');
     var popupForm = document.getElementsByClassName('popup_form')[0];
 
     $('.popup_service').click(function (e) {
@@ -240,7 +334,6 @@ $(document).ready(function () {
         //$(e.target)[0].parent('.result__item__action').css('color', 'red');
         popupWrapperBuy.addClass('opened');
         //var text = $(this).parent().siblings('h4').text();
-        console.log(text);
         popupWrapperBuy.find('h4').text(text);
 
         //offScroll();
@@ -259,7 +352,6 @@ $(document).ready(function () {
         //$(e.target)[0].parent('.result__item__action').css('color', 'red');
         popupWrapperShow.addClass('opened');
         //var text = $(this).parent().siblings('h4').text();
-        console.log(text);
         //popupWrapperBuy.find('h4').text(text);
 
         //offScroll();
@@ -273,6 +365,9 @@ $(document).ready(function () {
         $('body').removeClass('no_scroll');
         //$('body').css('overflow', 'visible');
     });
+    $('.popup_wrapper_buy .btn_close').click(function () {
+        flag_recheck = false;
+    });
     popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
@@ -285,7 +380,7 @@ $(document).ready(function () {
     var checkBox = $('.reg').find('#checkbox input');
     $('body').find('#checkbox').click(function () {
         if (checkBox.is(':checked')) {
-            $(this).find('.mask').css('background-image', 'url(img/tick.png)');
+            $(this).find('.mask').css('background-image', 'url(/img/tick.png)');
         } else {
             $(this).find('.mask').css('background-image', 'none');
         }
@@ -332,7 +427,7 @@ $(document).ready(function () {
 
         var heightEl = parseInt(getComputedStyle(this.parentElement).height);
         var arrow = $(this).find('.arrow');
-        $('.service_add__content__item h4 .arrow').addClass('rotated');
+        $('.service_add__content__item h4 .arrow').removeClass('rotated');
         arrow.addClass('rotated');
         $('.service_add__content__item .hidden_text').slideUp();
         if ($(this).siblings('.hidden_text').is(':hidden')) {
@@ -346,7 +441,6 @@ $(document).ready(function () {
         }
         var scrollEl = $(this).parent();
         if (prevHeight < 128 || prevHeight == null) {
-            console.log('if');
             $('html, body').animate({
                 scrollTop: scrollEl.offset().top
             }, 400);
@@ -355,21 +449,6 @@ $(document).ready(function () {
                 scrollTop: scrollEl.offset().top - prevHeight + 127
             }, 400);
         }
-        // window.onscroll = function(){
-        //     if (scrolled > 1 && $(window).width() > 768 && moveTop == false){
-        //         $(header).addClass('main__nav--scrolled');
-        //         $('.nav_rolled').removeClass('rolled');
-        //         $('.sandwich').removeClass('active');
-        //     }
-        //     else if(scrolled <= 1 && $(window).width() > 768 || moveTop == true) {
-        //         $(header).removeClass('main__nav--scrolled');
-        //     }
-        //     $('.service_add__content__item h4').click(function(){
-        //         $(header).addClass('main__nav--scrolled');
-        //         $('.nav_rolled').removeClass('rolled');
-        //         $('.sandwich').removeClass('active');
-        //     });
-        // };
     });
 
     // header scroll
@@ -426,25 +505,14 @@ $(document).ready(function () {
         $(this).parent().fadeOut();
         $('body').removeClass('no_scroll');
     });
-    var locationURL = document.documentElement.getAttribute('lang');
-    if (locationURL == "ua") {
-        var validationName = "Обов'язково для заповнення";
-        var validationPass = 'Мінімум 6 символів';
-        var validationRepass = 'Паролі не співпадають';
-        var validationNameMax = "Від 2 до 16 літер";
-        var validationPhone = "Невірний формат номеру";
-        var validationEmail = "Введите вірний E-mail";
-    } else {
-        var validationName = "Обязательно для заполнения";
-        var validationNameMax = "От 2 до 16 букв";
-        var validationPass = 'Минимум 6 символов';
-        var validationRepass = 'Пароли не совпадают';
-        var validationPhone = "Неправильный формат номера";
-        var validationEmail = "Введите корректный E-mail";
-    }
+
     $('.service .main_btn').click(function () {
         var action = $(this).attr('href');
         $('form#formPopup1').attr('action', action);
+    });
+    $('.service .main_btn').click(function () {
+        var action = $(this).attr('href');
+        $('form#formPopup3').attr('action', action);
     });
     $('.service_add .main_btn').click(function () {
         var action = $(this).attr('href');
@@ -457,7 +525,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -502,26 +570,49 @@ $(document).ready(function () {
             };
         },
         submitHandler: function submitHandler(form) {
+            $(form).closest('.popup_wrapper').removeClass('opened');
+            popupStatus.addClass('opened');
             $.ajax({
                 url: form.action,
                 type: 'POST',
                 data: $(form).serialize(),
                 dataType: 'json',
                 success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
+                    // $('.popup_wrapper').removeClass('opened');
+
+
+                    form.reset();
+
                     $('body').removeClass('no_scroll');
-                    $('#contactForm')[0].reset();
-                    alert(data['answer']);
+                    //alert(data['answer']);
+                    //popupStatus.find('h4').text(data['title']);
+                    //popupStatus.find('p').text(data['answer']);
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 },
                 error: function error(result) {
-                    alert('error');
+                    popupStatus.find('p').text('Ошибочка');
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 }
             });
-            console.log(form);
             return false;
         }
     });
-
+    $('input').each(function (e, el) {
+        $(el).on('focusout', function () {
+            var self = this;
+            setTimeout(function () {
+                if ($(self).siblings().length > 0) {
+                    $(self).siblings('span').click(function () {
+                        $(this).addClass('clicked');
+                    });
+                }
+            }, 10);
+        });
+    });
     $('#formPopup1').validate({
         errorElement: 'span',
         focusInvalid: false,
@@ -529,7 +620,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -574,72 +665,110 @@ $(document).ready(function () {
             };
         },
         submitHandler: function submitHandler(form) {
+            popupStatus.addClass('opened');
             $.ajax({
                 url: form.action,
                 type: 'POST',
                 data: $(form).serialize(),
                 dataType: 'json',
                 success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
+                    form.reset();
+                    $(form).closest('.popup_wrapper').removeClass('opened');
+                    // $('.popup_wrapper').removeClass('opened');
                     $('body').removeClass('no_scroll');
-                    $('#formPopup1')[0].reset();
-                    alert(data['answer']);
+                    //popupStatus.find('h4').text(data['title']);
+                    // popupStatus.find('p').text(data['answer']);
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 },
                 error: function error(result) {
-                    alert('error');
+                    form.reset();
+                    $(form).closest('.popup_wrapper').removeClass('opened');
+                    popupStatus.find('p').text('Ошибочка');
+                    $('body').removeClass('no_scroll');
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 }
             });
-            console.log(form);
             return false;
         }
     });
-    $('#formBuy').validate({
-        errorElement: 'span',
-        focusInvalid: false,
-        rules: {
-            email: {
-                required: true,
-                email: true
-            }
-        },
-        messages: {
-            email: {
-                required: validationName,
-                email: validationEmail
-            }
-        },
-        invalidHandler: function invalidHandler(e, v) {
-            for (var i = 0; i < v.errorList.length; i++) {
-                v.errorList[i].element.onclick = function () {
-                    this.nextSibling.classList.add('clicked');
+    function validateEmail() {
+        $('#formBuy').validate({
+            errorElement: 'span',
+            focusInvalid: false,
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                email: {
+                    required: validationName,
+                    email: validationEmail
+                }
+            },
+            invalidHandler: function invalidHandler(e, v) {
+                for (var i = 0; i < v.errorList.length; i++) {
+                    v.errorList[i].element.onclick = function () {
+                        this.nextSibling.classList.add('clicked');
+                    };
                 };
-            };
-            this.onsubmit = function () {
-                for (var j = 0; j < v.errorList.length; j++) {
-                    $(this).find('span.error').removeClass('clicked');
-                }
-            };
-        },
-        submitHandler: function submitHandler(form) {
-            $.ajax({
-                url: form.action,
-                type: 'POST',
-                data: $(form).serialize(),
-                dataType: 'json',
-                success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
-                    $('body').removeClass('no_scroll');
-                    $('#formPopup1')[0].reset();
-                    alert(data['answer']);
-                },
-                error: function error(result) {
-                    alert('error');
-                }
-            });
-            console.log(form);
-            return false;
-        }
-    });
+                this.onsubmit = function () {
+                    for (var j = 0; j < v.errorList.length; j++) {
+                        $(this).find('span.error').removeClass('clicked');
+                    }
+                };
+            },
+            submitHandler: function submitHandler(form, e) {
+                // console.log('сработал сабмит');
+                // $.ajax({
+                //     url: form.action,
+                //     type: 'POST',
+                //     data: $(form).serialize(),
+                //     dataType: 'json',
+                //     success: function (data) {
+                //         form.reset();
+                //         $(form).closest('.popup_wrapper').removeClass('opened');
+                //         // $('.popup_wrapper').removeClass('opened');
+                //         $('body').removeClass('no_scroll');
+                //         //popupStatus.addClass('opened');
+                //         alert(data['answer']);
+                //     },
+                //     error: function (result) {
+                //         alert('error');
+                //     }
+                // });
+                // return false;
+                e.preventDefault();
+                var token = $('meta[name=_token]').attr('content');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: $(form).attr('action'),
+                    type: 'post',
+                    data: { document_id: $(form).find('input[name=document_id]').val(), email: $(form).find('input[name=email]').val(), _token: token },
+                    dataType: 'json',
+                    success: function success(data) {
+                        $('.popup_window_content').html(data['result']);
+                        flag_recheck = true; //Ставить в false при закрытии окана
+                        checkRegistration(true);
+                    },
+                    error: function error(data) {
+                        console.log(data);
+                    }
+
+                });
+            }
+        });
+    };
+
     $('#regForm').validate({
         errorElement: 'span',
         focusInvalid: false,
@@ -647,13 +776,13 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             password: {
                 required: true,
                 minlength: 6
             },
-            repassword: {
+            password_confirmation: {
                 required: true,
                 equalTo: "#password"
             },
@@ -679,9 +808,55 @@ $(document).ready(function () {
                 required: validationName,
                 minlength: validationPass
             },
-            repassword: {
+            password_confirmation: {
                 required: validationName,
                 equalTo: validationRepass
+            }
+        },
+        invalidHandler: function invalidHandler(e, v) {
+            //console.log($(v.currentForm).find('.checkbox'));
+            var checkbox = $(v.currentForm).find('.checkbox');
+            setTimeout(function () {
+
+                if (checkbox.hasClass('error')) {
+                    checkbox.siblings('.mask').css('border', '1px solid red');
+                };
+            }, 100);
+
+            for (var i = 0; i < v.errorList.length; i++) {
+                v.errorList[i].element.onclick = function () {
+                    this.nextSibling.classList.add('clicked');
+                };
+            };
+            this.onsubmit = function () {
+                for (var j = 0; j < v.errorList.length; j++) {
+                    $(this).find('span.error').removeClass('clicked');
+                }
+            };
+        }
+    });
+
+    $('#loginForm').validate({
+        errorElement: 'span',
+        focusInvalid: false,
+        rules: {
+            password: {
+                required: true,
+                minlength: 6
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            password: {
+                required: validationName,
+                minlength: validationPass
+            },
+            email: {
+                required: validationName,
+                email: validationEmail
             }
         },
         invalidHandler: function invalidHandler(e, v) {
@@ -695,26 +870,11 @@ $(document).ready(function () {
                     $(this).find('span.error').removeClass('clicked');
                 }
             };
-        },
-        submitHandler: function submitHandler(form) {
-            $.ajax({
-                url: form.action,
-                type: 'POST',
-                data: $(form).serialize(),
-                dataType: 'json',
-                success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
-                    $('body').removeClass('no_scroll');
-                    $('#formPopup1')[0].reset();
-                    alert(data['answer']);
-                },
-                error: function error(result) {
-                    alert('error');
-                }
-            });
-            console.log(form);
-            return false;
         }
+    });
+
+    $(document).on('click', 'span.mask', function () {
+        this.style.border = '';
     });
     $('#formPopup2').validate({
         errorElement: 'span',
@@ -723,7 +883,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -775,7 +935,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -820,22 +980,37 @@ $(document).ready(function () {
             };
         },
         submitHandler: function submitHandler(form) {
+            $(form).closest('.popup_wrapper').removeClass('opened');
+            popupStatus.addClass('opened');
             $.ajax({
                 url: form.action,
                 type: 'POST',
                 data: $(form).serialize(),
                 dataType: 'json',
                 success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
+                    form.reset();
+
+                    console.log($(form).closest('.popup_wrapper'));
+                    // $('.popup_wrapper').removeClass('opened');
                     $('body').removeClass('no_scroll');
-                    $('#formPopup3')[0].reset();
-                    alert(data['answer']);
+                    //popupStatus.find('h4').text(data['title']);
+                    //popupStatus.find('p').text(data['answer']);
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 },
                 error: function error(result) {
-                    alert('error');
+                    // form.reset();
+                    form.reset();
+                    console.log($(form).closest('.popup_wrapper'));
+                    $('body').removeClass('no_scroll');
+                    $(form).closest('.popup_wrapper').removeClass('opened');
+                    popupStatus.find('p').text('Ошибочка');
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 }
             });
-            console.log(form);
             return false;
         }
     });
@@ -847,7 +1022,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -892,22 +1067,34 @@ $(document).ready(function () {
             };
         },
         submitHandler: function submitHandler(form) {
+            popupStatus.addClass('opened');
             $.ajax({
                 url: form.action,
                 type: 'POST',
                 data: $(form).serialize(),
                 dataType: 'json',
                 success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
+                    form.reset();
+                    $(form).closest('.popup_wrapper').removeClass('opened');
+                    //$('.popup_wrapper').removeClass('opened');
                     $('body').removeClass('no_scroll');
-                    $('#contactFormPage')[0].reset();
-                    alert(data['answer']);
+                    // console.log(form);
+                    // $(form).reset();
+                    popupStatus.addClass('opened');
+                    //popupStatus.find('h4').text(data['title']);
+                    // popupStatus.find('p').text(data['answer']);
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 },
                 error: function error(result) {
-                    alert('error');
+
+                    popupStatus.find('p').text('Ошибочка');
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 }
             });
-            console.log(form);
             return false;
         }
     });
@@ -918,7 +1105,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -963,22 +1150,32 @@ $(document).ready(function () {
             };
         },
         submitHandler: function submitHandler(form) {
+            popupStatus.addClass('opened');
             $.ajax({
                 url: form.action,
                 type: 'POST',
                 data: $(form).serialize(),
                 dataType: 'json',
                 success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
+                    form.reset();
+                    $(form).closest('.popup_wrapper').removeClass('opened');
+                    // $('.popup_wrapper').removeClass('opened');
                     $('body').removeClass('no_scroll');
-                    $('#callForm')[0].reset();
-                    alert(data['answer']);
+
+                    //popupStatus.addClass('opened');
+                    //popupStatus.find('h4').text(data['title']);
+                    // popupStatus.find('p').text(data['answer']);
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 },
                 error: function error(result) {
-                    alert('error');
+                    popupStatus.find('p').text('Ошибочка');
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 }
             });
-            console.log(form);
             return false;
         }
     });
@@ -989,7 +1186,7 @@ $(document).ready(function () {
             name: {
                 required: true,
                 minlength: 2,
-                maxlength: 16
+                maxlength: 64
             },
             phone: {
                 required: true
@@ -1040,19 +1237,29 @@ $(document).ready(function () {
             };
         },
         submitHandler: function submitHandler(form) {
+            popupStatus.addClass('opened');
             $.ajax({
                 url: form.action,
                 type: 'POST',
                 data: $(form).serialize(),
                 dataType: 'json',
                 success: function success(data) {
-                    $('.popup_wrapper').removeClass('opened');
+                    form.reset();
+                    $(form).closest('.popup_wrapper').removeClass('opened');
+                    // $('.popup_wrapper').removeClass('opened');
                     $('body').removeClass('no_scroll');
-                    $('#orderForm')[0].reset();
-                    alert(data['answer']);
+                    // popupStatus.addClass('opened');
+                    //popupStatus.find('h4').text(data['title']);
+                    //  popupStatus.find('p').text(data['answer']);
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 },
                 error: function error(result) {
-                    alert('error');
+                    popupStatus.find('p').text('Ошибочка');
+                    setTimeout(function () {
+                        popupStatus.removeClass('opened');
+                    }, 5000);
                 }
             });
             return false;
@@ -1060,15 +1267,18 @@ $(document).ready(function () {
     });
     $('.popup_window .btn_close').click(function () {
         popupWrapper.removeClass('opened');
-        $(this).siblings().find('.popup_form').validate().resetForm();
+        $(this).siblings('.popup_window_content').find('form').validate().resetForm();
+        $(this).siblings('.popup_window_content').find('form').find('input').val('');
+        $(this).siblings('.popup_window_content').find('form').find('textarea').val('');
+        console.log('res');
     });
     popupWrapper.click(function (e) {
         if (e.target == this) {
             this.classList.remove('opened');
-            $(this).siblings().find('.popup_form').validate().resetForm();
+            //$(this).siblings().find('.popup_form').validate().resetForm();
         }
     });
-    $('#load').click(function (event) {
+    $('.social_page #load').click(function (event) {
         var action = $(event.target).attr('name');
         event.preventDefault();
         $.ajax({
@@ -1077,6 +1287,25 @@ $(document).ready(function () {
             dataType: 'json',
             success: function success(data) {
                 $('.social__content').append(data['html']);
+                $('#load').attr('name', data['href']);
+                if (!data['flag']) {
+                    $('#load').hide();
+                }
+            },
+            error: function error(result) {
+                alert('error');
+            }
+        });
+    });
+    $('.blog_page #load').click(function (event) {
+        var action = $(event.target).attr('name');
+        event.preventDefault();
+        $.ajax({
+            url: action,
+            type: 'GET',
+            dataType: 'json',
+            success: function success(data) {
+                $('.blog_page .container').append(data['html']);
                 $('#load').attr('name', data['href']);
                 if (!data['flag']) {
                     $('#load').hide();
@@ -1115,8 +1344,13 @@ $(document).ready(function () {
         },
         changeProfile: function changeProfile() {
             for (var prop in this.data) {
-                this.data[prop].text(this.input[prop].val() + '');
-            }
+                if (this.input[prop].val() !== undefined && this.input[prop].val() !== '' && this.input[prop].val() !== null) {
+                    this.data[prop].text(this.input[prop].val() + '');
+                }
+            };
+            var pict = $('#img');
+            var pictUrl = pict.attr('src');
+            $('#img_old').attr('src', pictUrl);
         }
     };
     // editing profile
@@ -1162,7 +1396,33 @@ $(document).ready(function () {
     // Object.defineProperty(contact, "focus", {
     //     enumerable: false
     // });
-
+    $.validator.addMethod('old_password_check', function (value, element) {
+        var r;
+        var token = $('meta[name=_token]').attr('content');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/checkPassword',
+            type: 'POST',
+            data: { password: value, _token: token },
+            dataType: 'json',
+            success: function success(data) {
+                if (data['answer']) {
+                    r = true;
+                } else {
+                    r = false;
+                }
+            },
+            error: function error(data) {
+                console.log(data);
+            }
+        });
+        console.log('r = ' + r);
+        return r;
+    });
     $('#profileForm').validate({
         errorElement: 'span',
         focusInvalid: false,
@@ -1186,6 +1446,7 @@ $(document).ready(function () {
             password_old: {
                 required: true,
                 minlength: 6
+                //old_password_check: true
             },
             message: {
                 //required: true
@@ -1214,6 +1475,7 @@ $(document).ready(function () {
             password_old: {
                 required: validationName,
                 minlength: validationPass
+                //old_password_check: 'lol'
             },
             message: {
                 required: validationName
@@ -1234,21 +1496,79 @@ $(document).ready(function () {
                 }
             };
         },
-        submitHandler: function submitHandler(form) {
-            editProfile();
-            closeEditing();
-            contact.changeProfile();
+        submitHandler: function submitHandler(form, event) {
+
+            event.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/home/edit', // путь к php-обработчику
+                type: 'POST', // метод передачи данных
+                //dataType: 'json', // тип ожидаемых данных в ответе
+                beforeSend: function beforeSend() {
+                    // Функция вызывается перед отправкой запроса
+                    console.log('Запрос отправлен. Ждите ответа.');
+                    // тут можно, к примеру, начинать показ прелоадера, в общем, на ваше усмотрение
+                },
+                error: function error(req, text, _error) {
+                    // отслеживание ошибок во время выполнения ajax-запроса
+                    console.log('Упс! Ошибочка: ' + text + ' | ' + _error);
+                },
+                complete: function complete() {
+                    // функция вызывается по окончании запроса
+                    console.debug('Запрос полностью завершен!');
+                    // тут завершаем показ прелоадера, если вы его показывали
+                }
+            });
+
+            var $that = $('.editing_form'),
+                formData = new FormData($that.get(0)); // создаем новый экземпляр объекта и передаем ему нашу форму (*)
+            $.ajax({
+                contentType: false, // важно - убираем форматирование данных по умолчанию
+                processData: false, // важно - убираем преобразование строк по умолчанию
+                data: formData,
+                dataType: 'json',
+                success: function success(json) {
+                    //json = JSON.parse(json);
+                    if (json['answer'] == 'incorrect_password') {
+                        $('.alert_error').css({
+                            'display': 'flex',
+                            'alignItems': 'center',
+                            'justifyContent': 'center'
+                        });
+                    } else if (json['answer'] == 'email_exists') {
+                        $('.email_error').css({
+                            'display': 'flex',
+                            'alignItems': 'center',
+                            'justifyContent': 'center'
+                        });
+                    } else {
+                        $('.alert_error').hide();
+                        $('.email_error').hide();
+                        closeEditing();
+                        contact.changeProfile();
+                    }
+                }
+            });
+
             return false;
         }
     });
+
     $('.profile__doc__list').mCustomScrollbar();
     function checkHeight() {
         var wrapper = document.querySelector('.profile__doc__list');
         var item = document.querySelector('.profile__doc__list__item');
         var itemHeight = parseInt(getComputedStyle(item).height);
+
         $('.profile__doc__list').mCustomScrollbar("destroy");
         if ($(window).width() > 1024) {
-            wrapper.style.height = itemHeight * 3 + 'px';
+            wrapper.style.height = itemHeight * 5 + 'px';
+            $('.profile__doc__list').mCustomScrollbar();
+        }
+        if ($(window).width() > 1024 && $(window).height() < 800) {
+            wrapper.style.height = itemHeight * 4 + 'px';
             $('.profile__doc__list').mCustomScrollbar();
         } else if ($(window).width() <= 1024 && $(window).width() > 800) {
             wrapper.style.height = itemHeight * 2 + 'px';
@@ -1258,53 +1578,13 @@ $(document).ready(function () {
             wrapper.style.height = itemHeight * 1 + 'px';
         }
     }
-    checkHeight();
-    $(window).on('resize', function () {
+    if ($('body').hasClass('profile_page')) {
         checkHeight();
-    });
-    $(window).on('orientationchange', function () {
-        checkHeight();
-    });
-
-    function editProfile(event) {
-        console.log('before');
-        event.preventDefault();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '/home/edit', // путь к php-обработчику
-            type: 'POST', // метод передачи данных
-            dataType: 'json', // тип ожидаемых данных в ответе
-            beforeSend: function beforeSend() {
-                // Функция вызывается перед отправкой запроса
-                console.debug('Запрос отправлен. Ждите ответа.');
-                // тут можно, к примеру, начинать показ прелоадера, в общем, на ваше усмотрение
-            },
-            error: function error(req, text, _error) {
-                // отслеживание ошибок во время выполнения ajax-запроса
-                console.error('Упс! Ошибочка: ' + text + ' | ' + _error);
-            },
-            complete: function complete() {
-                // функция вызывается по окончании запроса
-                console.debug('Запрос полностью завершен!');
-                console.log('ajax');
-                // тут завершаем показ прелоадера, если вы его показывали
-            }
+        $(window).on('resize', function () {
+            checkHeight();
         });
-
-        var $that = $('.editing_form'),
-            formData = new FormData($that.get(0)); // создаем новый экземпляр объекта и передаем ему нашу форму (*)
-        $.ajax({
-            contentType: false, // важно - убираем форматирование данных по умолчанию
-            processData: false, // важно - убираем преобразование строк по умолчанию
-            data: formData,
-            success: function success(json) {
-                if (json) {
-                    // тут что-то делаем с полученным результатом
-                }
-            }
+        $(window).on('orientationchange', function () {
+            checkHeight();
         });
-        console.log('after');
     }
 });

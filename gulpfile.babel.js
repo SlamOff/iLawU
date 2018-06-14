@@ -46,10 +46,10 @@ var useref = require('gulp-useref'),
 gulp.task('iconfont', function(){
 	gulp.src(paths.svgFrom)
 		.pipe(iconfontCss({
-			fontName: 'doc3',
+			fontName: 'mf',
 		}))
 		.pipe(iconfont({
-			fontName: 'doc3',
+			fontName: 'mf',
 			normalize: true,
 			fontHeight: 1001
 		}))
@@ -196,7 +196,9 @@ gulp.task('fonticon', (done) => {
 
 gulp.task('default', ['browser-sync', 'watch', 'es6', 'sass', 'scripts']);
 
-gulp.task('prod', ['build', 'imgBuild', 'fontsBuild']);
+gulp.task('prod', ['build']);
+
+//gulp.task('prod', ['build', 'imgBuild', 'fontsBuild']);
 
 //gulp.task('final');
 // git push

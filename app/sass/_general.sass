@@ -13,6 +13,10 @@ $lg: "(min-width: 1224px)"
 $_lg: "(max-width: 1224px)"
 $_xlg: "(max-width: 1700px)"
 $xlg: "(min-width: 1700px)"
+input, textarea
+	line-height: 52px
+	@media #{$_sm}
+		font-size: 16px
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
@@ -20,49 +24,57 @@ input[type="search"]::-webkit-search-results-decoration
 	display: none
 input[type=text]::-ms-clear
 	display: none
-	width : 0
+	width: 0
 	height: 0
 input[type=text]::-ms-reveal
 	display: none
-	width : 0
+	width: 0
 	height: 0
 	display: none
 input::-webkit-input-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 input::-moz-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 input:-ms-input-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 input:-moz-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 textarea::-webkit-input-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 textarea::-moz-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 textarea:-ms-input-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
 	font-family: "OpenSans", sans-serif
 textarea:-moz-placeholder
+	line-height: normal
 	font-size: 14px
 	color: #939393
 	font-weight: 600
@@ -186,7 +198,7 @@ input.error, textarea.error
 				@media #{$_s}
 					margin: 20px auto
 		p
-			font-weight: 300
+			font-weight: normal
 			color: #333
 			font-size: 16px
 			line-height: 24px
@@ -291,6 +303,19 @@ input.error, textarea.error
 				top: 0
 				img
 					filter: invert(1)
+	&.popup_wrapper_status
+		overflow: hidden
+		
+		@media #{$_s}
+			background-image: none
+		.popup_window
+			background-color: #fff
+			max-width: 500px
+			background-image: url('../img/new_popup_buy.jpg')
+			@media #{$_s}
+				height: auto
+				width: 80%
+				//background-image: none
 	&.popup_wrapper_buy
 		.popup_window
 			max-width: 500px
@@ -299,15 +324,24 @@ input.error, textarea.error
 			background-image: url('../img/new_popup_buy.jpg')
 			@media #{$_s}
 				padding: 50px 20px
-				background-image: none
+				//background-image: none
 			h4
-				white-space: nowrap
-				text-overflow: ellipsis
-				overflow: hidden
+				font-size: 22px
+			.price
+				font-weight: bold
+				font-size: 30px
+				margin: 50px 0
+				text-align: center
+				display: block
 			.popup_form
+				margin-top: 0
 				.main_btn
 					width: 100%
 					max-width: 300px
+					margin: 0 auto
+				.input_wrapper
+					margin-top: 50px
+					margin-bottom: 50px
 				fieldset
 					float: left
 					width: 49%
@@ -500,3 +534,28 @@ $col: calc( 100% / #{$cols} )
 		display: table
 		clear: both
 		content: ""
+.alert_message
+	text-align: center
+	background-color: rgba(247,247,247,1)
+	width: 100%
+	color: $blue
+	position: absolute
+	left: 0
+	top: 0
+	padding: 20px 0
+	@media #{$_lg}
+		font-size: 18px
+	@media #{$_md}
+		font-size: 16px
+.not_found_page
+	background-color: $blue
+.message_info
+	font-size: 18px
+	color: #908e8e
+	font-weight: 600
+	@media #{$_lg}
+		font-size: 18px
+	@media #{$_md}
+		font-size: 16px
+.profile_page .profile__editing .editing_form .input_wrapper input
+	line-height: 20px

@@ -19,6 +19,11 @@
 			font-size: 14px
 			text-decoration: underline
 			cursor: pointer
+			@media #{$_sm}
+				left: 45px
+				top: 30px
+				bottom: auto
+				right: auto
 		&__info
 			width: 32%
 			background-image: url("../img/profile_bg.jpg")
@@ -34,6 +39,8 @@
 			@media #{$_sm}
 				width: 100%
 				min-height: 1px
+				height: auto
+				padding-bottom: 30px
 			&__inner
 				display: inline-block
 				max-width: 300px
@@ -348,16 +355,16 @@
 							padding-left: 8px
 							position: relative
 							max-width: 120px
-							&:after
-								content: ""
-								position: absolute
-								top: 0
-								bottom: 0
-								margin: auto
-								right: 8px
-								width: 9px
-								height: 6px
-								background-image: url("../img/arrow_down_small.png")
+							// &:after
+							// 	content: ""
+							// 	position: absolute
+							// 	top: 0
+							// 	bottom: 0
+							// 	margin: auto
+							// 	right: 8px
+							// 	width: 9px
+							// 	height: 6px
+							// 	background-image: url("../img/arrow_down_small.png")
 
 			&__footer
 				height: 82px

@@ -171,6 +171,10 @@
 			padding: 30px 0
 			border-bottom: 1px solid #e5e5e5
 			position: relative
+			&:after
+				display: table
+				clear: both
+				content: ""
 			h4
 				color: #000
 				font-size: 20px
@@ -202,6 +206,22 @@
 						right: 0
 					&.rotated
 						transform: rotate(180deg)
+		&__item.no_arrow
+			display: flex
+			justify-content: space-between
+			align-items: center
+			&:after
+				position: absolute
+			@media #{$_sm}
+				display: block
+			h4
+				@media #{$_sm}
+					padding: 0
+				.arrow
+					display: none
+
+
+
 			&__content
 				display: none
 				padding-right: 160px
@@ -232,3 +252,30 @@
 					top: 0
 				&:last-of-type:after
 					display: none
+	.result__btn, .buy, .viewed__btn
+		float: left
+		margin-right: 30px
+		margin-bottom: 20px
+		&:after
+			clear: both
+			display: table
+			content: ""
+		i
+			display: block
+			font-size: 30px
+			text-align: center
+	.no_arrow
+		.search_list__item__content
+			min-width: 250px
+			@media #{$_sm}
+				margin-top: 15px
+		.result__btn, .buy, .viewed__btn
+			float: left
+			width: 50%
+			margin: 0
+			text-align: center
+			@media #{$_lg}
+				font-size: 18px
+			@media #{$_sm}
+				width: auto
+				margin: 0 10px

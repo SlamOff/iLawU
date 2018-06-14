@@ -1,15 +1,15 @@
 @font-face {
-	font-family: "doc3";
-	src: url('./doc3.eot');
-	src: url('./doc3.eot?#iefix') format('eot'),
-		url('./doc3.woff2') format('woff2'),
-		url('./doc3.woff') format('woff'),
-		url('./doc3.ttf') format('truetype'),
-		url('./doc3.svg#doc3') format('svg');
+	font-family: "mf";
+	src: url('./mf.eot');
+	src: url('./mf.eot?#iefix') format('eot'),
+		url('./mf.woff2') format('woff2'),
+		url('./mf.woff') format('woff'),
+		url('./mf.ttf') format('truetype'),
+		url('./mf.svg#mf') format('svg');
 }
 
 .icon:before {
-	font-family: "doc3";
+	font-family: "mf";
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
@@ -21,6 +21,50 @@
 }
 
 
-.icon-round-arrow:before {
+.icon-arrow_left:before {
 	content: "\E001";
+}
+
+.icon-arrow_right:before {
+	content: "\E002";
+}
+
+.icon-close:before {
+	content: "\E003";
+}
+
+.icon-fb:before {
+	content: "\E004";
+}
+
+.icon-insta:before {
+	content: "\E005";
+}
+
+.icon-logo_large:before {
+	content: "\E006";
+}
+
+.icon-logo_small:before {
+	content: "\E007";
+}
+
+.icon-minus:before {
+	content: "\E008";
+}
+
+.icon-pinterest:before {
+	content: "\E009";
+}
+
+.icon-plus:before {
+	content: "\E00A";
+}
+
+.icon-q:before {
+	content: "\E00B";
+}
+
+.icon-x:before {
+	content: "\E00C";
 }
